@@ -1,11 +1,20 @@
+const HttpRequest = XMLHttpRequest;
 
-function loadfragment(targetQuery, frag, inner=false) {
-    var req = new XMLHttpRequest();
+function loadfragment(targetQuery, frag, mode='replace') {
+    var req = new HttpRequest();
     req.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var target = document.querySelector(targetQuery);
-            var placement = inner ? 'innerHTML' : 'outerHTML';
-            target[placement] = this.responseText;
+            switch (mode) {
+                case 'replace':
+                    target.outerHTML = this.responseText;
+                    break;
+                case 'append':
+                    target.append(this.responseText)
+                    break;
+                default:
+                    throw 'Invalid mode: '+mode;
+            }
         }
     }
     req.open('GET', frag, true);
