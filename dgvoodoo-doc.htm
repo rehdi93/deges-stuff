@@ -17,10 +17,15 @@
         header > .w3-quarter {
             padding: 16px;
         }
-        #changelog {
+        #changelog>iframe {
             width: 100%; 
             height: 450px; 
             background-color: white;
+        }
+    </style>
+    <style media="print">
+        .noprint, #changelog, #toc-changelog, #viewoptions, #motd, footer {
+            display: none;
         }
     </style>
 </head>
@@ -28,7 +33,7 @@
 
 <body>
 
-<header class="w3-red w3-row">
+<header class="w3-deep-orange w3-row">
     <div class="w3-quarter w3-hide-small">
         <a href="index.htm" style="text-decoration: none;">
             <kbd class="w3-xlarge">&larr;</kbd>
@@ -64,7 +69,6 @@
                     <li><a href="#1-9" id="toc-1-9">General additional options</a></li>
                     <li><a href="#1-10" id="toc-1-10">General tips and known issues</a></li>
                     <li><a href="#1-11" id="toc-1-11">Special release version with debug layer</a></li>
-                    <li><a href="#1-12" id="toc-1-12">Change log</a></li>
                 </ol>
             </li>
             <li><a href="#glide" id="toc-glide">Glide</a>
@@ -90,11 +94,11 @@
                     <li><a href="#3-9" id="toc-3-9">Why doesn't dgVoodoo DX emulation start up?</a></li>
                 </ol>
             </li>
+            <a href="#changelog" id="toc-changelog"><li>Changelog</li></a>
         </ol>
     </nav>
     <hr>
-    <div class="w3-center w3-quater">
-        <!-- <button class="w3-button w3-card-2 w3-large" onclick="toggleDarkMode()">mode</button> -->
+    <div class="w3-center w3-quater" id=viewoptions>
         <input type="checkbox" id="ckbMode" onchange="toggleDarkMode()"> Dark mode
         <hr>
     </div>
@@ -251,7 +255,7 @@
     <hr>
     <section id="general" class="w3-row">
         <header class="w3-row w3-panel w3-orange w3-hide-small">
-            <div class="w3-quarter" style="padding: 16px;">
+            <div class="w3-quarter">
                 <kbd><a href="#faq">Prev</a></kbd>
             </div>
             <div class="w3-half w3-center">
@@ -276,7 +280,6 @@
                 <li><a href="#1-9"  id="toc-1-9">General additional options</a></li>
                 <li><a href="#1-10" id="toc-1-10">General tips and known issues</a></li>
                 <li><a href="#1-11" id="toc-1-11">Special release version with debug layer</a></li>
-                <li><a href="#1-12" id="toc-1-12">Change log</a></li>
             </ol>
         </nav>
 
@@ -1301,15 +1304,6 @@
                     </li>
                 </ul>
         </article>
-
-        <article id="1-12">
-            <a href="#toc-1-12"><h2>12. Changelog</h2></a>
-            <!-- TODO: fix darkmode on iframe -->
-            <iframe id=changelog src="dgvoodoo-changelog.htm">
-                Your browser does not support iframes
-            </iframe>
-        </article>
-
     </section>
     <hr>
     <section id="glide" class="w3-row">
@@ -1589,7 +1583,7 @@
                     <th>Glide3 extensions</th>
                     <th>UMA</th>
                 </tr>
-                <tr>
+                <tr hidden> <!-- what's the point showing, if it's not exposed? -->
                     <td>? (unexposable via dgVoodoo)</td>
                     <td>0x0001</td>
                     <td>0x0000</td>
@@ -1611,18 +1605,14 @@
                     <td>no</td>
                 </tr>
                 <tr>
-                    <td>
-                        Voodoo 2
-                    </td>
+                    <td>Voodoo 2</td>
                     <td>0x0002</td>
                     <td>0x0001</td>
                     <td>GETGAMMA, CHROMARANGE, TEXMIRROR, PALETTE6666</td>
                     <td>no</td>
                 </tr>
                 <tr>
-                    <td>
-                        Voodoo Banshee
-                    </td>
+                    <td>Voodoo Banshee</td>
                     <td>0x1002</td>
                     <td>0x1001</td>
                     <td>GETGAMMA, CHROMARANGE, TEXMIRROR, PALETTE6666, TEXUMA,
@@ -1630,9 +1620,7 @@
                     <td>yes</td>
                 </tr>
                 <tr>
-                    <td>
-                        Other (greater)
-                    </td>
+                    <td>Other (greater)</td>
                     <td>0x100003</td>
                     <td>0x100002</td>
                     <td>GETGAMMA, CHROMARANGE, TEXMIRROR, PALETTE6666, TEXUMA,
@@ -1769,13 +1757,14 @@
     <hr>
     <section id="directx" class="w3-row">
         <header class="w3-row w3-panel w3-orange">
-            <div class="w3-quarter w3-left-align w3-hide-small" style="padding: 16px;">
+            <div class="w3-quarter w3-left-align w3-hide-small">
                 <kbd><a href="#glide">Prev</a></kbd>
             </div>
             <div class="w3-half w3-center">
                 <a href="#toc-directx"><h2>DirectX readme</h2></a>
             </div>
-            <div class="w3-quarter w3-right-align w3-hide-small" style="padding: 16px;">
+            <div class="w3-quarter w3-right-align w3-hide-small">
+                <kbd><a href="#changelog">Next</a></kbd>
             </div>
         </header>
 
@@ -1890,7 +1879,7 @@
                 </li>
                 <li>
                     <strong>dgVoodoo Virtual 3D Accelerated Card</strong><br>
-                    Simulates a video card that has custom hw 3D rendering support.<br>
+                    Simulates a video card with custom hw 3D rendering support.<br>
                     Provides support for full hardware acceleration including
                     'Transform & Light'.
                 </li>
@@ -2498,9 +2487,9 @@
                     Some of the DX dlls (ddraw.dll, d3d8.dll) are registered in the KnownDLLs section of
                     the Windows registry. When they are then the operating system always loads the system
                     versions of those dlls. Removing the entries from
-                    <b>"HKEY_LOCAL_MACHINE\<wbr>SYSTEM\<wbr>CurrentControlSet\<wbr>Control\<wbr>Session Manager\<wbr>KnownDLLs"</b><br>
-                    is undangerous and can be safely done with <b>Regedit</b>.
-                    This issue causes the majority of the problems.
+                    <samp>"HKEY_LOCAL_MACHINE\<wbr>SYSTEM\<wbr>CurrentControlSet\<wbr>Control\<wbr>Session Manager\<wbr>KnownDLLs"</samp>
+                    isn't dangerous and can be safely done with <samp>regedit</samp>.
+                    This causes the majority of the problems.
                 </li>
                 <li>
                     A bit marginal but existing problem with DirectDraw is that it can be initialized through
@@ -2509,7 +2498,7 @@
                     instead of the relative ones present in Windows 7, so the OLE-accessed DirectDraw is always
                     the system one in that case. The registry entries in question can be changed back to
                     relative paths,
-                    but since <b>Regedit requires TrustedInstaller privilege level for that</b>, and you have to
+                    but since <b><samp>regedit</samp> requires TrustedInstaller privilege level for that</b>, and you have to
                     search for
                     the entries yourself, it is a complicated process, I don't recommend you to experiment with
                     it.
@@ -2531,12 +2520,29 @@
         </article>
 
     </section>
+    <hr>
+    <section id="changelog" class="w3-section">
+        <header class="w3-row w3-panel w3-orange">
+            <div class="w3-quarter w3-left-align w3-hide-small">
+                <kbd><a href="#directx">Prev</a></kbd>
+            </div>
+            <div class="w3-half w3-center">
+                <a href="#toc-changelog"><h2>4. Changelog</h2></a>
+            </div>
+            <div class="w3-quarter w3-right-align w3-hide-small">
+            </div>
+        </header>
+        <iframe src="dgvoodoo-changelog.htm">Your browser does not support iframes</iframe>
+    </section>
 
     <div id="motd" class="w3-panel w3-black w3-opacity w3-center w3-padding">
-        <q>Have luck 🙂</q> - Dege <br>
-        <q>rehdi was here! 👨‍💻</q> - Pedro <br>
-        Released: <time datetime="2019-10-20">November 20, 2019</time> <br>
-        Author: Dege
+        <div class="w3-left-align w3-show-inline-block">
+            <q>Have luck 🙂</q> - Dege <br>
+            <q>rehdi was here! 👨‍💻</q> - Pedro
+            <hr>
+            Released: <time datetime="2019-10-20">November 20, 2019</time> <br>
+            Author: Dege
+        </div>
     </div>
 
 </main>
