@@ -18,3 +18,6 @@ function toggleNavmenu() {
 function main() {
     loadNav();
 }
+
+// exec
+document.body.onload = main
