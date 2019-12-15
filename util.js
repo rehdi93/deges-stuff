@@ -1,12 +1,14 @@
-function loadNav() {
+
+function loadfragment(targetQuery, frag, inner=false) {
     var req = new XMLHttpRequest();
     req.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var nav = document.getElementById('navbar');
-            nav.outerHTML = this.responseText;
+            var target = document.querySelector(targetQuery);
+            var placement = inner ? 'innerHTML' : 'outerHTML';
+            target[placement] = this.responseText;
         }
     }
-    req.open('GET', 'parts/nav.htm', true);
+    req.open('GET', frag, true);
     req.send();
 }
 
@@ -16,7 +18,7 @@ function toggleNavmenu() {
 }
 
 function main() {
-    loadNav();
+    loadfragment('#navbar', 'parts/nav.htm');
 }
 
 // exec
