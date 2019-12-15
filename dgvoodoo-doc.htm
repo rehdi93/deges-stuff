@@ -12,7 +12,7 @@
         code { background-color: #e0e0e0; }
         .darkmode {
             color: white;
-            background-color: rgb(15, 15, 15);
+            background-color: #1e1e1eff;
         }
         header > .w3-quarter {
             padding: 16px;
@@ -191,7 +191,9 @@
                         done.</p>
                 </li>
             </ul>
-            <img src="imgs/dgVoodooCpl1.png" alt="dgVoodoocpl" class="w3-third w3-padding w3-image">
+            <a href="imgs/dgVoodooCpl1.png" target="_blank" rel="noopener noreferrer">
+                <img src="imgs/dgVoodooCpl1.png" alt="dgVoodoocpl" class="w3-third w3-padding w3-image">
+            </a>
         </div>
 
         <ul>
@@ -216,8 +218,12 @@
                 performance loss or simply erroneous rendering. That's why I said 'try'.
             </li>
 
-            <img src="imgs/dgVoodooCpl2.png" alt="dgVoodoocpl" class="w3-image w3-padding">
-            <img src="imgs/dgVoodooCpl3.png" alt="dgVoodoocpl" class="w3-image w3-padding">
+            <a href="imgs/dgVoodooCpl2.png" target="_blank" rel="noopener noreferrer">
+                <img src="imgs/dgVoodooCpl2.png" alt="dgVoodoocpl" class="w3-image w3-padding">
+            </a>
+            <a href="imgs/dgVoodooCpl3.png" target="_blank" rel="noopener noreferrer">
+                <img src="imgs/dgVoodooCpl3.png" alt="dgVoodoocpl" class="w3-image w3-padding">
+            </a>
         </ul>
 
         <ul>
@@ -230,7 +236,9 @@
                 presented to the display output. Depends on the scaling mode.</li>
         </ul>
 
-        <img src="imgs/dgVoodooImageOuputChain.png" class="w3-image w3-padding">
+        <a href="imgs/dgVoodooImageOuputChain.png" target="_blank" rel="noopener noreferrer">
+            <img src="imgs/dgVoodooImageOuputChain.png" class="w3-image w3-padding">
+        </a>
             
         <ul>
             <li><b>Q:</b> Should I know any extra about the configuration?</li>
@@ -358,8 +366,7 @@
 
             Optional and recommended:
             <ul>
-                <li>GPU supporting DirectX feature level 11.0
-                </li>
+                <li>GPU supporting DirectX feature level 11.0</li>
                 <li>HLSL shader compiler (D3DCompiler_43 or D3DCompiler_47)<br>
                     (note that D3DCompiler_47 is part of Windows 10)</li>
             </ul>
@@ -578,12 +585,12 @@
                         Even if the app uses only one resolution, and you can select or type another
                         one with the same aspect ratio, then selecting the proper resolution is still
                         not an easy task:
-                        <ul style="list-style: lower-latin outside;">
+                        <ol style="list-style: lower-latin outside;">
                             <li>you don't necessarily know what resolution the app uses</li>
                             <li>you don't necessarily know what the max resolution your display is capable of</li>
                             <li>even if you know both of them, you may have to calculate manually the desired
                                 resolution.</li>
-                        </ul>
+                        </ol>
                     </li>
                 </ul>
 
@@ -1414,7 +1421,7 @@
 
                 <li><b>Force Emulating True PCI Access</b>
                     <p>
-                        See section <a href="#2-4">Some techincal info</a>.
+                        See section <a href="#2-4">techical info</a>.
                     </p>
                 </li>
 
@@ -1441,24 +1448,23 @@
 
                 <li><b>Pointcast Palette Driver Build</b>
                     <p>
-                        see section 'Some techincal info'
+                        See section <a href="#2-4">techical info</a>.
                     </p>
                 </li>
                 <li><b>Enable inactive app state</b>
-                    <p>
-                        Glide games/demos can have two bad habits:
-                        </p><ul>
+                    <p>Glide games/demos can have two bad habits:</p>
+                        <ul>
                             <li>Cannot tolerate losing application focus (Alt-Tabbing to another application) and
                                 crash or quit.
                             </li>
                             <li>Do not pump the message queue of their window - it was not a problem on Win95/98 but
-                                today's
-                                Windows' treat the state of such applications 'Not responding'.</li>
-                        </ul><br>
-                        By default, dgVoodoo tries to avoid, and to workaround those cases with some extra work.<br>
-                        However it can unfortunately cause other unexpected issues in some games; if it does then
-                        you can enable
-                        this option instructing dgVoodoo not to intervent.
+                                today's Windows' treat the state of such applications 'Not responding'.</li>
+                        </ul>
+                        <p>
+                            By default, dgVoodoo tries to avoid, and to workaround those cases with some extra work.<br>
+                            However it can unfortunately cause other unexpected issues in some games; if it does then
+                            you can enable this option instructing dgVoodoo not to intervent.
+                        </p>
                 </li>
             </ul>
         </article>
@@ -1550,7 +1556,7 @@
                 performance drop if emulated perfectly. This case is the mentioned simultaneous
                 writing. dgVoodoo can emulate this usecase but you must enable it explicitly so
                 I reluctantly inserted an option into the CPL, named
-                'Force emulating true PCI access'. This is the only technical option related to
+                <samp>'Force emulating true PCI access'</samp>. This is the only technical option related to
                 the quality of the implementation. There are only a few games it should be used
                 for (see <a href="#2-6">Tips</a>) so it would be a pity to have it pointlessly enabled for the
                 rest.
@@ -1795,7 +1801,8 @@
                 First of all: NEVER COPY DDRAW.DLL, D3D8.DLL and D3D9.DLL INTO SYSTEM FOLDERS!!
                     ALWAYS USE A LOCAL INSTALLATION FOR A GAME!
             </p></strong>
-            <p>DirectDraw, D3D8 and D3D9 are still existing and widely used system components in Windows. 🙂</p>
+
+            <p>DirectDraw, D3D8 and D3D9 are still widely used components in Windows. 🙂</p>
             <p>For clarifying, let's see what dlls MS and dgVoodoo use for DirectDraw and Direct3D:</p>
             
             <table class="w3-table w3-bordered">
@@ -1877,23 +1884,23 @@
                 Available video card types:
             <ul>
                 <li>
-                    <strong>One that simulates an old SVGA with hw-capabilites only for 2D blitting</strong>
-                    operations.<br>With such a card, only a software 3D rendering device can be used.
+                    <strong>dgVoodoo Virtual SVGA Card</strong><br>
+                    Simulates an old SVGA with hw-capabilites only for 2D blitting operations.<br>
+                    Only a software 3D rendering device can be used.
                 </li>
-                <br>
                 <li>
-                    <strong>One (imaginary) video card that has its custom hw 3D rendering support.</strong><br>
-                    This card provides support for full hardware acceleration including
-                    'Transform &amp; Light'.
+                    <strong>dgVoodoo Virtual 3D Accelerated Card</strong><br>
+                    Simulates a video card that has custom hw 3D rendering support.<br>
+                    Provides support for full hardware acceleration including
+                    'Transform & Light'.
                 </li>
-                <br>
                 <li><strong>GeForce4 Ti 4800</strong></li>
                 <li><strong>ATI Radeon 8500</strong></li>
                 <li><strong>Matrox Parhelia-512</strong></li>
                 <li><strong>GeForce FX 5700 Ultra</strong></li>
             </ul>
 
-            <p>For more detailed capabilities, see the technical info.</p>
+            <p>For more detailed capabilities, see <a href="#3-3">technical info</a>.</p>
 
             <br>
 
@@ -1923,7 +1930,7 @@
             </p>
         </article>
         <article id="3-3">
-            <a href="#toc-3-3"><h2>3. Some technical info</h2></a>
+            <a href="#toc-3-3"><h2>3. Technical info</h2></a>
 
             <p>
                 I say 'almost fully supported' when talking about DX support because there are
@@ -2527,7 +2534,7 @@
 
     <div id="motd" class="w3-panel w3-black w3-opacity w3-center w3-padding">
         <q>Have luck 🙂</q> - Dege <br>
-        <q>Rehdi was here! 👨‍💻</q> - Pedro <br>
+        <q>rehdi was here! 👨‍💻</q> - Pedro <br>
         Released: <time datetime="2019-10-20">November 20, 2019</time> <br>
         Author: Dege
     </div>
@@ -2538,8 +2545,6 @@
     <p><a href="index.htm">Back to main site</a> | <a href="#">Top</a></p>
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
-
-</body>
 
 <script>
     // https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
@@ -2552,5 +2557,6 @@
         return mode
     }
 </script>
-    
+
+</body>
 </html>
