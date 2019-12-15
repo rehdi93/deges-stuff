@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dgVoodoo2 Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="dgvoodoo-version" content="2.62.3">
+    <meta name="creator" content="Pedro Oliva Rodrigues">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        code { background-color: #e0e0e0; }
+        .darkmode {
+            color: white;
+            background-color: rgb(15, 15, 15);
+        }
+        header > .w3-quarter {
+            padding: 16px;
+        }
+        #changelog {
+            width: 100%; 
+            height: 450px; 
+            background-color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<header class="w3-red w3-row">
+    <div class="w3-quarter w3-hide-small">
+        <a href="index.htm" style="text-decoration: none;">
+            <kbd class="w3-xlarge">&larr;</kbd>
+            <div> <u>to main site</u> </div>
+        </a>
+    </div>
+    <div class="w3-half w3-center w3-padding">
+        <h2>dgVoodoo2 Documentation</h2>
+    </div>
+    <div class="w3-quarter w3-right-align w3-hide-small">
+        <a href="#end" style="text-decoration: none;">
+            <kbd class="w3-xlarge">&darr;</kbd>
+            <div><u>bottom</u></div>
+        </a>
+    </div>
+</header>
+
+<main class="w3-content w3-container">
+    <nav id="toc">
+        <h3>Table of contents</h3>
+        <ol>
+            <a href="#faq" id="toc-faq">Quick guide for new users (FAQ)</a>
+            <li><a href="#general" id="toc-general">General</a>
+                <ol>
+                    <li><a href="#1-1" id="toc-1-1">Redistribution rights</a></li>
+                    <li><a href="#1-2" id="toc-1-2">Features</a></li>
+                    <li><a href="#1-3" id="toc-1-3">Requirements</a></li>
+                    <li><a href="#1-4" id="toc-1-4">Test results</a></li>
+                    <li><a href="#1-5" id="toc-1-5">Usage</a></li>
+                    <li><a href="#1-6" id="toc-1-6">Configuring</a></li>
+                    <li><a href="#1-7" id="toc-1-7">Resolution overriding</a></li>
+                    <li><a href="#1-8" id="toc-1-8">General options</a></li>
+                    <li><a href="#1-9" id="toc-1-9">General additional options</a></li>
+                    <li><a href="#1-10" id="toc-1-10">General tips and known issues</a></li>
+                    <li><a href="#1-11" id="toc-1-11">Special release version with debug layer</a></li>
+                    <li><a href="#1-12" id="toc-1-12">Change log</a></li>
+                </ol>
+            </li>
+            <li><a href="#glide" id="toc-glide">Glide</a>
+                <ol>
+                    <li><a href="#2-1" id="toc-2-1">Glide options</a></li>
+                    <li><a href="#2-2" id="toc-2-2">Glide additional options</a></li>
+                    <li><a href="#2-3" id="toc-2-3">Gamma correction</a></li>
+                    <li><a href="#2-4" id="toc-2-4">Technical info</a></li>
+                    <li><a href="#2-5" id="toc-2-5">Napalm build</a></li>
+                    <li><a href="#2-6" id="toc-2-6">Tips and known issues</a></li>
+                </ol>
+            </li>
+            <li><a href="#directx" id="toc-directx">DirectX</a>
+                <ol>
+                    <li><a href="#3-1" id="toc-3-1">Important notes</a></li>
+                    <li><a href="#3-2" id="toc-3-2">General overview</a></li>
+                    <li><a href="#3-3" id="toc-3-3">Some technical info</a></li>
+                    <li><a href="#3-4" id="toc-3-4">Application resolutions and refresh rates</a></li>
+                    <li><a href="#3-5" id="toc-3-5">About fullscreen and windowed mode</a></li>
+                    <li><a href="#3-6" id="toc-3-6">DirectX options</a></li>
+                    <li><a href="#3-7" id="toc-3-7">DirectX additional options</a></li>
+                    <li><a href="#3-8" id="toc-3-8">Tips and known issues</a></li>
+                    <li><a href="#3-9" id="toc-3-9">Why doesn't dgVoodoo DX emulation start up?</a></li>
+                </ol>
+            </li>
+        </ol>
+    </nav>
+    <hr>
+    <div class="w3-center w3-quater">
+        <!-- <button class="w3-button w3-card-2 w3-large" onclick="toggleDarkMode()">mode</button> -->
+        <input type="checkbox" id="ckbMode" onchange="toggleDarkMode()"> Dark mode
+        <hr>
+    </div>
+
+    <section id="faq" class="w3-row">
+        <header class="w3-row w3-panel w3-orange">
+            <div class="w3-quarter w3-hide-small">
+            </div>
+            <div class="w3-half w3-center">
+                <a href="#toc-faq"><h2>Quick guide</h2></a>
+                <p>for new users</p>
+            </div>
+            <div class="w3-quarter w3-right-align w3-hide-small">
+                <kbd><a href="#general">Next</a></kbd>
+            </div>
+        </header>
+
+        <ul>
+            <li><b>Q:</b> What is dgVoodoo? And where is the installer?</li>
+            <li><b>A:</b> dgVoodoo consists of components substituting the implementations of various graphics API's
+                like 3Dfx Glide
+                and Microsoft DirectX up to version 9.
+                Currently it has no installer and its usage is intended to be drop-in: just copy the graphics API
+                dll's from
+                dgVoodoo package next to your game/application executable and run it. You need a graphics card
+                supporting DX10.0 as a minimum.</li>
+        </ul>
+
+        <ul>
+            <li><b>Q:</b> So how can I use it exactly for my old games or other applications?</li>
+            <li>
+                <b>A:</b> If your game is a 3Dfx Glide one then just copy <samp>Glide.dll</samp>,
+                <samp>Glide2x.dll</samp> and <samp>Glide3x.dll</samp>
+                from the 3Dfx\x86 folder to the same folder where your game executable is in.
+
+                <p>If it's a 32bit DirectX application then copy <samp>DDraw.dll</samp>, <samp>D3DImm.dll</samp>,
+                    <samp>D3D8.dll</samp> and <samp>D3D9.dll</samp>
+                    to the game folder from the MS\x86 folder. For 64bit Direct3D9 applications use
+                    <samp>D3D9.dll</samp> from the MS\x64 folder.</p>
+
+                <p>If you don't know which API your game uses, or it uses both Glide and DirectX then just copy all
+                    the dll's listed above.</p>
+
+                <strong>IMPORTANT: Do not copy 3Dfx or MS folders themselves but only the dll files.</strong>
+            </li>
+        </ul>
+
+        <ul>
+            <li><b>Q:</b> That's all?</li>
+            <li><b>A:</b> Yes, you can run your game. dgVoodoo should get in action with its default configuration
+                and render your game as a D3D11 one.
+                Altough dgVoodoo is configurable (see below), its default configuration is recommended for first try
+                because this configuration is
+                the one that provides the circumstances the games were designed for.</li>
+        </ul>
+
+        <ul>
+            <li><b>Q:</b> OK, my game is running but the image is stretched on my screen...</li>
+            <li><b>A:</b> Most of the old games is designed for display output aspect ratio of 4:3 and if you have a
+                widescreen monitor then their image will
+                likely be distortedly stretched along the screen, which is not good. The recommended way to fix it
+                is forcing 'keeping aspect ratio'
+                in the control panel of your graphics driver (like nVidia Control panel for nVidia graphics cards).
+            </li>
+        </ul>
+
+        <ul>
+            <li><b>Q:</b> My graphics driver doesn't support overriding aspect ratios... Is there any other fix to
+                this?</li>
+            <li><b>A:</b> Yes, there is. dgVoodoo is configurable and has various scaling modes. You should try
+                that.</li>
+        </ul>
+
+        <div class="w3-row">
+            <ul class="w3-twothird">
+                <li><b>Q:</b> How can I configure dgVoodoo?</li>
+                <li><b>A:</b> dgVoodoo reads the configuration from a config file named dgVoodoo.conf. How to create
+                    one? Well, while dgVoodoo now has a human readable text format
+                    config file, you also have the dgVoodoo Control Panel application to render and modify the
+                    content of those config files in a convenient GUI way. So,
+                    copy dgVoodooCpl.exe to your desktop or any other folder you prefer and start it. You'll see
+                    three different tabs set to the default configuration.
+                    If you change something and press OK or Apply button then the CPL writes the current
+                    configuration into a config file. Where it saves that??
+                    To the folder you select on the Config folder / running instance rolldown menu at the top of the
+                    CPL. By default it chooses your login-user appdata folder
+                    but you can add extra ones manually, say add and choose your game folder if you want your config
+                    file be created there. For now,
+                    let's just use the global appdata folder because dgVoodoo finds the configuration file there if
+                    none was found in your game folder.
+                    <p>So, let's modify dgVoodoo's scaling mode from Unspecified to Stretched, keep Aspect Ratio and
+                        run your game again.
+                        You should see the game running at a preserved 4:3 aspect ratio without problems and it's
+                        done.</p>
+                </li>
+            </ul>
+            <img src="imgs/dgVoodooCpl1.png" alt="dgVoodoocpl" class="w3-third w3-padding w3-image">
+        </div>
+
+        <ul>
+            <li><b>Q:</b> But wait, at all, how do I know if my game is being rendered through dgVoodoo?</li>
+            <li><b>A:</b> Windows doesn't support 3Dfx Glide natively, so if you see a Glide game running then it
+                must be running through a Glide wrapper. dgVoodoo or something else.
+                For DirectX games dgVoodoo tags its own small logo to the right-bottom corner. If you see that logo
+                then the game is surely rendered through dgVoodoo.</li>
+        </ul>
+
+        <ul>
+            <li><b>Q:</b> Cool, now I want to improve the appearance of my game. How to change the resolution and
+                how can I apply some antialiasing?</li>
+            <li><b>A:</b> You can, but first of all, you should always set the resolution or antialiasing in your
+                game options menu if it's available there.
+                If not, or the game has bad UI-scaling then you can try to force it externally through dgVoodoo. You
+                have various options for resolution on Glide and DirectX tabs,
+                so just select there what you want. For antialiasing, dgVoodoo currently only supports MSAA. If you
+                want some other method (or any other fancy image post-process) then
+                you likely need ReShade. The other thing you should know is forcing resolution or MSAA can easily
+                cause unwanted glitches in the appearance, or, as for some games,
+                performance loss or simply erroneous rendering. That's why I said 'try'.
+            </li>
+
+            <img src="imgs/dgVoodooCpl2.png" alt="dgVoodoocpl" class="w3-image w3-padding">
+            <img src="imgs/dgVoodooCpl3.png" alt="dgVoodoocpl" class="w3-image w3-padding">
+        </ul>
+
+        <ul>
+            <li><b>Q:</b> So, dgVoodoo has no image post processing at all? What is more, I'm little confused about
+                various resolutions... How dgVoodoo's image output work exactly?</li>
+            <li><b>A:</b> First, frames are rendered at the forced resolution instead of application resolution.
+                After that, some optional post process effect take place like deframing,
+                dithering and color adjustments. This image can be pixel multiplied and then finally either
+                presented to the display output, or scaled into your desktop resolution and
+                presented to the display output. Depends on the scaling mode.</li>
+        </ul>
+
+        <img src="imgs/dgVoodooImageOuputChain.png" class="w3-image w3-padding">
+            
+        <ul>
+            <li><b>Q:</b> Should I know any extra about the configuration?</li>
+            <li><b>A:</b> It may seem there are plenty of options to play with, but for a quick try and basic usage
+                you shouldn't deal most of them. Setting a scaling mode and forcing resolutions
+                and vertical sync are enough in general. If you want to get deeper knowledge about dgVoodoo then
+                read the detailed docs in the Doc folder.</li>
+        </ul>
+    </section>
+    <hr>
+    <section id="general" class="w3-row">
+        <header class="w3-row w3-panel w3-orange w3-hide-small">
+            <div class="w3-quarter" style="padding: 16px;">
+                <kbd><a href="#faq">Prev</a></kbd>
+            </div>
+            <div class="w3-half w3-center">
+                <a href="#toc-general"><h2>General</h2></a>
+            </div>
+            <div class="w3-quarter w3-right-align w3-hide-small">
+                <kbd><a href="#glide">Next</a></kbd>
+            </div>
+        </header>
+
+        <nav id="general-toc" hidden>
+            <h3>Table of contents</h3>
+            <ol>
+                <li><a href="#1-1"  id="toc-1-1">Redistribution rights</a></li>
+                <li><a href="#1-2"  id="toc-1-2">Features</a></li>
+                <li><a href="#1-3"  id="toc-1-3">Requirements</a></li>
+                <li><a href="#1-4"  id="toc-1-4">Test results</a></li>
+                <li><a href="#1-5"  id="toc-1-5">Usage</a></li>
+                <li><a href="#1-6"  id="toc-1-6">Configuring</a></li>
+                <li><a href="#1-7"  id="toc-1-7">Resolution overriding</a></li>
+                <li><a href="#1-8"  id="toc-1-8">General options</a></li>
+                <li><a href="#1-9"  id="toc-1-9">General additional options</a></li>
+                <li><a href="#1-10" id="toc-1-10">General tips and known issues</a></li>
+                <li><a href="#1-11" id="toc-1-11">Special release version with debug layer</a></li>
+                <li><a href="#1-12" id="toc-1-12">Change log</a></li>
+            </ol>
+        </nav>
+
+        <article id="1-1">
+            <a href="#toc-1-1"><h2>1. Redistribution rights</h2></a>
+            <p>
+                Files of dgVoodoo can be redistributed freely as far as they are kept together,
+                remain unmodified and unrenamed. Namely, only the full package can be
+                redistributed in the form as it is!
+            </p>
+            <p>
+                If you would like to utilize them in publicly available custom solutions or
+                packages, like game patches or anything else, then <strong>PLEASE</strong> ask me for permission,
+                furthermore mention its original source in your package along with the following
+                download link: <a href="http://dege.fw.hu/">http://dege.fw.hu/</a>
+            </p>
+
+            <p>
+                Official dgVoodoo forum where you can contact me and the dgVoodoo community is at:
+                <a href="http://www.vogons.org/viewforum.php?f=59/">http://www.vogons.org/viewforum.php?f=59/</a>
+            </p>
+
+
+            <p>Tip: See topic "WIP versions" for checking out new dgVoodoo versions that are not
+                officially released.</p>
+
+            <div class="w3-card-2 w3-padding w3-margin w3-pale-red w3-large">
+                <p>Very BIG THANKS must go to the community of Vogons for helping me a lot in
+                testing during the development! Thanks Guys, I couldn't have proceed so far
+                without such a great quality assurance!</p>
+                <br>
+                <p>And I append a new sentence here to emphasize it again, especially for testing
+                my D3D8/9 implementation and supplying me with ideas, tips and various informations
+                on several games!!!</p>
+            </div>
+        </article>
+
+        <br>
+
+        <article id="1-2">
+            <a href="#toc-1-2"><h2>2. Features</h2></a>
+
+            <p>dgVoodoo 2 is a set of old graphics API's implemented for Windows Vista/7/8/10.</p>
+            <p>They are implemented on Direct3D 11 and they can use different device types as wrapping output:</p>
+            <ul>
+                <li>Hardware rendering at GPU feature level 11.0 (recommended)</li>
+                <li>Hardware rendering at GPU feature level 10.1 (has a minor limitation for DX8/9)</li>
+                <li>Hardware rendering at GPU feature level 10.0 (there are some limitations)</li>
+                <li>Software rendering through Microsoft WARP renderer</li>
+            </ul>
+
+            <p>The following graphics API libraries are implemented:</p>
+            <ul>
+                <li>Glide 2.11, Glide 2.45, Glide 3.1 and Glide 3.1 Napalm</li>
+                <li>DirectX 1-7 (all versions of DirectDraw and Direct3D up to version 7)</li>
+                <li>Direct3D 8.1</li>
+                <li>Direct3D 9</li>
+            </ul>
+
+            <p>For both Glide and DirectX, dgVoodoo pushes as many emulation work to the GPU as
+                possbile. Thus, the entire internal 3Dfx GPU logic is mapped to pixel shaders
+                for Glide emulation, and all the fixed function vertex & pixel processing
+                pipeline is implemented by shaders for DirectX emulation (when possible).</p>
+
+            Glide libraries basically can work in two ways:
+
+            <ul>
+                <li>Using their precompiled shaders - it is the less efficient mode (legacy)</li>
+                <li>Using an external HLSL shader compiler - this is the most efficient and recommended mode and
+                    referred as 'dynamic shader compiling'</li>
+            </ul>
+
+            <p>
+                If dynamic shader compiling is available (see  <a href="#1-5">Usage</a>) then dgVoodoo can work
+                with specialized shaders requiring much less GPU power, providing much better
+                performance, especially on weaker video cards.
+            </p>
+        </article>
+
+        <article id="1-3">
+            <a href="#toc-1-3"><h2>3. Requirements</h2></a>
+
+            <ul>
+                <li>Operating system: Windows Vista/7/8/10</li>
+                <li>Hardware: GPU supporting DirectX feature level 10.0.</li>
+            </ul>
+
+            Optional and recommended:
+            <ul>
+                <li>GPU supporting DirectX feature level 11.0
+                </li>
+                <li>HLSL shader compiler (D3DCompiler_43 or D3DCompiler_47)<br>
+                    (note that D3DCompiler_47 is part of Windows 10)</li>
+            </ul>
+        </article>
+
+        <article id="1-4">
+            <a href="#toc-1-4"><h2>4. Test results</h2></a>
+            <p>We can examine this in two aspects:</p>
+
+            <ul>
+                <li><b>Used hardware and performance</b><br>
+                    I've tested and run different versions of dgVoodoo2 on the following GPU's:
+                    <ul>
+                        <li>Intel HD 2000 (feature level 10.0 only)</li>
+                        <li>GeForce 8600 GT (feature level 10.0 only)</li>
+                        <li>Intel HD 4000</li>
+                        <li>Geforce GT 610</li>
+                        <li>AMD HD 6450</li>
+                        <li>Intel HD Graphics 530</li>
+                        <li>GeForce GTS 450</li>
+                        <li>AMD HD 7850</li>
+                        <li>GeForce GTX Ti560 (RIP)</li>
+                        <li>AMD R7 360</li>
+                        <li>GeForce GTX 1060</li>
+                    </ul>
+                    <p>
+                        If dynamic shader compiling is utilized then dgVoodoo generally performs quite well on all
+                        hardware except integrated chips (like Intel HD 2000 and 4000).<br>
+                        Using only precompiled shaders requires a mid-class video card at least, and the low-end
+                        ones (intended for office-like usage) like Geforce GT 610 and AMD HD 6450 are not recommended.
+                    </p>
+                </li>
+                <br>
+                <li>
+                    <b>Accuracy of the emulation, individual games and applications</b><br>
+                    Of course it's not perfect but I think I got very nice results in general. I maintain expanding
+                    lists for games and demos, for DirectX emulation:<br>
+                    <!-- WIP -->
+                    <a href="http://dege.fw.hu/Gallery/DXGamesGallery.html">Games</a><br>
+                    <a href="http://dege.fw.hu/Gallery/DXDemosGallery.html">Demos</a><br>
+                </li>
+            </ul>
+        </article>
+
+        <article id="1-5">
+            <a href="#toc-1-5"><h2>5. Usage</h2></a>
+            <p>
+                There is no installer for dgVoodoo beacuse you can copy its dlls anywhere
+                you want (to use). If u like it and want to use as the only global Glide
+                wrapper on your machine then copy Glide dlls to the system folder. Glide dlls
+                are available in both 32bit (x86) and 64bit (x64) versions. x64 version is for 64 bit <em>QEmu</em>
+                (and maybe 64 bit <em>DosBox</em>) builds.
+                <strong>For native usage you always need the 32bit (x86) version dlls.</strong>
+                <br>
+                For DirectX emulation only a local installation is possible since the
+                DirectX dlls CANNOT be copied to the system folder (see DirectX readme).
+                Also, D3D9 has both 32 and 64 bit versions. Always use the proper one, depending on the application
+                type (not the OS type).
+            </p>
+            <p>
+                A Glide wrapped application can start up either in windowed or full screen
+                mode (it is controlled by the <em>Control Panel</em>, see later). Also, you can switch between
+                them during the gameplay by Alt-Enter. See 'Known issues' for more.
+            </p>
+            <p>
+                The same is true for wrapped DirectX applications, but it is a more
+                complicated case, see DirectX readme.
+            </p>
+            <p>
+                Glide and DirectX dlls can co-work inside a process so the same versions
+                of them have to be used within a folder. If one of them detects the other
+                with different version then it refuses to initialize and work.
+                Co-work is useful for applications that use DirectDraw for some initial
+                in-game menu and Glide for 3D rendering.
+            </p>
+            <p>
+                If you use dgVoodoo on Windows 10 then dynamic shader compiling is automatically
+                available because D3DCompiler_47 is part of the operating system.<br>
+                For preceding Windows versions (Vista, 7, 8) you need to download it manually and
+                then, you can copy this dll into each game folder next to the wrapper dlls but the
+                best practice is to copy it into
+            </p>
+
+            <ul>
+                <li><kbd>Windows\System32</kbd> folder for 32 bit operating systems</li>
+                <li><kbd>Windows\SysWOW64</kbd> folder for 64 bit operating systems</li>
+            </ul>
+
+            <p>
+                if it is not already there by the result of the installation of some
+                other software.<br>
+                Note that dgVoodoo supports both D3DCompiler_43 and D3DCompiler_47.
+                _43 is supported only because of compatibility with users having it
+                downloaded and copied into their system folder previously.
+            </p>
+            <p>
+                Utilizing dynamic shader compiling is only recommended for Glide libraries (unlike with previous
+                dgVoodoo versions).
+                DirectX implementations have their own internal DXBC generator which proved to be good enough
+                so support for the external compiler has been removed.
+                (I would like to completely ditch the external compiler once the internal code generator is
+                implemented for Glide as well.)
+            </p>
+        </article>
+
+        <article id="1-6">
+            <a href="#toc-1-6"><h2>6. Configuring</h2></a>
+            <p>
+                As different options might wanted to be used for particular applications,
+                I kept the concept of local/global configurations (might be familiar from old dgVoodoo).
+                Current configuration is stored in a file named <samp>dgVoodoo.conf</samp>. Its format can either be
+                binary or a textual INI-file for manual editing.
+            </p>
+            <p>When the Glide or DirectX wrapped application starts, dgVoodoo tries to read
+                config data. The search paths and the order for the config file are the following:</p>
+            <ul>
+                <li>Folder of the wrapper DLL</li>
+                <li>Folder of the application (EXE)</li>
+                <li>User application data folder</li>
+            </ul>
+            If the config file can be found in none of them then the default config is used.
+            <br>
+            <p>
+                For modifying config files, you can either use <em>dgVoodoo Control Panel (dgVoodooCpl)</em> or
+                edit it manually with a text editor.
+                dgVoodooCPL provides convenient GUI interface for all options but only the most important sections
+                are available by default. You have to enable the advanced
+                options through the context menu. This is because of emphasizing the sufficiency of the default
+                sections for the everyday usage and leaving the advanced
+                sections for practiced users knowing what they are doing.<br>
+                In dgVoodooCpl you can choose a folder where you can load (from) and save the current
+                configuration. Once you chose a folder, it remains in the list permanently.
+                If the CPL application finds a valid config file in its own folder (where the app itself
+                is located) then it automatically places the folder into the list and selects the folder.
+                Otherwise the user's application data folder is selected, by default.
+            </p>
+            <p>Note that</p>
+            <ul>
+                <li>CPL always writes INI format config file (unlike previous versions) - and you can edit it
+                    manually, passing
+                    over the CPL</li>
+                <li>CPL doesn't expose all the sections of the configuration by default only the most important
+                    ones - you have
+                    to enable additional ones through the context menu</li>
+            </ul>
+            <p>
+                If an application tolerates losing focus without closing/minimizing itself,
+                you can configure it dynamically: when the CPL starts up it builds
+                a list of detected running Glide/DirectX wrapped applications and insert it
+                into the folder selector combobox. When you select such a running instance
+                then the current state of the application is read as config and most of the
+                options can also be changed. So, you can set resolution, msaa, brightness,
+                etc on the spot without restarting the application (configurable items depend
+                on emulation type). When an option changes, it takes effect at once. If the
+                dialog gets cancelled or an other config folder/instance is selected, all the
+                changes gets cancelled as well.
+            </p>
+            <p>
+                You can always use the <em>'Apply' button</em> to save the current config to the
+                selected folder or running application without exiting the CPL application.
+            </p>
+
+            Important to note:
+
+            <ul>
+                <li>
+                    <p>
+                        If the wrapped app and the CPL runs on different privilege levels
+                        (admin/nonadmin) then the app won't appear in the instance list or they
+                        cannot communicate to each other. Sorry for the inconvenience.</p>
+                </li>
+                <li>
+                    <p>
+                        Switching resolution or MSAA can only be performed perfectly if the
+                        application re-renders everything on each frame. If it uses or keeps
+                        previously (once-)rendered things like cockpits or similars then they will
+                        be missing as will not get re-rendered. (Glide only)</p>
+                </li>
+            </ul>
+
+            <p>A folder inserted formerly into the list can be removed. Also, list of the
+                running instances can be refreshed.</p>
+        </article>
+
+        <article id="1-7">
+            <a href="#toc-1-7"><h2>7. Resolution and refresh rate overriding</h2></a>
+
+            <p>You can override the application resolution and refresh rate both for Glide and DirectX rendering.<br>
+                There are three types of resolution overriding, and, the 'Resolution' comboboxes contain two types
+                of elements in the enumerated list:</p>
+
+            <ul>
+                <li><strong>Static resolutions</strong></li>
+                <p>
+                    Those are enumerated by your videocard for the selected display output. Select any of them, and
+                    the wrapper will force that one (along with the selected refresh rate),
+                    no matter what resolution the application wants to set. <br>
+                    Resolution 'Unforced' means always using the current application resolution, so there is no
+                    overriding at all.
+                </p>
+            </ul>
+
+            <ul>
+                <li><strong>Dynamic resolutions</strong></li>
+                <p>First, a little explanation on what the practical problems are with static resolutions
+                    (especially for DirectX applications).</p>
+                <ul>
+                    <li>
+                        The application may use multiple resolutions for different parts like movies,
+                        menus and ingame. The statically chosen resolution may not have the same
+                        aspect ratio as those of them. For app-resolutions with different aspect
+                        ratios like 4:3 vs 16:9 it's a problem because one of them will be displayed
+                        hugely distorted.
+                    </li>
+                    <li>
+                        Even if the app uses only one resolution, and you can select or type another
+                        one with the same aspect ratio, then selecting the proper resolution is still
+                        not an easy task:
+                        <ul style="list-style: lower-latin outside;">
+                            <li>you don't necessarily know what resolution the app uses</li>
+                            <li>you don't necessarily know what the max resolution your display is capable of</li>
+                            <li>even if you know both of them, you may have to calculate manually the desired
+                                resolution.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <cite><br>
+                    (My own problem was the following: I sat down in front of a new computer with
+                    a 4K monitor and wanted to try out some stuffs through dgVoodoo. I faced the
+                    fact that I didn't know the exact monitor resolution, I also didn't know what
+                    res the stuffs to try were using. I just wanted the maximum available
+                    resolution to be forced that keeps the aspect ratio.)
+                </cite>
+
+                <p>
+                    Dynamic resolution is the synonim of "let the wrapper choose the current
+                    resolution for you". The maximum, and also the base used for calculating the
+                    current resolution, is your desktop resolution. The base rule is that the
+                    wrapper always calculates the maximum available resolution for the given
+                    scaling mode, but
+                </p>
+
+                <ul>
+                    <li>you can restrict the base maximum to <em>FullHD (1920x1080) or QHD (2560x1440)</em>
+                        for weaker GPUs (like low-end cards or maybe, integrated chips) with large-res display
+                        outputs, and</li>
+                    <li>
+                        <p>you can restrict the scale factor to integer numbers.<br>
+                            <em>(ISF - integer scale factor)</em></p>
+                    </li>
+                </ul>
+
+                So, dynamic resolutions are the following:
+                <table class="w3-table w3-bordered w3-responsive">
+                    <tr>
+                        <td><em> 2x, 3x, ...</em></td>
+                        <td>Integer multiples of application resolutions; doubled, tripled, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><em>Max</em></td>
+                        <td>Maximum resolution available</td>
+                    </tr>
+                    <tr>
+                        <td><em>Max ISF</em></td>
+                        <td>Maximum resolution with integer scale factor available</td>
+                    </tr>
+                    <tr>
+                        <td><em>Max FHD</em></td>
+                        <td>Maximum resolution available (but restricted to 1920x1080)</td>
+                    </tr>
+                    <tr>
+                        <td><em>Max FHD ISF</em></td>
+                        <td>Maximum resolution with integer scale factor available (but restricted to 1920x1080)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><em>Max QHD</em></td>
+                        <td>Maximum resolution available (but restricted to 2560x1440)</td>
+                    </tr>
+                    <tr>
+                        <td><em>Max QHD ISF</em></td>
+                        <td>Maximum resolution with integer scale factor available (but restricted to 2560x1440)
+                        </td>
+                    </tr>
+                </table>
+
+                <p>
+                    By default, dynamic resolutions don't have refresh rate even if enumerating refresh rates is enabled.
+                    When working with a dynamic resolution, then the refresh rate is undefined and it is up to the
+                    wrapper and the video card that what rate will be used (probably the one at which desktop is driven).
+                </p>
+            </ul>
+
+            <ul>
+                <li><strong>Custom resolutions</strong></li>
+
+                <p>
+                    A custom resolution is either a static one that is not in the enumerated list, or one that is
+                    partially overridden.
+                    Defining a custom resolution through the CPL is about typing the string -manually into the combo
+                    box- describing the resolution/refresh rate pair.<br>
+                    Resolution and refresh rate can be overridden independently on each other. Here are some
+                    examples (don't type quotation marks):
+                </p>
+
+                <ul>
+                    <li><kbd>"128x128, 60"</kbd> - means static resolution 128x128 at forced rate of 60Hz</li>
+                    <li><kbd>"128x128, 0"</kbd> or just <kbd>"128x128"</kbd> - means static resolution 128x128
+                        without overridden refresh rate</li>
+                    <li><kbd>"0x0, 75"</kbd> or <kbd>"unforced, 75"</kbd> - means unforced (static) resolution with
+                        forced 75Hz</li>
+                    <li><kbd>"max isf, 83"</kbd> - means Max ISF dynamic resolution with forced 83Hz</li>
+                </ul>
+
+                <p>
+                    If your resolution and refresh rate is in the list then it is better to select it from there
+                    than typing it manually.
+                    It is because e.g. 60Hz is not exactly 60Hz in practice but 60.01Hz or 59.95Hz or so, depending
+                    on your display hardware.
+                    dgVoodoo always handles the refresh rates in their exact rational form but it cannot do that
+                    with manually typed ones.<br>
+                    When displaying a refresh rate in the combo box, dgVoodoo truncates the value. So, for example,
+                    59.95Hz will appear as 59Hz
+                    in the list, while the display manufacturer probably claims that your display supports 60Hz.
+                    Don't let it mislead you. It is all
+                    about truncating or rounding the values.
+                </p>
+            </ul>
+
+            <p>If you are terribly interested in how the current dynamic resolution is calculated then a little
+                technical part comes here. Otherwise you can skip this section.</p>
+
+            <div style="overflow: auto;">
+                <table id=table1 class="w3-table w3-bordered w3-small" style="min-width: 600px;">
+                    <tr>
+                        <th></th>
+                        <th>Unspecified</th>
+                        <th>Centered</th>
+                        <th>Stretched</th>
+                        <th>Stretch with AR</th>
+                    </tr>
+                    <tr>
+                        <th>Max</th>
+                        <td>AS (A, D)</td>
+                        <td>AS (A, D)</td>
+                        <td>D</td>
+                        <td>AS (A, D)</td>
+                    </tr>
+                    <tr>
+                        <th>Max ISF</th>
+                        <td>IAS (A, D)</td>
+                        <td>IAS (A, D)</td>
+                        <td>* remarks</td>
+                        <td>IAS (A, D)</td>
+                    </tr>
+                    <tr>
+                        <th>Max FHD</th>
+                        <td>AS (A, min (D,F))</td>
+                        <td>AS (A, min (D,F))</td>
+                        <td>min (D,F)</td>
+                        <td>AS (A, min (D,F))</td>
+                    </tr>
+                    <tr>
+                        <th>Max FHD ISF</th>
+                        <td>IAS (A, min (D,F))</td>
+                        <td>IAS (A, min (D,F))</td>
+                        <td>* remarks</td>
+                        <td>IAS (A, min (D,F))</td>
+                    </tr>
+                    <tr>
+                        <th>Max QHD</th>
+                        <td>AS (A, min (D,Q))</td>
+                        <td>AS (A, min (D,Q))</td>
+                        <td>min (Q,F)</td>
+                        <td>AS (A, min (D,Q))</td>
+                    </tr>
+                    <tr>
+                        <th>Max QHD ISF </th>
+                        <td>IAS (A, min (D,Q))</td>
+                        <td>IAS (A, min (D,Q))</td>
+                        <td>* remarks</td>
+                        <td>IAS (A, min (D,Q))</td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <table class="w3-table w3-tiny w3-bordered">
+                <caption class="w3-left-align w3-small"><u>Legend</u>:</caption>
+                <tr>
+                    <td>D</td>
+                    <td>desktop resolution</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>FullHD resolution (1920x1080)</td>
+                </tr>
+                <tr>
+                    <td>Q</td>
+                    <td>QHD resolution (2560x1440)</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>application resolution</td>
+                </tr>
+                <tr>
+                    <td>AS (x, y)</td>
+                    <td>stretched from x to y, with aspect ratio</td>
+                </tr>
+                <tr>
+                    <td>IAS (x, y)</td>
+                    <td>stretched from x to y, with aspect ratio, integer scale factor</td>
+                </tr>
+            </table>
+
+            <p><em>Remarks:</em></p>
+            <ul>
+                <li>Resolution is calculated in the same way for scaling mode 'Unspecified', 'Centered' and 'Stretch
+                    with AR'.</li>
+                <li>Stretched scaling mode with ISF tries to stretch to <var>min([D|F|Q])</var> and the scale factor
+                    for both direction is the integer part of the minimum of
+                    <var>min([Dx|Fx|Qx])/Ax</var> and <var>min([Dy|Fy|Qy])/Ay</var> (ratios of X/Y directions).</li>
+            </ul>
+
+            <p>
+                I'd like to say some words about what happens on multimonitor systems with
+                dynamic resolution forcing:
+            </p>
+            <ul>
+                <li>
+                    <p>
+                        <strong>Glide:</strong> when switching from windowed mode to fullscreen then a new forced
+                        resolution is calculated by the wrapper, based on the native res of the
+                        display on which the full screen output will appear.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>DX:</strong> It's not so flexible at all, unfortunately. Since DX impl doesn't
+                        support changing resolution during its working, it cannot do the same
+                        as Glide when switching into fullscreen. Also, since display outputs
+                        are enumerated to the application, resolution calculation can rely only
+                        on the native res of the output on which DX is initialized (so changing
+                        the output of a running DX emulated app from the CPL application is without avail,
+                        won't affect the next resolution calculation).
+                    </p>
+                </li>
+            </ul>
+        </article>
+
+        <article id="1-8">
+            <a href="#toc-1-8"><h2>8. General options</h2></a>
+            <p>Options on the General tab affects all wrapped APIs, that is, currently Glide and DirectX.</p>
+
+            <ul>
+                <li><b>Output API</b><br>
+                    Four output API's are available:<br>
+                    <ul>
+                        <li><p>Direct3D11 feature level 11.0</p></li>
+                        <li><p>Direct3D11 feature level 10.1</p></li>
+                        <li><p>Direct3D11 feature level 10.0</p></li>
+                        <li><p>Direct3D11 Microsoft WARP renderer</p></li>
+
+                        <p>D3D11 with FL10.1 has a little limitation and affects only D3D8/9:</p>
+                        <ul>
+                            <li>Max texture size is 8K x 8K</li>
+                        </ul>
+                        <br>
+                        D3D11 with FL10.0 is designed to be used with late
+                        DX 10.0 hardware and has some limitations:
+                        <ul>
+                            <li>No mipmapping in Glide rendering</li>
+                            <li>Limited operations on Z-buffers</li>
+                            <ul>
+                                <li>Buffers with forced MSAA can only be rendering targets; they cannot
+                                    be used as
+                                    <ul>
+                                        <li>depth textures</li>
+                                        <li>source of copy operations (Blit in DDraw)</li>
+                                        <li>locked for CPU-access (Lock in DDraw/ LockRect in D3D8)</li>
+                                    </ul>
+                                </li>
+                                <li>Faces of 3D-rendered cube-depth buffers cannot be
+                                    <ul>
+                                        <li>source of copy operations (Blit in DDraw)</li>
+                                        <li>locked for CPU-access (Lock in DDraw/ LockRect in D3D8)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </ul>
+                        <p>WARP is a software renderer and can be used as a reference driver.</p>
+                </li>
+
+                <li>
+                    <p>
+                        <b>Video card (adapter)</b><br>
+                        In case you have more than one, then
+                    </p>
+                        <ul>
+                            <li>
+                                Glide:
+                                which one to use for rendering. Option 'All of them' is equivalent to selecting the
+                                first video
+                                card in the list.
+                            </li>
+                                
+                            <li>DirectX: it is a multi-device capable API so you can
+                                choose which adapter(s) are to be enabled for the emulation.</li>
+                        </ul>
+                </li>
+
+                <li>
+                    <p>
+                        <b>Monitor (output)</b><br>
+                        If you have multiple monitors then you can choose
+                        which one(s) (connected to the selected adapter):
+                    </p>
+                    <ul>
+                        <li>
+                            Glide: which monitor is used for fullscreen output. When 'Default'
+                            is selected then switching from windowed to fullscreen
+                            during playing a game selects the monitor containing
+                            the largest part of the game window.<br>
+                            It can be overridden dynamically on a running Glide wrapped application and it also
+                            affects dynamic resolution calculating (see resolution overriding).
+                        </li>
+                        <li>
+                            DirectX: which monitor(s) to enable to appear as DX devices to the application.
+                            'Default' enables all the monitors connected to the selected adapter. When the game
+                            or application goes into fullscreen then it always happens on the monitor (device) that
+                            the game/application selected for use. In case of a multidevice environment games and
+                            applications often (and silently) selects the first available device which generally corresponds
+                            to the primary monitor, but advanced apps allows the user to configure it through the app itself.
+                            <br>
+                            It can be overridden dynamically on a running DirectX-wrapped application however it
+                            only affects the output, it is all about pure visuality. It doesn't affects dynamic
+                            resolution calculating (see resolution overriding) and also, the application shall continue to
+                            see the corresponding device in it original state (keep in mind that it can conflict with
+                            the app).
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <p>
+                        <b>Full Screen / Windowed</b><br>
+                        See section "Usage".
+                    </p>
+                </li>
+
+                <li>
+                    <b>Unspecified/Centered/Scaled/Scaled with Aspect Ratio kept, for full screen</b><br>
+
+                        If the current resolution the wrapped app using does not
+                        match any natural resolution your adapter supports
+                        then the display can be strethed out to fit all the
+                        screen or its size can be left unchanged but centered.
+
+                        NOTE that if your video card supports overriding the scaling
+                        method of applications, and you'd like to apply a scaling
+                        with aspect ratio then it is recommended to set dgVoodoo's
+                        scaling method to 'Unspecified' + set the scaling mode <b>on your
+                        video card control panel</b> because dgVoodoo's internal scaling
+                        is unfortunately not a sterling one. It implies that you may
+                        experience various problems like wrong mouse cursor or
+                        glitches in rendering in certain applications. Scaling can
+                        only be done well (transparently) on the GPU/display side.
+                        
+                        <ul>
+                            <li><p><b>C64-like output:</b> well, if you are not a former C64 owner and fan, don't even try it,
+                                I'm sure you won't like it at all. As dgVoodoo is my main hobby programming playground
+                                these times I tried some algorhytms as part of it. It's not really a feature,
+                                but the result of some former experimenting and can be funny for some scene demos.</p>
+                            </li>
+
+                        </ul>
+                </li>
+
+                <li>
+                    <b>Progressive scanline order</b><br>
+                        Default scanline order is interlaced or progressive. It is
+                        up to the output display device which one to choose altough
+                        it chooses progressive when it is possible, I think, so
+                        that when the device is capable of displaying a given
+                        resolution with a given refresh rate with progressive order.
+                        Otherwise it might choose interlaced order with halved
+                        physical refresh rate.
+                        If this option is enabled, you can only see enumerated
+                        resolutions that are displayable with progressive order.
+                        However, if a custom resolution is defined then it may
+                        causes the output device to use lower physical resolution
+                        than the wrapper set.
+                </li>
+
+                <li>
+                    <p><b>Enumerate refresh rates</b><br>
+                        Enables the CPL application to enumerate refresh rates for
+                        each resolution and enables the wrapper to override the
+                        default refresh rate of the application.
+                        However using other than the app default can cause heavy
+                        animation lagging or glitches!
+                    </p>
+                </li>
+
+
+                <li>
+                    <p><b>Color adjustments</b><br>
+                        Brightness, color intensity (saturation) and contrast can be finetuned here.
+                        The defaults are good in general so treat this as a
+                        cool extra. (I'm using it in some cases for making colors
+                        more vital to get a bit cartoon-like effect.)
+                    </p>
+                </li>
+                <li>
+                    <p><b>Inherit Color Profile in full screen mode</b><br>
+                        When this option is enabled then dgVoodoo won't change the physical
+                        gamma ramp of the screen but instead it solves the color adjustments
+                        just like in windowed mode and so your pre-configured color profile(s)
+                        for the given monitor(s) remain(s) preserved. Color adjustments are
+                        relative to the predefined color profile in that case.
+
+                    </p>
+                </li>
+
+                <li>
+                    <p><b>Keep window aspect ratio</b><br>
+                        In windowed mode, when sizing the window, you can keep
+                        the aspect ratio of the current resolution.
+                    </p>
+                </li>
+
+                <li>
+                    <p><b>Capture mouse</b><br>
+                        It's useful mainly (but not only) for multimonitor systems. If this is enabled then the
+                        mouse cursor
+                        is forced into the application window to prevent accidental mis-clicks outside of it.
+                    </p>
+                </li>
+
+                <li>
+                    <p><b>Center app window</b><br>
+                        When a game controlling the mouse input is being run in windowed mode then
+                        it's a pain to move it's window into the screen, so I thought it's a valuable option (was a
+                        request
+                        too),
+                        but it can conflict with the mouse input or the app itself.
+
+                    </p>
+                </li>
+            </ul>
+        </article>
+
+        <article id="1-9">
+            <a href="#toc-1-9"><h2>9. General additional options</h2></a>
+
+            <ul>
+                <li><b>DesktopResolution</b>
+                    <p>dgVoodoo takes the current desktop resolution as a base to do its calculations for self-done
+                        output
+                        scaling and other things like automatic pixel multiplying factor value.
+                        There some games however that pre-set the desktop resolution (typically to some low
+                        resolution) before
+                        dgVoodoo gets in action, spoiling the rendering.
+                        You can define your native desktop resolution here for such cases. If defined then this
+                        resolution is
+                        used for all outputs of the desktop.
+                    </p>
+                </li>
+                <li><b>DesktopBitDepth</b>
+                    <p>You can define what screen bit depth should be reported through dgVoodoo. 
+                        It can be 8, 16 or 32. 
+                        Empty definition means the current system desktop bit depth.
+                    </p>
+                </li>
+                <li><b>DeframerSize</b>
+                    <p>When resolution is forced to other than the app default then a black frame is drawn around
+                        the output
+                        image coming from a wrapped API to remove scaling artifacts -
+                        frame thickness can be defined in pixels (max 16, 0 = disable) (default is 1).
+                    </p>
+                </li>
+                <li><b>ImageScaleFactor</b>
+                    <p>Integer factor for scaling the output image coming from a wrapped API (pixel multiplying).
+                        This is
+                        independent on scaling mode.
+                        0 = maximum available factor. Default is 1 (no multiplying). Separate factors can be defined
+                        for
+                        horizontal and vertical directions.
+                    </p>
+                </li>
+                <li><b>DisplayROI</b>
+                    <p> 
+                        Display region of interest: you can define a subrectangle in forced resolution space (or
+                        application resolution if it is unforced) to be the input of the scaling and
+                        image presenting process. It works only for scaling modes where the image processing is done
+                        by dgVoodoo itself. Subrectangle can either be
+                    </p>
+                    <ul>
+                        <li>defined as a proportion in form of <code>%d_%d</code>, like <samp>16_9</samp> or <samp>16_10</samp>, etc.</li>
+                        <li>or defined as a pixel size in form of <code>%d|%d</code>, like <samp>320|200</samp> or <samp>640|400</samp>, etc.</li>
+                    </ul>
+                    <br>
+                    Pos subproperty defines the top-left position of the rectangle. It can be
+                    <ul>
+                        <li><samp>centered</samp> (default)</li>
+                        <li>a pixel position in form of <code>%d|%d</code>, like <samp>100|100</samp></li>
+                    </ul>
+                    <br>
+                </li>
+                <li><b>ForceNearestPointFilter</b>
+                    <p>When the scaling is done by the wrapper for the given scaling mode, you can force nearest
+                        point filtering instead of bilinear one.
+                    </p>
+                </li>
+                <li><b>FreeMouse</b>
+                    <p>
+                        When enabled, physical mouse is free to move inside the game window when using emulated
+                        scaling and/or application and forced resolution differs;
+                        can be useful when a game relies on the physical window size.
+                    </p>
+                </li>
+                <li><b>WindowedAttributes</b>
+                    <p>You can force various properties for windowed mode rendering. The following properties can be
+                        listed, separated by commas:
+                    </p>
+                    <ul>
+                        <li><samp>Borderless</samp>: forces borderless window</li>
+                        <li><samp>AlwaysOnTop</samp>: forces the window into the topmost z-order band</li>
+                        <li><samp>FullscreenSize</samp>: the window content is the same as in fullscreen mode
+                            including the
+                            potential side black bars, depending on the scaling mode</li>
+                    </ul>
+                    <p>You can more or less emulate fake fullscreen with defining Borderless and FullscreenSize
+                    together along with enabling centered window.</p>
+                </li>
+                <li><b>Environment</b>
+                    <p>Defines the software environment in which dgVoodoo is running. Its value can be</p>
+                    <ul>
+                        <li><samp>empty</samp> (default)</li>
+                        <li><samp>DosBox</samp> to force DosBox environment</li>
+                        <li><samp>QEmu</samp></li>
+                    </ul>
+                    <p>
+                        Unless you use dgVoodoo in QEmu it's recommended to leave its value empty because dgVoodoo
+                        can detect DosBox automatically.<br>
+                        In QEmu environment dgVoodoo disables its own handling of the rendering window including
+                        Alt-Enter for manual screen mode switching.
+                    </p>
+                </li>
+                <li><b>EnableGDIHooking</b>
+                    <p>Very experimental option - when enabled dgVoodoo hooks some GDI functions to achieve
+                        displaying game
+                        cutscene movies rendered
+                        through GDI (relying typically on the old AVI player lib)
+                    </p>
+                </li>
+            </ul>
+        </article>
+
+        <article id="1-10">
+            <a href="#toc-1-10"><h2>10. General tips and known issues</h2></a>
+            <ul>
+                <li>Forcing things (like resolution, antialiasing, texture filtering, etc) is
+                    not a healthy thing. If an application or game uses low resolution or point
+                    sampled textures or anything dissonant to the eye then it has reasons for
+                    that. It is not because the programmers were so lame but of avoiding artifacts
+                    that would otherwise get brought in (typical example is a bilinear filtered
+                    texture with colorkey based transparency). If you force anything then
+                    potentially get one of those artifacts. If you can live with it then it is ok,
+                    use the wrapper in forced mode. If not then disable all forcings and use the
+                    particular game or application in the mode it was designed for, because no
+                    general method exists to fix such type of artifacts.</li>
+
+                <li>Controlling antialiasing cannot be done on per-primitive basis in Direct3D 11
+                    when feature set larger than 10.0 is used. That is why antialiased drawing
+                    is not emulated in Glide automatically in this version in any way (per-primitive or
+                    per-edge). It can only be forced globally in the CPL application.</li>
+
+                <li>Fullscreen gamma ramp may not be supported by your card. nVidia and ATI seem
+                    to handle it as expected but (e.g.) Intel does not.</li>
+
+                <li>When an application is being run in compatibility mode (Win98/XP etc) then
+                    <em>the user's application data folder is different than the OS default.</em>
+                    Therefore dgVoodoo cannot read the global config file and the default
+                    config gets applied if no local config file is present. The preferred way
+                    is creating a local config for such cases if other than the default needed.
+                    (Perhaps using the user's appdata folder is not a too good idea after all,
+                    I might change it later.)</li>
+
+                <li>If you have a multimonitor system then always try a game to run on the primary
+                    one for the first time. Some games lock the mouse cursor to the screen area
+                    where game window is assumed to be (the left-top corner of the desktop).
+                    If such a game is being forced onto another monitor then clicking in the game
+                    causes application focus loss because its window is not under the mouse cursor.</li>
+
+                <li>I don't know why but overriding refresh rates by arbitrary values (in the resolution selector
+                    combo box)
+                    does not
+                    seem to work for DirectX emulation. It is still subject to investigation because the code
+                    handling this is common for both Glide and DirectX. 🙁
+                </li>
+            </ul>
+
+        </article>
+
+        <article id="1-11">
+            <a href="#toc-1-11"><h2>11. Special release version with debug layer</h2></a>
+
+            Special release version of dgVoodoo contains an additional validator and report layer. Its purpose is
+
+            <ol>
+                <li>Giving feedback to the user about potential error conditions, what currently is happening, and,
+                    how dgVoodoo
+                    is driven by the application at all</li>
+                <li>Helping debugging a given application/game by the (extensive) feedback and opening the
+                    possibility to break
+                    into the debugger</li>
+            </ol>
+
+            dgVoodoo currently has 2 main types for debug feedback:
+
+            <ul>
+                <li><b>Simple messages with 3 subtypes which can be disabled or associated with a debugger break</b>
+                </li>
+                <ul>
+                    <li><samp>INFO</samp>: harmless message about various events like creating/releasing an API
+                        object, reading
+                        a config file, loading a module, etc.</li>
+                    <li><samp>WARNING</samp>: a message about a potential error condition</li>
+                    <li><samp>ERROR</samp>: a message about an API driving error or an internal error of dgVoodoo. The
+                        latter is
+                        fatal, while the prior one may be normal.</li>
+                </ul>
+                <br>
+                <li><b>Tracing</b> - means the full logging of API calls made to dgVoodoo and some additional
+                    information of dgVoodoo internals.</li>
+                <ul>
+                    <li><strong>Level 0:</strong> Tracing disabled</li>
+                    <li><strong>Level 1:</strong> Logging of API calls</li>
+                    <li><strong>Level 2:</strong> Logging of API calls + some additional info</li>
+                </ul>
+            </ul>
+
+            <p>
+                Messages and tracing are independent on each other. Tracing is mainly for devs, for quick and
+                average usage only the messages are recommended.<br>
+                All of them are written to the debug output, logging to file is not yet implemented.<br>
+                <br>
+                So, I recommend you to use <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/debugview">DebugView</a>
+                or even better <a href="https://github.com/CobaltFusion/DebugViewPP/releases">DebugView++</a>.
+                They are very cool applications for cases when no any debugger is available. Also, if you have more
+                than one monitors then you can watch the log in realtime: put DebugView++ on one display and run the game on
+                another.
+            </p>
+
+            <p>
+                Messages have a <samp>'[dgVoodoo]'</samp> prefix so the best way to check out a game with
+                dgVoodoo's debug layer is enabling filtering to the <samp>'dgVoodoo'</samp> substring (Crtl-L in
+                DebugView and F5 in
+                DebugView++).
+                Every single log output appear in new lines in DebugView/DebugView++ - this is nice, except for some
+                tracing
+                messages written to the output part by part, like D3D8 disassembled shaders.
+                Unfortunately they appear nastily because of that.
+            </p>
+
+            <p>
+                It's not really a big problem however because I cannot recommend you to enable tracing. It's much
+                more intended
+                for developers but if you want to use it after all then
+                do it with <strong>DebugView++</strong> or a debugger like <strong>Visual Studio 2015
+                </strong> because feedback is so tremendous that only tools
+                with asynchronous debug output window are able to handle it. Tools with synchronous debug output
+                like
+                <strong>DebugView</strong> won't be able to keep up with
+                it and make your game/app crawl at speed near zero.
+            </p>
+
+            <p>I must emphasize:
+                </p><ul>
+                    <li>Do not look for a miracle when using the debug layer! If some game doesn't work for you then
+                        it can give
+                        you some useful feedback
+                        on what's going on, or you can see if dgVoodoo is utilized at all but won't necessarily tell
+                        you why the
+                        game crashes, for example.<br>
+                        Also, if you see an ERROR entry in the log then it doesn't necessarily mean you did
+                        something wrong or
+                        there is a problem with your game.
+                        Many games rely on error codes got back from an API. So, for example if you see such a log
+                        like the
+                        following snippet
+                        <pre class="w3-border" style="overflow: auto;">...
+[15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8)::EnumTextureFormats: Format XRGB8888 is enumerated to the application.
+[15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8)::EnumTextureFormats: Format ARGB8888 is enumerated to the application.
+[15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8) is released.
+[15500] [dgVoodoo] ERROR: DirectDrawSurface (0D2380C8)::DeleteAttachedSurface: Failed, HRESULT: DDERR_SURFACENOTATTACHED
+[15500] [dgVoodoo] INFO: DirectDrawSurface (0D2380C8) Plain offscreen rendertarget is released.
+[15500] [dgVoodoo] INFO: Direct3D (0ABC87B0)::EnumDevices: Device enumerated, Name: "Direct3D HAL", Description: "dgVoodoo Hardware A...
+...</pre>
+                        Then the error entry about failed 'DeleteAttachedSurface' is not really an error. The
+                        application tried
+                        to delete a potential attached z-buffer, just to make sure, and doesn't care about the
+                        result.
+                        dgVoodoo however treat it as an error because it caused an error in an API method. It's
+                        really
+                        impossible to make a decision about classifying some conditions as an error or just a plain
+                        warning.<br>
+
+                        But let's look at another case: one of my game just crashes right at startup. What could be
+                        the reason?
+                        The debug output is:
+                        <pre class="w3-border" style="overflow: auto;">...
+[21964] [dgVoodoo] INFO: Direct3D8 (077BCEC8) Virtual video card is 'dgVoodoo Virtual 3D Accelerated' with 64MB onboard memory.
+[21964] [dgVoodoo] ERROR: Direct3D8 (077BCEC8): Validation of D3D8 swapchain presentation parameters failed.
+                        Reason: display mode "800x600, 72Hz" is required but not supported by output device: 0, DeviceType: D3DDEVT...
+[21964] [dgVoodoo] ERROR: Direct3DDevice8 (0EE99530)::Init: Cannot create device implicit swapchain.
+[21964] [dgVoodoo] ERROR: Direct3D8 (077BCEC8)::CreateDevice: Initializing Direct3DDevice8 (0EE99530) failed.
+...</pre>
+                        Ah, OK. Previously I configured the game to run on a display at 72Hz but now I'm trying to
+                        run it on
+                        another that does not support this refresh rate at this resolution,
+                        so D3D8 initialization failed in dgVoodoo and so the game crashed due to lack of error
+                        checking.
+                    </li><br>
+                    <li>
+                        Use the spec release only for trying to solve an extant problem with an applicaiton. Spec
+                        release does
+                        some extra checking and validation compared to normal dgVoodoo releases and it can bite off
+                        from the
+                        speed or cause stuttering.
+                    </li>
+                </ul>
+        </article>
+
+        <article id="1-12">
+            <a href="#toc-1-12"><h2>12. Changelog</h2></a>
+            <!-- TODO: fix darkmode on iframe -->
+            <iframe id=changelog src="dgvoodoo-changelog.htm">
+                Your browser does not support iframes
+            </iframe>
+        </article>
+
+    </section>
+    <hr>
+    <section id="glide" class="w3-row">
+        <header class="w3-row w3-panel w3-orange">
+            <div class="w3-quarter w3-left-align w3-hide-small">
+                <kbd><a href="#general">Prev</a></kbd>
+            </div>
+            <div class="w3-half w3-center">
+                <a href="#toc-glide"><h2>Glide readme</h2></a>
+            </div>
+
+            <div class="w3-quarter w3-right-align w3-hide-small">
+                <kbd><a href="#directx">Next</a></kbd>
+            </div>
+        </header>
+
+        <nav id="glide-toc" hidden>
+            <h3>Table of contents</h3>
+            <ol>
+                <li><a href="#2-1" id="toc-2-1">Glide options</a></li>
+                <li><a href="#2-2" id="toc-2-2">Glide additional options</a></li>
+                <li><a href="#2-3" id="toc-2-3">Gamma correction</a></li>
+                <li><a href="#2-4" id="toc-2-4">Technical info</a></li>
+                <li><a href="#2-5" id="toc-2-5">Napalm build</a></li>
+                <li><a href="#2-6" id="toc-2-6">Tips and known issues</a></li>
+            </ol>
+        </nav>
+
+        <article id="2-1">
+            <a href="#toc-2-1"><h2>1. Glide options</h2></a>
+
+            <ul>
+                <li><b>3Dfx card</b>
+                    <p>
+                        Selected card type affects the following:
+                        </p><ul>
+                            <li>Limits your choice possibilities in respect of 'Onboard RAM',
+                                'Texture memory' and 'Number of TMUs' according to the
+                                card type. Some applications (like the miniGL driver)
+                                may check for those values and won't work if one of them
+                                is too high. So it is more handy to select a card type
+                                to limit those values alltogether than configuring
+                                one-by-one by heart.</li>
+                            <li>Some exposed capabilites. See <a href="#2-4">techical info</a> for more.
+                                List of different card caps/behaviors may be extended in the future,
+                                according to 3dfx specs.</li>
+                        </ul>
+                </li>
+                <br>
+                <li><b>Onboard RAM</b>
+                    <p>
+                        Videomemory without texture memory. Some application
+                        compute by this value that what resolutions are supported.
+                    </p>
+                </li>
+                <li><b>Resolution/MSAA</b>
+                    <p>
+                        Since forcing them proved to be a good thing in practice,
+                        I kept the possibility in this version too. Antialiasing
+                        is new of course.<br><br>
+                        For more, see chapter 'Resolution and refresh rate overriding'
+                        in the general readme.<br><br>
+                        Option 'Application driven' for MSAA has meaning only for
+                        Napalm build. For non-Napalm builds it is equivalent to 'Off'.
+                    </p>
+
+                </li>
+
+                <li><b>Number of TMUs</b>
+                    <p>
+                        This version can emulate more than one Texture
+                        Management Units.
+                    </p>
+                </li>
+
+                <li><b>Texture mem size</b>
+                    <p>
+                        Onboard RAM and texture memory are unified video memory on
+                        UMA 3Dfx cards (see table in <a href="#2-4">techical info</a>). Future
+                        versions of the CPL app may not allow to config them
+                        separately.
+                    </p>
+                </li>
+
+                <li><b>Force bilinear filter</b>
+                    <p>
+                        Not much to say. 🙃
+                    </p>
+                </li>
+
+                <li><b>Disable mipmapping</b>
+                    <p>
+                        I liked it in some games that looked nicer without mipmapping. 🙂
+                    </p>
+                </li>
+
+                <li><b>Enable Glide-gamma ramp</b>
+                    <p>
+                        See section <a href="#2-3">Gamma Correction</a>.
+                    </p>
+                </li>
+
+                <li><b>Force VSync</b>
+                    <p>
+                        Forces at least one vertical retrace before buffer swapping. Use this option if something
+                        gets too fast.
+                    </p>
+                </li>
+
+                <li><b>Force Emulating True PCI Access</b>
+                    <p>
+                        See section <a href="#2-4">Some techincal info</a>.
+                    </p>
+                </li>
+
+                <li><b>16 bit depth buffer</b>
+                    <p>
+                        See section <a href="#2-6">Tips</a>.
+                    </p>
+                </li>
+
+                <li><b>3Dfx Watermark</b>
+                    <p>
+                        Enables displaying the 3Dfx logo during the app animation.
+                        You need the 3Dfx splash dlls for this. If they are
+                        missing, no logo will be displayed.
+                    </p>
+                </li>
+
+                <li><b>3Dfx Splash screen</b>
+                    <p>
+                        Enables splash screen at game/app startup.
+                        You need the 3Dfx splash dlls for this. If they are
+                    </p>
+                </li>
+
+                <li><b>Pointcast Palette Driver Build</b>
+                    <p>
+                        see section 'Some techincal info'
+                    </p>
+                </li>
+                <li><b>Enable inactive app state</b>
+                    <p>
+                        Glide games/demos can have two bad habits:
+                        </p><ul>
+                            <li>Cannot tolerate losing application focus (Alt-Tabbing to another application) and
+                                crash or quit.
+                            </li>
+                            <li>Do not pump the message queue of their window - it was not a problem on Win95/98 but
+                                today's
+                                Windows' treat the state of such applications 'Not responding'.</li>
+                        </ul><br>
+                        By default, dgVoodoo tries to avoid, and to workaround those cases with some extra work.<br>
+                        However it can unfortunately cause other unexpected issues in some games; if it does then
+                        you can enable
+                        this option instructing dgVoodoo not to intervent.
+                </li>
+            </ul>
+        </article>
+        <hr>
+        <article id="2-2">
+            <a href="#toc-2-2"><h2>2. Glide additional options</h2></a>
+
+            <ul>
+                <li><b>Dithering</b>
+                    <ul>
+                        <li><b>Disabled</b>: Dithering is always disabled, ending up 16-bit quality rendering</li>
+                        <li><b>Appdriven</b>: The application can choose between disabling, dithering2x2 and dithering4x4</li>
+                        <li><b>ForceAlways</b>: Dithering is always enabled and the selected dithering effect is applied<em>(default)</em></li>
+                    </ul>
+                    <br>
+                </li>
+                <li><b>DitheringEffect</b>
+                    <ul>
+                        <li><b>Dither2x2</b>: Ordered dithering with a 2x2 dithering matrix</li>
+                        <li><b>Dither4x4</b>: Ordered dithering with a 4x4 dithering matrix</li>
+                        <li><b>Pure32Bit</b>: 32 bit rendering quality <em>(default)</em></li>
+                    </ul>
+                    <br>
+                </li>
+                <li><b>DitherOrderedMatrixSizeScale</b> - integer scale value for dither matrix size
+                    <ul>
+                        <li>1 = normal, 2 = double size, etc.</li>
+                        <li>0 = automatic (the aim is to have some retro feel &amp; look) <em>(default)</em></li>
+                    </ul>
+                    <br>
+                </li>
+            </ul>
+
+        </article>
+        <hr>
+        <article id="2-3">
+            <a href="#toc-2-3"><h2>3. Gamma correction</h2></a>
+
+            <p>
+                A gamma correction curve can be set through the Glide interface. Since Glide
+                uses a linear curve by default it might not match the default or one's taste
+                and can look ugly (at least in the old days, I remember it looked ugly on CRTs).
+                For the standard see sRGB on google.
+            </p>
+            <p>
+                That's why the CPL has the 'Enable Glide gammaramp' option: you can disable
+                the curve coming from Glide and let your monitor use the default.
+            </p>
+            <p>
+                *As taking a closer look into this, I realized that a linear curve is used by
+                the nowadays adapters by default but they probably post-calibrate it according
+                to the sRGB standard. So Glide's linear curve won't change anything to wrong.
+                I'm little confused about this. Back in the old days my real problem could be
+                that either brightness of my CRT was too high by default or sRGB was not
+                followed by the adapters therefore some gamma-adjusting game had really bad (pale
+                and really bright) look. I do not know it by now but won't remove the possibility
+                of disabling Glide gamma ramp. Test it on your monitor.
+            </p>
+            <p>
+                Color adjustments are supported in both fullscreen and windowed mode however
+                brightness is always calculated into the gamma ramp curve in fullscreen so
+                it has effect only if your adapter supports setting up gamma curves.
+            </p>
+        </article>
+        <hr>
+        <article id="2-4">
+            <a href="#toc-2-4"><h2>4. Some technical info</h2></a>
+
+            <p>
+                Unfortunately Glide cannot be implemented in practice as a standalone API which
+                is completely independent on the underlying hardware. If someone looks through
+                the Glide SDK then it is clear that this API is suited for the 3Dfx Voodoo
+                hardware and its registers. However there are rules even in Glide (as in other
+                APIs too) that must be observed in respect of driving the API. An application
+                should never assume anything about the hardware being driven even if it knows
+                what hardware it is driving. The application should get all the info from the
+                API and keep the driving rules.
+            </p>
+            <p>
+                However in practice there are some application violating those rules very hard.
+                Since Glide provides free direct access to the frame buffer it is typical to
+                utilize the properties of a real 3Dfx hardware connected to the PCI bus. For
+                example, writing to the frame buffer while it was requested to lock for reading,
+                swapping buffers while one/some of the buffers are locked and assuming that the
+                mapped pointers of buffers remains unchanged, using 2048 bytes as frame buffer
+                stride, or drawing simultaneously by the 3D hardware and LFB writes through the
+                PCI bus even when a buffer was locked with idle 3D hardware mode.
+                Most of them can be workarounded easily but there is one case which can cause
+                performance drop if emulated perfectly. This case is the mentioned simultaneous
+                writing. dgVoodoo can emulate this usecase but you must enable it explicitly so
+                I reluctantly inserted an option into the CPL, named
+                'Force emulating true PCI access'. This is the only technical option related to
+                the quality of the implementation. There are only a few games it should be used
+                for (see <a href="#2-6">Tips</a>) so it would be a pity to have it pointlessly enabled for the
+                rest.
+            </p>
+            <p>
+                There is another strange option in the CPL, namely 'Pointcast Palette driver
+                build'. Well, early 3Dfx hardware allowed separate texture palettes/ncc tables
+                for each TMU so this possibility was reflected in Glide 2.11 and 2.43. However,
+                latter 3Dfx hardware used a unified memory model meaning that only one global
+                palette/ncc could be set for all the TMUs. Glide3 don't even allow to set them
+                in any other way. The funny thing is that original Glide2 drivers internally
+                also forced the global palette/ncc thing despite the API allowed separate ones.
+                It was because of pushing the programmers towards the future hardware. But, maybe
+                there were drivers built for custom vendors with the capability of separate
+                tables. So if this option is enabled in the CPL then such a driver build is
+                emulated but it has effect only on non-UMA cards. I don't think that any Glide
+                application in the world requests such a driver build so always keep this option
+                disabled. It just makes the appearance wrong if more than one TMU are used.
+                This option is only for the sake of fullness.
+            </p>
+            <p>
+                dgVoodoo exposes the following Glide capabilities according to the selected card
+                type:
+            </p>
+            <table class="w3-table w3-bordered w3-small w3-responsive">
+                <tr>
+                    <th>Card type</th>
+                    <th>FBI revision</th>
+                    <th>TMU revision</th>
+                    <th>Glide3 extensions</th>
+                    <th>UMA</th>
+                </tr>
+                <tr>
+                    <td>? (unexposable via dgVoodoo)</td>
+                    <td>0x0001</td>
+                    <td>0x0000</td>
+                    <td>-</td>
+                    <td>no</td>
+                </tr>
+                <tr>
+                    <td>Voodoo Graphics (SST-1)</td>
+                    <td>0x0002</td>
+                    <td>0x0001</td>
+                    <td>GETGAMMA</td>
+                    <td>no</td>
+                </tr>
+                <tr>
+                    <td>Voodoo Rush (SST-96)</td>
+                    <td>0x0002</td>
+                    <td>0x0001</td>
+                    <td>GETGAMMA, CHROMARANGE</td>
+                    <td>no</td>
+                </tr>
+                <tr>
+                    <td>
+                        Voodoo 2
+                    </td>
+                    <td>0x0002</td>
+                    <td>0x0001</td>
+                    <td>GETGAMMA, CHROMARANGE, TEXMIRROR, PALETTE6666</td>
+                    <td>no</td>
+                </tr>
+                <tr>
+                    <td>
+                        Voodoo Banshee
+                    </td>
+                    <td>0x1002</td>
+                    <td>0x1001</td>
+                    <td>GETGAMMA, CHROMARANGE, TEXMIRROR, PALETTE6666, TEXUMA,
+                        TEXTUREBUFFER</td>
+                    <td>yes</td>
+                </tr>
+                <tr>
+                    <td>
+                        Other (greater)
+                    </td>
+                    <td>0x100003</td>
+                    <td>0x100002</td>
+                    <td>GETGAMMA, CHROMARANGE, TEXMIRROR, PALETTE6666, TEXUMA,
+                        TEXTUREBUFFER, FOGCOORD, TEXCHROMA, *PIXEXT,
+                        *COMBINE, *TEXFMT, *SURFACE, *GETREGISTRY</td>
+                    <td>yes</td>
+                </tr>
+            </table>
+
+            <em class="w3-tiny">* Available in Napalm build only</em>
+
+        </article>
+        <hr>
+        <article id="2-5">
+            <a href="#toc-2-5"><h2>5. Napalm build</h2></a>
+
+            <p>
+                Why is a separate build needed for Napalm? Why not just use it as a plain Glide3
+                implementation in general? Well, the answer is about the performance, again.
+                Napalm has a bit more complicated shaders in order to handle Voodoo4 features
+                like extended combine modes, 32 bit rendering, 32 bit texture formats and big
+                textures. So, it would be wasting of GPU resources to use it with Glide3
+                applications not requiring these features (that is, all apps except <em>Project64</em>, in
+                practice 😉).
+            </p>
+            <p>
+                Note that there is no significant difference between Glide3 and Glide3 Napalm
+                as for performance if dynamic shader compiling is enabled. In both cases, much
+                more optimal shaders are compiled and used than the precompiled ones.
+                <br>
+                Some limitiations:
+            </p>
+
+            <ul>
+                <li>
+                    <p>Compressed textures (FXT1, DXT*) are not supported. 🙁</p>
+                </li>
+                <li>
+                    <p>Reading/writing stencil values via 32 bit aux lfb lock won't work.</p>
+                </li>
+                <li>
+                    <p>T-Buffer writemask can only be controlled by the application if antialiasing
+                        mode is set to 'App driven'.</p>
+                </li>
+                <li>
+                    <p>
+                        SURFACE and GETREGISTRY extension are only used by the 3Dfx OpenGL 1.1 driver
+                        which is an OpenGL -&gt; (Glide3 Napalm and DirectDraw) wrapper. Since Glide3
+                        operates on surfaces created by DirectDraw (3Dfx implementation), SURFACE
+                        functionality cannot be implemented. It means that original 3Dfx OpenGL driver
+                        won't work with a standalone Glide3 wrapper (it would make no sense but would
+                        be nice).
+                        Since OpenGL does not work, GETREGISTRY functionality is also needless. So,
+                        those two extensions are only placeholders, bunch of empty functions.
+                    </p>
+                </li>
+            </ul>
+
+            <p>
+                Don't forget to set card type to 'Other (greater)' with 2 TMUs in the CPL to
+                emulate a Voodoo4.
+            </p>
+
+        </article>
+        <hr>
+        <article id="2-6">
+            <a href="#toc-2-6"><h2>6. Tips and known issues</h2></a>
+
+            <ul>
+                <li>
+                    <p>Forced trilinear texture filtering is not available in this wrapper version
+                        but an application can implement it by 2 drawing passes if one TMU is used.
+                        If more than one TMU are enabled then it can be done by one pass. Since
+                        more TMUs are generally used for drawing the same as with one TMU but with
+                        less passes, enabling multiple TMUs can be useful even if the gpu is loaded
+                        with heavier shader code. It depends. Try out both cases.
+                    </p>
+                </li>
+                <li>
+                    <p>Keep in mind that not all Glide application are usable in windowed mode. Some
+                        of them behave very well while others may not at all. Since they were
+                        designed for an environment with one monitor and exclusive fullscreen display,
+                        an application can get minimized or simply quits when its window loses the
+                        focus. Also, they may capture the mouse into a fix area and you cannot even
+                        move the game window. Or worse: if this fix area is hardcoded and (so) is on
+                        the primary monitor then you can play the game only on the primary monitor even
+                        in fullscreen mode. dgVoodoo tries to workaround these cases by hiding some
+                        events from the application but generally it is not enough.
+                    </p>
+                </li>
+                <li>
+                    <p>DosBox: dgVoodoo works perfectly with Gulikoza's
+                        newest Glide patch. Keep in mind that Extreme Assault needs a 3Dfx card with
+                        non-UMA architecture (see table of exposed caps) and PCI emulation.
+                    </p>
+                </li>
+                <li>
+                    <p>Emulating PCI access is optimized for applications locking and accessing the
+                        LFB very frequently (per frame). Altough it provides faster lfb data access than
+                        doing the normal way, I cannot recommend to use it in general for all apps.
+                        Due to nature of the technique used it can cause slowdown in applications
+                        that access the lfb "regularly", that is, once or twice per frame.
+                        Carmageddon 1, Extreme Assault, Dreams To Reality and Pyl are the only cases
+                        where it has to be used, afaik.
+                    </p>
+                </li>
+                <li>
+                    <p>A strange case: when I tried to run a Glide based scene-demo, TBC,
+                        it always crashed at a certain point due to stack overflow. I had to
+                        manually grow the reserved stack size of the exe file to get it to run.
+                        Probably a real 3Dfx driver required smaller stack than a Direct3D11
+                        based driver.<br>
+                        <a href="(http://xona.com/tobecontinued/)">(http://xona.com/tobecontinued/)</a>
+                    </p>
+                </li>
+                <li>
+                    <p>I ran into a problem with NFS 3 Hot Pursuit: ugly z-fighting which is most
+                        noticable with projected headlights. This game does not use depth bias
+                        but utilize the inaccuracy of the 16 bit voodoo depth buffer when rendering
+                        polygons onto each other (I'm not sure if it was intentional or just a bug).
+                        If an app uses z-buffering then using a 16 bit depth buffer in the emulation
+                        provides the correct and exact mapping of the z values, like on a real Voodoo.
+                        And so NFS3 HP also works well with a 16 bit depth buffer. I was thinking on
+                        how to workaround this problem or automate this mechanism but found no way.
+                        So, reluctantly again, I exposed this into an option in the CPL...
+                        This is the second option related to the quality of the implementation,
+                        aaaarrghh. 😡
+                    </p>
+                </li>
+            </ul>
+        </article>
+
+    </section>
+    <hr>
+    <section id="directx" class="w3-row">
+        <header class="w3-row w3-panel w3-orange">
+            <div class="w3-quarter w3-left-align w3-hide-small" style="padding: 16px;">
+                <kbd><a href="#glide">Prev</a></kbd>
+            </div>
+            <div class="w3-half w3-center">
+                <a href="#toc-directx"><h2>DirectX readme</h2></a>
+            </div>
+            <div class="w3-quarter w3-right-align w3-hide-small" style="padding: 16px;">
+            </div>
+        </header>
+
+        <nav id="directx-toc" hidden>
+            <h3>Table of contents</h3>
+            <ol>
+                <li><a href="#3-1" id="toc-3-1">Important notes</a></li>
+                <li><a href="#3-2" id="toc-3-2">General overview</a></li>
+                <li><a href="#3-3" id="toc-3-3">Some technical info</a></li>
+                <li><a href="#3-4" id="toc-3-4">Application resolutions and refresh rates</a></li>
+                <li><a href="#3-5" id="toc-3-5">About fullscreen and windowed mode</a></li>
+                <li><a href="#3-6" id="toc-3-6">DirectX options</a></li>
+                <li><a href="#3-7" id="toc-3-7">DirectX additional options</a></li>
+                <li><a href="#3-8" id="toc-3-8">Tips and known issues</a></li>
+                <li><a href="#3-9" id="toc-3-9">Why doesn't dgVoodoo DX emulation start up?</a></li>
+            </ol>
+        </nav>
+
+        <article id="3-1">
+            <a href="#toc-3-1"><h2>1. Important notes</h2></a>
+
+            <p><strong>
+                First of all: NEVER COPY DDRAW.DLL, D3D8.DLL and D3D9.DLL INTO SYSTEM FOLDERS!!
+                    ALWAYS USE A LOCAL INSTALLATION FOR A GAME!
+            </p></strong>
+            <p>DirectDraw, D3D8 and D3D9 are still existing and widely used system components in Windows. 🙂</p>
+            <p>For clarifying, let's see what dlls MS and dgVoodoo use for DirectDraw and Direct3D:</p>
+            
+            <table class="w3-table w3-bordered">
+                <caption class="w3-left-align"><strong>MS:</strong></caption>
+
+                <tr>
+                    <td>ddraw.dll</td>
+                    <td>Contains all DirectDraw implementations up to version 7</td>
+                </tr>
+                <tr>
+                    <td>d3dim.dll</td>
+                    <td>Contains all Direct3D implementations up to version 6</td>
+                </tr>
+                <tr>
+                    <td>d3dim700.dll</td>
+                    <td>Contains Direct3D 7 implementation</td>
+                </tr>
+                <tr>
+                    <td>d3d8.dll</td>
+                    <td>Contains Direct3D 8.1 implementation</td>
+                </tr>
+                <tr>
+                    <td>d3d9.dll</td>
+                    <td>Contains Direct3D 9Ex implementation</td>
+                </tr>
+            </table>
+            <br>
+            <table class="w3-table w3-bordered">
+                <caption class="w3-left-align"><strong>dgVoodoo:</strong></caption>
+
+                <tr>
+                    <td>ddraw.dll</td>
+                    <td>Contains all DirectDraw implementations up to version 7</td>
+                </tr>
+                <tr>
+                    <td>d3dimm.dll</td>
+                    <td>Contains all Direct3D implementations up to version 7</td>
+                </tr>
+                <tr>
+                    <td>d3d8.dll</td>
+                    <td>Contains Direct3D 8.1 implementation</td>
+                </tr>
+                <tr>
+                    <td>d3d9.dll</td>
+                    <td>Contains Direct3D 9.0c implementation</td>
+                </tr>
+            </table>
+
+            <p>
+                So, dgVoodoo packs all of its pre-D3D8 implementation into one module, d3dimm.dll,
+                which differs in name from the MS one (note the extra 'm' in the name).<br>
+                Thus, copying it to the system folder by accident won't cause any harm. In spite
+                of that, it is not recommended.
+            </p>
+        </article>
+        <article id="3-2">
+            <a href="#toc-3-2"><h2>2. General overview</h2></a>
+            <p>
+                If you want to wrap an old DirectX stuff then just copy dgVoodoo's dlls to the
+                application folder and launch that. DirectX rendering is configurable similarly
+                to Glide. (see  <a href="#3-6">DirectX CPL options</a>)
+                DirectDraw is usable without Direct3D but there are no 3D rendering capabilities
+                exposed to the applications in that case.<br>
+                Direct3D8/9 are standalone components, no need for DirectDraw to use them. In spite of
+                that it is a good idea to copy DDraw.dll along with D3D8.dll (and maybe D3D9.dll) because a lot
+                of movie
+                playback system (e.g. DirectShow) rely on DDraw even in D3D8 games. dgVoodoo DDraw
+                and D3D8/9 has the ability and internal support to cooperate if the situation requires.
+            </p>
+            <p>
+                All the interfaces of old DirectX (that is, all DirectDraw interfaces and
+                Direct3D 3/5/6/7/8/9 interfaces) are almost fully supported, and existing implementation
+                is improved version by version by more and more reverse engineering and finetuning.
+            </p>
+                Since DirectX is not a pure hardware-only rendering API, basically two types of
+                virtual video cards can be used, like back in the old days, hehe. Four extra
+                video card types are added to utilize different chipset features and provide correct
+                vendorID/hardwareID.<br>
+                Available video card types:
+            <ul>
+                <li>
+                    <strong>One that simulates an old SVGA with hw-capabilites only for 2D blitting</strong>
+                    operations.<br>With such a card, only a software 3D rendering device can be used.
+                </li>
+                <br>
+                <li>
+                    <strong>One (imaginary) video card that has its custom hw 3D rendering support.</strong><br>
+                    This card provides support for full hardware acceleration including
+                    'Transform &amp; Light'.
+                </li>
+                <br>
+                <li><strong>GeForce4 Ti 4800</strong></li>
+                <li><strong>ATI Radeon 8500</strong></li>
+                <li><strong>Matrox Parhelia-512</strong></li>
+                <li><strong>GeForce FX 5700 Ultra</strong></li>
+            </ul>
+
+            <p>For more detailed capabilities, see the technical info.</p>
+
+            <br>
+
+            <p>
+                Software rendering devices does not use real software rendering in dgVoodoo. I
+                think that a software rasterizer has no reason for existence nowadays and didn't
+                want to write one just for fun so they use hw accelerated rendering in the
+                background. The point is, towards the applications they logically appear as
+                software devices.
+            </p>
+            <p>
+                DirectX renderer needs less GPU power (for general cases) than Glide renderer and
+                has its own internal shader code generator for generating specialized shaders.
+            </p>
+            <p>
+                DX emulation has a method for fast CPU-access of locked surfaces. The current
+                method is not the final version and going to be improved later.
+                The reason of not using that one all the time but it is up to the user's choice
+                is that this method is not 100% safe and can cause crashes under certain
+                circumstances. It depends on the wrapped application.
+            </p>
+            <p>
+                Important to note that compatibility with MS DirectDraw is not completely
+                guaranteed, especially with very old applications written in the win95/Win98 era.
+                Those applications might utilize DirectDraw/GDI interaction which is not fully
+                supported in dgVoodoo. I would like to improve that somehow, in later versions.
+            </p>
+        </article>
+        <article id="3-3">
+            <a href="#toc-3-3"><h2>3. Some technical info</h2></a>
+
+            <p>
+                I say 'almost fully supported' when talking about DX support because there are
+                some functions on certain interfaces of which functionality is somewhat unclear
+                or totally unimportant, so they either not implemented at all or just
+                partially because I did not have time and patience to figure out their exact
+                behavior. Think about a total of 5-6 functions of all the DX interfaces,
+                I hardly believe that anything used them.
+            </p>
+
+            <p>For D3D8.1 and D3D9, the following features are not implemented but planned to be in the future:
+            </p>
+
+            <ul>
+                <li>Higher-Order Primitives (maybe some day)</li>
+                <li>Full D3D9Ex functionality</li>
+            </ul>
+
+            <hr style="border-top: 2px dotted black;">
+
+            <p><strong>Internal virtual 3D card has the following 3D hardware capabilities:</strong></p>
+
+            <ul>
+                <li>Supports transforming and all kind of lighting with flat, Gouraud and Phong
+                    shading, max 8 active lights</li>
+                <li>Supports 6 clipping planes</li>
+                <li>Supports vertex bending with 3+1 weights</li>
+                <li>Supports matrix palette of 256 elements for indexed vertex blending</li>
+                <li>Supports texture coordinate generating &amp; transformation, projective texturing</li>
+                <li>Supports all contemporary pixel formats for textures and render targets with
+                    four different RGBA order (altough the order is not yet exposed in the CPL app)</li>
+                <li>Supports compressed textures (DXTC1-5)</li>
+                <li>Supports volume textures with limited number of texture formats</li>
+                <li>Supports Z-buffer (of course) and stenciling (but there is no W-buffer)</li>
+                <li>Supports vertex and pixel fog</li>
+                <li>Supports colorkeying with one texture (with colorkey blending or
+                    colorkey discarding)</li>
+                <li>Supports all texture sampling modes</li>
+                <li>Paletted textures</li>
+                <li>Depth textures</li>
+                <li>16 vertex streams</li>
+                <li>Vertex tweening</li>
+                <li>Supports point sprites</li>
+                <li>Full SM1/2/3 and DX9-level fixed function pipeline support</li>
+                <li>256, 512 or 1024 vertex shader constants (configurable)</li>
+            </ul>
+
+            <p>
+                The other 4 card types are not an exact emulation of the given chipsets with some
+                real ATI/nVidia/Matrox driver version. They are just present to bias the available
+                rendering capabilities and properties toward a real ATI, nVidia or Matrox card:
+            </p>
+
+            <p><strong>GeForce4 Ti 4800 capabilities:</strong></p>
+
+            <ul>
+                <li>Same as the internal virtual 3D card, except:</li>
+                <li>No 32 bit z-buffer support</li>
+                <li>Full cut colorkeying</li>
+                <li><strong>No</strong> indexed vertex blending</li>
+                <li>Maximum supported pixel shader version is <strong>ps1.3</strong></li>
+                <li>Max <strong>96</strong> vertex shader constants</li>
+            </ul>
+
+            <p><strong>
+                    ATI Radeon 8500 capabilities:
+                </strong></p>
+
+            <ul>
+                <li>Same as the internal virtual 3D card, except:</li>
+                <li>No 32 bit z-buffer support</li>
+                <li>Plain colorkeying</li>
+                <li>Max <strong>57</strong> matrices for indexed vertex blending</li>
+                <li>No paletted texture support</li>
+                <li><strong>8</strong> vertex streams</li>
+                <li>Max <strong>192</strong> vertex shader constants</li>
+            </ul>
+
+            <p>
+                <strong>
+                    Matrox Parhelia-512 capabilities:
+                </strong>
+            </p>
+            <ul>
+                <li>Same as the internal virtual 3D card, except:</li>
+                <li>No 32 bit z-buffer support</li>
+                <li>Plain colorkeying</li>
+                <li>No paletted texture support</li>
+                <li>Maximum supported pixel shader version is <strong>ps1.3</strong></li>
+            </ul>
+
+            <p>
+                <strong>
+                    GeForce FX 5700 Ultra capabilities:
+                </strong>
+            </p>
+            <ul>
+                <li>Same as the internal virtual 3D card, except:</li>
+                <li>No 32 bit z-buffer support</li>
+                <li>Full cut colorkeying</li>
+            </ul>
+
+            Since I cannot enumerate all the capabilities here, check them out with
+            <strong>DXCapsViewer</strong> if
+            interested.<br>
+            Also, those capabilities might be changed in the future if I get more accurate information about the
+            hardwares in
+            question.
+
+            <hr style="border-top: 2px dotted black;">
+
+            <p>
+                DirectDraw and Direct3D objects supports all types of rendering devices that are
+                supported in original DirectX.<br>
+                Direct3D8/9 support HAL and software device types.
+                <br><br>
+                In MS pre-Direct3D8 implementations Direct3D7 is the only one that can be used with
+                hardware vertex transformation and lighting, through a Transform &amp; Light (T&amp;L)
+                device (but I guess it casually falls back to software vertex processing if the
+                device driver does not support the complete vertex operation pipeline that is
+                currently set).
+                <br><br>
+                In all other cases software vertex processing is used. In dgVoodoo vertex
+                processing is always routed to the hardware when possible.<br>
+                However, it's not so simple: software vertex processing is unavoidable in Direct3D
+                in some cases, for example when an application wants Direct3D to do only vertex
+                processing without rendering or to calculate visibility, or, when the rendering
+                extent must be updated when drawing primitives through a non-T&amp;L device (this is
+                not too important in practice but I included it because of full compatibility).
+                Also, vertex processing for Direct3D3 can only be done in software because of the
+                execution logic of execute buffers.<br>
+                It all means that dgVoodoo has a software T&amp;L vertex processing engine like
+                MS Direct3D for such cases, duplicating the hw functionality. However for
+                transforming, bending, lighting, fogging and texture coordinate transforming
+                calculations dgVoodoo uses fast vectorized SSE2 code instead of scalar FPU.
+                <br><br>
+                (It should be noted that in newer DX version like DX7 MS uses SSE2 too.
+                What is more, for software emulation of vertex shader code in DX8/9, MS seems to
+                apply an internal compiler, that compiles from shader code to x86 bytecode.
+                Wow, what a nice feature!! I should do the same, but probably it all is not too
+                relevant on modern CPUs.)
+                <br><br>
+                Phong shading (per-pixel shading) is not supported by MS Direct3D, only
+                Gouraud (per-vertex). However the internal virtual 3D card can externally be
+                forced to Phong shading through the CPL app but keep in mind that it can cause
+                heavy GPU usage because Direct3D lighting is quite complex, typical hardware
+                implementations supports 8 active lights with a lot of properties and components.
+                Also, Phong shading is only applicable when the application commits all its
+                transforming and lighting calculations to the D3D runtime. Unfortunately it is
+                very common that games do their own T&amp;L calcs and use D3D as a lowlevel rasterizer
+                for the rest. It is especially true when a game is written for multiple platforms
+                or multiple 3D APIs like Glide, D3D, OpenGL, etc. Direct3D3 always uses software
+                vertex processing so Phong shading cannot be applied there at all.
+                <br><br>
+                DX8 is a horse of another colour from the beginning of a new era. Applications
+                written for that usually heavily utilize multiple vertex streams through real
+                vertex and index buffers along with built-in hw T&amp;L pipeline and/or shaders
+                without any calculations done in software. I think I shouldn't detail DX9.
+                It's a way too new API compared to the previos ones. 🙂
+                <br><br>
+                Phong shading is only applicable with full fixed function vertex/pixel pipeline
+                usage. If an application is rendering through a vertex and/or pixel shader in DX8/9
+                then Phong cannot be utilized.
+                <br>
+            </p>
+        </article>
+        <article id="3-4">
+            <a href="#toc-3-4"><h2>4. Application resolutions and refresh rates</h2></a>
+
+            <p>
+                An application using DirectX can only detect available resolutions and
+                associated refresh rates by asking DirectDraw/DX8/DX9 to enumerate them. There are two
+                slight problems with it in practice:
+            </p>
+            <ul>
+                <li>Modern hardware does not necessarily report some low resolutions like 320x200,
+                    640x480, etc.</li>
+                <li>Old hardware was not able to report refresh rates or query the current one in
+                    general, back then when 60/75Hz CRTs were the standard displays. Thus, most of
+                    the games/applications just used 0 for refresh rate when setting the resolution
+                    which means 'unspecified or default' refresh rate.</li>
+            </ul>
+
+            <p>
+                To workaround the first case, dgVoodoo keeps a list of 'classic' resolutions.
+                These are the following:
+            </p>
+
+            <b>
+                <ul>
+                    <li>320 x 200 (X-mode is also supported in DDraw)</li>
+                    <li>320 x 240, (X-mode is also supported in DDraw)</li>
+                    <li>640 x 400,</li>
+                    <li>640 x 480,</li>
+                    <li>800 x 600,</li>
+                    <li>1024 x 768,</li>
+                    <li>1280 x 1024</li>
+                </ul>
+            </b>
+
+            <p>
+                If a resolution of that list is not amongst the ones that your modern adapter
+                reports then dgVoodoo forces enumerating it to the application.
+                <br><br>
+                As for the refresh rates, if an application does not specifify one of the
+                enumerated ones but specifies 0 (default) then dgVoodoo finds and applies the
+                natively supported one that is most closest to 60Hz.
+                <br><br>
+                If you want to make sure or would like to use a custom refresh rate then
+                you can override that through the resolution selector combo box (DirectX tab).<br>
+                For details, see chapter 'Resolution and refresh rate overriding' in the general readme.
+            </p>
+            <p>
+                If the refresh rate is overridden then all resolutions are enumerated with the
+                overidden value to the applications.
+            </p>
+
+        </article>
+        <article id="3-5">
+            <a href="#toc-3-5"><h2>5. About fullscreen and windowed mode</h2></a>
+
+            <p>
+                Choosing fullscreen or windowed working mode is part of the DirectDraw API. Some
+                games or demoscene stuffs run only in fullscreen so one could think what cool it
+                would be to have them running in windowed mode. I thought the same so wanted to
+                enable by default the same method to switch between them as used for Glide.
+                There are some problems however: the ways handling fullscreen and windowed mode
+                via DirectDraw are totally different in the aspect of the driving code. So,
+                forcing an application into an unexpected situation may cause glitches or crashes.
+                Also, a game may have its on mechanism for mode switching with which dgVoodoo
+                could conflict. Due to those theoretic things, and because I experinced some
+                problems with some games, I decided to emulate the original DirectDraw behavior
+                by default: when a fullscreen application loses the focus then its window gets
+                minimized and when it regains that its window is restored and enters fullscreen
+                again and no manual switch is available. Also, there are no changes applied on the
+                app window like style and overridden messages, etc.
+            </p>
+
+            <p>
+                If you make sure that a given game does not conflict with dgVoodoo's <kbd>Alt-Enter</kbd>
+                thing then you can enable that in the CPL app. Also, you can force it to windowed
+                mode if 'app controlled fullscreen/windowed' option is disabled at the game
+                startup (and choose windowed mode in the general settings), without <kbd>Alt-Enter</kbd>.
+                Forcing a windowed application to fullscreen can only be done by manual switch
+                because there is no way to detect when an application begins its rendering and
+                then switch to fullscreen.
+            </p>
+
+            <p>
+                <em>(But, think about it, windowed to fullscreen does not make any sense. The
+                resolution used comes from the window size but the window may get resized or
+                repositioned when switching mode, so..., it's confusing.)</em>
+            </p>
+
+            <p>
+                What is more, since DirectDraw was a one-monitor-API <strong>in practice</strong>, integrating
+                windowed applications in a multimonitor environment is already a problem even for MS,
+                I think. If such an app is even forced to fullscreen mode then it may crash or
+                misworks for reasons I do not want to word here.
+            </p>
+
+            <p>
+                Lost mode is emulated in default DX emulation mode, namely when switching
+                between windowed/fullscreen mode by Alt-Enter is disabled. This is because some
+                DX applications count on losing their surfaces when their window loses focus and
+                their code paths can be mislead if they remain 'unlost'. (This is a result of bad
+                programming technique as DX SDKs clearly state that an application shouldn't
+                rely on window focus lost or any other circumstances.)
+            </p>
+
+            <p>
+                On the other hand, there are incomplete or buggy DX applications that can't
+                restore when they get reactivated and just get stuck. So, introducing lostmode
+                emulation is up to a potential feature loss, as such applications likely worked
+                well with older dgVoodoo versions. In order to keep this feature dgVoodoo applies
+                auto-restore for the needed elements when such a situation is detected.
+            </p>
+        </article>
+        <article id="3-6">
+            <a href="#toc-3-6"><h2>6. DirectX options</h2></a>
+
+            <ul>
+                <li><b>Disable and passthru to real DirectX</b>
+                    <p>
+                        As it says, if you want to disable DirectX without
+                        removing dgVoodoo's DLLs then use this option.
+                    </p>
+                </li>
+
+                <li><b>Videocard</b>
+                    <p>
+                        You can select between the internal virtual 2D (SVGA)
+                        and 3D accelerated cards.
+                    </p>
+                </li>
+
+                <li><b>VRAM</b>
+                    <p>
+                        Onboard videomemory of the selected videocard.
+                    </p>
+                </li>
+
+                <li><b>Filtering</b>
+                    <p>
+                        Various texture filtering modes can be forced here, starting from simple point sampled
+                        to high level anisotropic.
+                        Keep in mind however that forcing other than the application default can result in
+                        rendering glitches, or it can
+                        completely break some visual effects!
+                    </p>
+                </li>
+
+                <li><b>No mipmapping</b>
+                    <p>
+                        Disabling mipmappig (forcing largest mip texture level).
+                    </p>
+                </li>
+
+
+                <li><b>Resolution</b>
+                    <p>
+                        Here you can override the application resolution and
+                        refresh rate. See detailed explanation of static/dynamic
+                        resolutions in the general Readme.
+                    </p>
+                </li>
+
+                <li><b>Antialiasing</b>
+                    <p>
+                        For 3D rendered surfaces you can force MSAA.
+                        Option 'Application controlled' is meaningful only for DX8. For DDraw/DX it is
+                        equivalent to 'Off'.
+                    </p>
+                </li>
+
+                <li><b>Application controlled fullscreen/windowed state</b>
+                    <p>
+                        Since choosing this state is part of DirectDraw, you
+                        must disable this option to control that via general
+                        settings.
+                    </p>
+                </li>
+
+                <li><b>Disable Alt-Enter to toggle screen state</b>
+                    <p>
+                        To prevent conflicting with an application built-in
+                        Alt-Enter handler.
+                    </p>
+                </li>
+
+                <li><b>Bilinear blit stretch</b>
+                    <p>
+                        2D bitmap copying can involve stretching in DirectDraw.
+                        However the applied stretching filter cannot be controlled
+                        via the API and early hw used simple point sampling.
+                        It can result pixelated appearance here and there but
+                        you can force bilinear filtering which looks cooler for
+                        most cases. But, it can also introduce various artifacts
+                        especially when colorkeying is also applied during
+                        blitting.<br>
+                        Try forcing bilinear texture filtering for achieving similar
+                        effects for D3D8 games.
+                    </p>
+                </li>
+
+                <li><b>Apply Phong shading when possible</b>
+                    <p>
+                        See technical info.
+                    </p>
+                </li>
+                <li><b>Force vSync</b>
+                    <p>
+                        Forcing vertical retrace.
+                    </p>
+                </li>
+                <li><b>Fast video memory access</b>
+                    <p>
+                        Provides an alternative method for accessing video memory
+                        of DX surfaces by the CPU. Try this one if an application
+                        renders at a low frame rate.
+                    </p>
+                </li>
+                <li><b>dgVoodoo Watermark</b>
+                    <p>
+                        Similarly to 3Dfx watermark in Glide, you can use
+                        dgVoodoo's own one to see if something is driven through
+                        dgVoodoo's DirectX.
+                    </p>
+                </li>
+            </ul>
+        </article>
+        <article id="3-7">
+            <a href="#toc-3-7"><h2>7. DirectX additional options</h2></a>
+
+            <ul>
+                <li><b>AdapterIDType</b>
+                    <p>You can define what type of driver version and vendor id's the wrapper should report to
+                        the application; Some games rely on that information so it can be useful for them.
+                        It can be defined only for SVGA and Internal3D card types; the others have their own
+                        wired
+                        information. It can be undefined <em>(default)</em>, <b>nVidia</b>, <b>AMD</b> or
+                        <b>Intel</b>.
+                    </p>
+                </li>
+                <li><b>VendorID, DeviceID, SubsystemID, RevisionID</b>
+                    <p>It can be defined only for SVGA and Internal3D card types.
+                        You can overwrite these properties even if a non-default AdapterIDType is defined.
+                        Say, you defined an nVidia ID type but would like to refine the vendor ID.
+
+                    </p>
+                </li>
+                <li><b>ExtraEnumeratedResolutions</b>
+                    <p>You can define up to 16 custom resolutions that are enumerated to the application.<br>
+                        It's useful for apps that support all or a very special resolution and you want to
+                        select that through the app itself rather than force it through the wrapper externally
+                        (avoiding rendering glitches).
+                        You can also use keywords <b>max</b>, <b>max_4_3</b> and <b>max_16_9</b> here along with
+                        refresh rates to define maximum resolutions calculated from the desktop resolution with
+                        the appropiate aspect ratio.
+                        'Max' defines no aspect ratio so it is practically equivalent to your current desktop
+                        resolution.
+                    </p>
+                </li>
+                <li><b>DefaultEnumeratedResolutions</b>
+                    <p>What resolutions are to be enumerated to the application by default:
+                        </p><ul>
+                            <li><b>All</b>: All of the resolutions supported by your GPU and the classic
+                                ones.<em>(default)</em></li>
+                            <li><b>Classics</b>: Only the classic resolutions.</li>
+                            <li><b>None</b>: No any resolution are enumerated to the application. You must
+                                define at least one extra custom resolution in this case or the application
+                                won't see any which is a problem.</li>
+                    <br>
+            </ul>
+            </li>
+            <li><b>EnumeratedResolutionBitdepths</b>
+                <p>You can define what bit depths for display modes are to be enumerated and supported by
+                    dgVoodoo. Any subset of <samp>{8, 16, 32}</samp> or simply <samp>All</samp> <em>(default)</em>.
+                </p>
+            </li>
+            <li><p><b>Dithering</b></p>
+                <ul>
+                    <li><b>Disabled</b>: Dithering is always disabled, ending up 16-bit quality rendering on
+                        16 bit surfaces.</li>
+                    <li><b>Appdriven</b>: The application can enable and disable dithering. When enabled,
+                        the selected dithering effect is applied.</li>
+                    <li><b>ForceOn16Bit</b>: Dithering is always enabled for 16 bit targets and the selected
+                        dithering effect is applied.</li>
+                    <li><b>ForceAlways</b>: Dithering is always enabled and the selected dithering effect is
+                        applied <em>(default)</em></li>
+                </ul>
+            </li>
+            <li><p><b>DitheringEffect</b></p>
+                
+                    <ul>
+                        <li><b>Ordered2x2</b>: Ordered dithering with a 2x2 dithering matrix</li>
+                        <li><b>Ordered4x4</b>: Ordered dithering with a 4x4 dithering matrix</li>
+                        <li><b>Pure32Bit</b>: 32 bit rendering quality <em>(default)</em></li>
+                    </ul>
+                <br>
+            </li>
+            <li><b>DitherOrderedMatrixSizeScale</b> - integer scale value for dither matrix size
+                <p>
+                    </p><ul>
+                        <li>1 = normal, 2 = double size, etc.</li>
+                        <li>0 = automatic (the aim is to have some retro feel&amp;look) <em>(default)</em></li>
+                    </ul>
+                <p></p>
+            </li>
+            <li><b>DepthBuffersBitDepth</b>
+                <p>
+                    </p><ul>
+                        <li><b>Appdriven</b>: Internal bit depth of depth buffers is the same as the application
+                            defines.<em>(default)</em></li>
+                        <li><b>ForceMin24Bit</b>: Internal bit depth of depth buffers is minimum 24 bit.</li>
+                        <li><b>Force32Bit</b>: Internal bit depth of depth buffers is always 32 bit. This one is
+                            not recommended.</li>
+                    </ul>
+                <p></p>
+            </li>
+            <li><b>MaxVSConstRegisters</b>
+                <p>Max number of vertex shader constant registers (DX8/9 only). It can only be defined for SVGA
+                    and Internal3D card types. Valid values are 256 (default), 512 or 1024. The larger value the
+                    larger performance loss.</p>
+            </li>
+            <li><b>MSD3DDeviceNames</b>
+                <p>Some application checks against the Microsoft names of D3D devices (bad practice). If none of
+                    found then they probably won't work at all. dgVoodoo's device names differ from the
+                    Microsoft ones
+                    but enabling this option forces the wrapper to report MS device names.
+                </p>
+            </li>
+            <li><b>RTTexturesForceScaleAndMSAA</b>
+                <p>By default, size of 3D-renderable (rendertarget) textures are internally scaled along with
+                    the forced resolution, and also, they inherits the forced MSAA chosen for the rendering.
+                    Rendertarget textures are typically used for pre-rendering reflections, shadows, water and
+                    such, but their unexpected size and MSAA type can introduce some unwanted glitches.
+                    If that is the case then you can try disabling this option to have them at their original
+                    intended state but this can easily drive dgVoodoo into unresolvable situations producing
+                    errors.
+                    The debug layer reports if such a situation is detected and this option is not applicable
+                    for the given application.
+                </p>
+            </li>
+            <li><b>SmoothedDepthSampling</b>
+                <p>D3D8 only: by default, depth textures gets some additional filtering when sampling them.
+                    Depth textures are typically used for rendering shadows so they are smoothed by default.
+                    Disabling this option leads to simple sampling as it is done in real D3D8, getting more
+                    jagged shadows.
+                </p>
+            </li>
+            <li><b>DeferredScreenModeSwitch</b>
+                <p>If true the switching to full screen is deferred after the application initialized
+                    the DirectX device; can be useful for games that don't expect rendering window changes
+                    during initialization and crash
+                </p>
+            </li>
+            <li><b>PrimarySurfaceBatchedUpdate</b>
+                <p>If enabled then direct changes of the primary surface are batched up to present them one
+                    time. If disabled then each change is immediately presented (debug-like mode).
+                    It affects only DirectDraw.
+                </p>
+            </li>
+            </ul>
+
+        </article>
+        <article id="3-8">
+            <a href="#toc-3-8"><h2>8. Tips and known issues</h2></a>
+
+            <ul>
+                <li>Always try to run an application with 'application controlled fs/windowed state'
+                    and disabled 'Alt-Enter' for the first time. If 'Alt-Enter' is enabled then
+                    the wrapper makes some changes to the application window which can cause some
+                    applications to miswork or even crash.</li>
+                <li>Also, always try an application without enabling 'Fast video memory access' for
+                    the first time as that method may be unsafe for the application in question, and,
+                    unortunately can cause inappropriate working.
+                </li>
+                <li>
+                    Upscaling (forcing resolution) for old 8 bit paletted DDraw applications are not
+                    recommended. Paletted things and forced resolution don't work well together,
+                    but I want to fix it in the future.<br>
+                    Upscaling scenes by forcing resolution, where no 3D-rendered objects are presents,
+                    has no sense anyway.
+                </li>
+                <li>Forcing vertical retrace is not always a good idea. There are games of which
+                    loaders refreshes the screen at maximum speed (without vertical sync) while
+                    loading textures, meshes, etc. If vSync is forced to on then it can take ages
+                    while it all gets over.</li>
+            </ul>
+
+        </article>
+        <article id="3-9">
+            <a href="#toc-3-9"><h2>9. Why doesn't dgVoodoo DX emulation start up?</h2></a>
+            <p>
+                I got reports about cases with dgVoodoo DirectX emulation not starting up.
+                The story is simple, one copies the DX dll files into the given application folder,
+                next to the executable, makes sure that DX emulation is enabled on the CPL, and in
+                spite of that, when starting the application dgVoodoo isn't utilized at all, dgVoodoo
+                watermark doesn't show up in the corner if the app starts at all.
+                Thanks to the Guys on Vogons, who are helping me a lot, they come out with 2 reasons:
+            </p>
+            <ul>
+                <li>
+                    Some of the DX dlls (ddraw.dll, d3d8.dll) are registered in the KnownDLLs section of
+                    the Windows registry. When they are then the operating system always loads the system
+                    versions of those dlls. Removing the entries from
+                    <b>"HKEY_LOCAL_MACHINE\<wbr>SYSTEM\<wbr>CurrentControlSet\<wbr>Control\<wbr>Session Manager\<wbr>KnownDLLs"</b><br>
+                    is undangerous and can be safely done with <b>Regedit</b>.
+                    This issue causes the majority of the problems.
+                </li>
+                <li>
+                    A bit marginal but existing problem with DirectDraw is that it can be initialized through
+                    Windows' OLE mechanism which identifies objects with GUIDs. The 'GUID-dll name' pairs are
+                    also stored in Windows registry but Microsoft switched to absolute dll paths in Windows 8(?)
+                    instead of the relative ones present in Windows 7, so the OLE-accessed DirectDraw is always
+                    the system one in that case. The registry entries in question can be changed back to
+                    relative paths,
+                    but since <b>Regedit requires TrustedInstaller privilege level for that</b>, and you have to
+                    search for
+                    the entries yourself, it is a complicated process, I don't recommend you to experiment with
+                    it.
+                    Luckily most of the old programs access DirectDraw directly, bypassing OLE.
+                </li>
+            </ul>
+            <p>
+                I know that these details are technical like hell, and I don't at all expect an average user to
+                tinker the operating system registry by hand. I just write this info here because I think it's
+                useful for
+                advanced users and experts to begin with. A dgVoodoo tool doing it all would be fine but
+                currently doesn't
+                exist one.
+            </p>
+            <p>
+                But don't forget to try the special release version and see the output log if experiencing any
+                problem with dgVoodoo.
+            </p>
+        </article>
+
+    </section>
+
+    <div id="motd" class="w3-panel w3-black w3-opacity w3-center w3-padding">
+        <q>Have luck 🙂</q> - Dege <br>
+        <q>Rehdi was here! 👨‍💻</q> - Pedro <br>
+        Released: <time datetime="2019-10-20">November 20, 2019</time> <br>
+        Author: Dege
+    </div>
+
+</main>
+
+<footer id="end" class="w3-row w3-center w3-padding32 w3-light-grey">
+    <p><a href="index.htm">Back to main site</a> | <a href="#">Top</a></p>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+</body>
+
+<script>
+    // https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
+    function toggleDarkMode() {
+        var mode = document.body.classList.toggle('darkmode')
+        for (const header of document.body.querySelectorAll('main section > header')) {
+            header.classList.toggle('w3-deep-orange')
+        }
+        document.getElementById('end').classList.toggle('w3-dark-grey')
+        return mode
+    }
+</script>
+    
+</html>

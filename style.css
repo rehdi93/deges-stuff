@@ -1,0 +1,31 @@
+body,h1,h2,h3,h4,h5,h6,nav button {font-family: "Lato", sans-serif}
+
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+
+.big-icon, icon.big, i.big {font-size:200px}
+
+icon {
+    display: inline;
+    font: inherit;
+}
+
+iframe {
+    width: 100%;
+    border: none;
+}
+
+/* page navigation */
+.page {
+    display: none;
+}
+:target {
+    display: block;
+}
+
+/* iframe navigation */
+nav > iframe {
+    height: 60px;
+}
+nav>iframe:hover {
+    height: 185px;
+}

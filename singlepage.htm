@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Dege's stuff</title>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name="creator" content="Pedro Oliva Rodrigues">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #downloads { padding-top: 32px; }
+    #downloads > section {
+      padding: 32px 16px;
+      max-width: 75%;
+      margin: auto;
+    }
+    #downloads hr { width: 80%; margin: auto; }
+  </style>
+  <noscript>
+    <style>
+      .page, #smallnav { display: block; }
+    </style>
+  </noscript>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="w3-top w3-deep-orange">
+    <div class="w3-bar w3-card w3-large w3-left-align">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large" href="javascript:void(0);" 
+         onclick="toggleNavmenu()" id=btnSmallNav>
+        <icon class="fa fa-bars" />
+      </a>
+      <a href="#home" onclick="navclick(this)" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+      <a href="#downloads" onclick="navclick(this)" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Downloads</a>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button w3-padding-large w3-hover-white w3-hide-small">dgVoodoo</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-hover-white">
+          <a href="#downloads" class="w3-bar-item w3-button">Download</a>
+          <a href="dgvoodoo-doc.htm" class="w3-bar-item w3-button">Documentation</a>
+          <a href="#testedgames" class="w3-bar-item w3-button" title="Games/Demos tested">Test results</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Navbar on small screens -->
+    <div id=smallnav class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="#home" class="w3-bar-item w3-button w3-padding-large">Home</a>
+      <a href="#downloads" class="w3-bar-item w3-button w3-padding-large">Downloads</a>
+      <button class="w3-button w3-hover-white w3-padding-large">dgVoodoo</button>
+      <div class="w3-bar-block w3-padding-large">
+        <a href="#downloads" class="w3-bar-item w3-button">Download</a>
+        <a href="dgvoodoo-doc.htm" class="w3-bar-item w3-button">Documentation</a>
+        <a href="tested.htm" class="w3-bar-item w3-button">Test results</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home" class="page default">
+    <header class="w3-container w3-center w3-padding-64 w3-deep-orange">
+      <h1 class="w3-margin w3-jumbo">Dege's stuffs</h1>
+      <p class="w3-xlarge">New and improved!</p>
+    </header>
+  
+    <article class="w3-row-padding w3-padding-64">
+      <div class="w3-content">
+        <div class="w3-twothird">
+          <h1>dgVoodoo 2</h1>
+          <h3>🕹 A new age for old games 🕹</h3>
+          <h5 class="w3-padding-32">dgVoodoo 2 is a set of old graphics API's implemented for Windows Vista/7/8/10.</h5>
+          <div class="w3-text-dark-grey">
+            <p>They are implemented on Direct3D 11 and they can use different device types as wrapping output:</p>
+            <ul>
+              <li>Hardware rendering at GPU feature level 11.0 (recommended)</li>
+              <li>Hardware rendering at GPU feature level 10.1 (has a minor limitation for DX8/9)</li>
+              <li>Hardware rendering at GPU feature level 10.0 (there are some restrictions)</li>
+              <li>Software rendering through Microsoft WARP renderer</li>
+            </ul>
+            <p>The following graphics API libraries are implemented:</p>
+            <ul>
+              <li>Glide 2.11, Glide 2.45, Glide 3.1 and Glide 3.1 Napalm</li>
+              <li>DirectX 1-7 (all versions of DirectDraw and Direct3D up to version 7)</li>
+              <li>Direct3D 8.1</li>
+              <li>Direct3D 9</li>
+            </ul>
+          </div>
+          <p>(Latest stable version: 2.62.3, released: <time datetime="2019-11-20">20.11.2019</time>)</p>
+          <a href="#downloads">Downloads</a> |
+          <a href="dgvoodoo-doc.htm">Documentation</a> |
+          <a href="dgvoodoo-changelog.htm">Changelog</a>
+        </div>
+        <div class="w3-third w3-center">
+          <icon class="fa fa-gamepad big w3-text-red" title="video games!" />
+        </div>
+      </div>
+    </article>
+  
+    <article class="w3-row-padding w3-light-grey w3-padding-64">
+      <div class="w3-content">
+        <div class="w3-third w3-center">
+          <img src="imgs/mppwc.png" alt="mppwc" style="width: 60%;">
+        </div>
+  
+        <div class="w3-twothird">
+          <h1>MPPWC</h1>
+          <h5 class="w3-padding-32">Yet another Tracker Module Decoder.</h5>
+  
+          <div class="w3-text-dark-grey">
+            <p class="w3-text-dark-grey">I've finished renewing my old music player and thought I share it as a Winamp
+              input plugin. Somebody may like it.</p>
+            <p>(Executables are now zipped to avoid false positive virus alarms through the network for the NSIS
+              installer.)</p>
+          </div>
+          <p>(Latest version: 0.96.7, released: 05.05.2014)</p>
+          <a href="#downloads">Downloads</a>
+        </div>
+      </div>
+    </article>
+  
+    <article class="w3-row-padding w3-padding-64">
+      <div class="w3-content">
+        <div class="w3-third w3-center">
+          <img src="imgs/patches.png" alt="patches" style="width: 60%;">
+        </div>
+        <div class="w3-twothird">
+          <h1>Various patches</h1>
+          <p class="w3-text-dark-grey">Here you can find some patches I made for some games.</p>
+          <a href="#downloads">Downloads</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <main id="downloads" class="page">
+    <section id="dgvoodoo2">
+      <h1>dgVoodoo 2</h1>
+      <article>
+        <h4>Releases</h4>
+        <table class="w3-table w3-large">
+          <tr>
+            <th>Version</th>
+            <th>Date</th>
+          </tr>
+          <tr class="w3-light-gray">
+            <td><a href="dl/dgVoodoo2_62_3.zip">v2.62.3</a> <em>(Latest)</em> | <a href="dl/dgVoodoo2_62_3_dbg.zip">v2.62.3 (w/ Debug Layer)</a></td>
+            <td><time>2019-11-20</time></td>
+          </tr>
+          <tr>
+            <td><a href="dl/dgVoodoo2_62_2.zip">v2.62.2</a> | <a href="dl/dgVoodoo2_62_2_dbg.zip">v2.62.2 (w/ Debug Layer)</a></td>
+            <td><time>2019-11-14</time></td>
+          </tr>
+          <tr>
+            <td><a href="dl/dgVoodoo2_62_1.zip">v2.62.1</a> | <a href="dl/dgVoodoo2_62_1_dbg.zip">v2.62.1 (w/ Debug Layer)</a></td>
+            <td><time>2019-09-27</time></td>
+          </tr>
+          <tr>
+            <td><a href="dl/dgVoodoo2_62_2.zip">v2.62</a> | <a href="dl/dgVoodoo2_62_dbg.zip">v2.62 (w/ Debug Layer)</a></td>
+            <td><time>2019-09-15</time></td>
+          </tr>
+        </table>
+        
+        <p><strong><a href="dl/">All releases</a></strong></p>
+
+        <p>
+          Starting with version 2.6, dynamic shader compiling is available for Glide API components. DirectX
+          components have their own internal shader code generator.
+          To enable that, you need D3DCompiler_43.dll. Starting with 2.53 an updated compiler version, _47, is
+          also supported.
+          See the readmes for more information.
+        </p>
+        <ul>
+          <li><a href="dl/D3DCompiler_43.zip">D3DCompiler_43</a></li>
+          <li><a href="dl/D3DCompiler_47.zip">D3DCompiler_47</a></li>
+        </ul>
+
+        <p>You also need the 3Dfx splash dlls for Glide if you want 3Dfx splash screen or watermark (shameless plug) through dgVoodoo.</p>
+        <ul>
+          <li><a href="dl/3DfxSplashDlls.zip">3DfxSplashDlls.zip</a></li>
+        </ul>
+      </article>
+      <hr>
+      <article id="dgvoodoo2api">
+        <h4>API - for developers</h4>
+        <table class="w3-table">
+          <tr>
+            <th>Version</th>
+            <th>Date</th>
+          </tr>
+          <tr class="w3-light-gray">
+            <td><a href="dl/dgVoodooAPI_262_1.zip">API v2.62.2</a> <em>(Latest)</em></td>
+            <td><time>2019-09-27</time></td>
+          </tr>
+          <tr>
+            <td><a href="dl/dgVoodooAPI_261.zip">API v2.61</a></td>
+            <td><time>2019-08-02</time></td>
+          </tr>
+          <tr>
+            <td><a href="dl/dgVoodooAPI_255_4.zip">API v2.55.4</a></td>
+            <td><time>2019-01-09</time></td>
+          </tr>
+        </table>
+      </article>
+    </section>
+
+    <hr>
+
+    <section id=mppwc>
+      <h1>MPPWC</h1>
+      <p>I re-relase this one because the previous build was erroneous. Sorry about that.</p>
+      <table class="w3-table">
+        <tr>
+          <th>Version</th>
+          <th>Date</th>
+        </tr>
+        <tr class="w3-light-gray">
+          <td><a href="dl/MPPWC_v0_96_7_exe.zip">v0.96.7</a> <em>(Latest)</em></td>
+          <td><time>2014-05-05</time></td>
+        </tr>
+        <tr>
+          <td><a href="dl/MPPWC_v0_96_6_exe.zip">v0.96.6</a></td>
+          <td><time>2013-11-18</time></td>
+        </tr>
+        <tr>
+          <td><a href="dl/MPPWC_v0_96_5_exe.zip">v0.96.5</a></td>
+          <td><time>2013-05-26</time></td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+    <section id="gamepatches">
+      <h1>Patches</h1>
+      <p>Under construction</p>
+      <a href="http://dege.freeweb.hu/Patches/Patches.html">Link</a>
+    </section>
+  </main>
+
+  <main id="testedgames" class="page">
+    <div class="w3-padding-64">Under construction</div>
+  </main>
+
+<footer class="w3-light-grey w3-opacity w3-center">
+  <div class="w3-xlarge w3-padding-32">
+    <a href="#"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="#"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+    <a href="#"><i class="fa fa-cc-paypal w3-hover-opacity"></i></a>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+  
+</body>
+
+<script src="main.js"></script>
+
+<script>
+// exec
+var lastpage = window.location.hash
+if (!lastpage) {
+  var targ = document.querySelector('.default')
+  lastpage = '#' + targ.id
+}
+var a = document.querySelector("nav a[href='"+lastpage+"']")
+a.click()
+a.classList.add('w3-white')
+
+var smallnavlinks = document.querySelectorAll('nav > #smallnav a')
+
+
+delete a, lastpage, smallnavlinks
+</script>
+
+</html>

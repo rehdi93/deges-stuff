@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>dgVoodoo2 Changelog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<body>
+    
+    <ul>
+        <li>
+            <em>2.62.3 - Minor update to 2.62.2</em> <strong>(current)</strong>
+            <ul>
+                <li>Fixing minor D3D9 bugs (Splinter Cell 4)</li>
+                <li>Fixing D3D fogging bug (Pariah, but can easily affect other games)</li>
+                <li>Fixing minor DDraw incompatibilities (Dark Omen - but use it together with my game
+                    patch)</li>
+                <li>Disabling reporting 8 bit display modes as current monitor modes for D3D8/9 (Xanadu
+                    Next)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.62.2 - Minor update to 2.62.1</em>
+            <ul>
+                <li>Changing DDraw device GUIDs to match MS DDraw ones</li>
+                <li>Improving validation feedback for DDraw Create methods in debug layer</li>
+                <li>Optimizing something (60 Seconds for Mr. Light)</li>
+                <li>Fixing FVF validation for DX5/6/7 (Motocross Madness 2)</li>
+                <li>Fixing validation of vertexbuffer create parameters for DX6/7 (Hot Wheel Slot Cars)</li>
+                <li>Fixing minor buffering bug (Shadow Grounds)</li>
+                <li>Minor change in resolution scaling calcs</li>
+                <li>Fixing drawing of emulated monochrome cursors (Jane's FA-18)</li>
+                <li>Changing versioning of Glide modules (TA Kingdoms Glide3 renderer)</li>
+                <li>Changing hardware descriptor string for QEmu environment (Voodoo4)</li>
+                <li>Fixing minor bugs in the CPL</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.62.1 - Minor update to 2.62</em>
+            <ul>
+                <li>Minor DDraw palette-incompatibility fix (Steel Beasts)</li>
+                <li>Fixing a minor incompatibility for generated shader code (Richard Burns Rally)</li>
+                <li>Minor optimization for generated shader code (Jurassic Park: Operation Genesis)</li>
+                <li>Changing failed scissor rect validation from ERROR to WARNING in D3D9 (Grand Chase)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.62 - Update to 2.61</em>
+            <ul>
+                <li>Fixing bugs in the DXBC generator (Halo CE, Splinter Cell 1, The Sims 2)</b></li>
+                <li>Fixing a drawing bug causing polygon corruption (The Sims 2)</li>
+                <li>Adding DX feature level 11.0 as output API for 16K size textures (DX8/9)</li>
+                <li>
+                    True software vertex processing in Draw* methods in DX modules for special cases, when
+                    needed (Nosferatu)<br>
+                    (but it was a general long outstanding compatibility problem)
+                </li>
+                <li>Some DDraw blit refactor + adding option <b>DirectXExt\PrimarySurfaceBatchedUpdate</b>
+                    for batched update for primary surface changes<br></li>
+                <li>Some DDraw improvement for GDI interaction (Bad Mojo Redux video playback)</li>
+                <li>Size of the emulated hw cursor is now scaled according to the forced resolution and
+                    integer scale factors</li>
+                <li>Fixing the behavior of the emulated cursor when no any draw-changes made on the app side
+                </li>
+                <li>Fixing bugs in handling rendering windows (Requiem)</li>
+                <li>Now all sections of the configuration are accessible through the CPL GUI (Ext sections
+                    are hidden by default though)</li>
+                <li>
+                    Adding a new option for, and implementing Display ROI (region of interest)<br>
+                    Now a subrectangle can be defined for scaling modes done by the wrapper. Useful for
+                    applications rendering into a widescreen subrectangle inside
+                    a 4:3 resolution - the widescreen subrectangle can be defined as display ROI, the input
+                    of the scaling process
+                </li>
+                <li>Dithering didn't work for render targets with format A2R10G10B10, fixed</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.61 - Update to 2.6</em>
+            <ul>
+                <li>Support for the external compiler in DirectX modules is removed, along with option
+                    <b>DirectXExt\ShaderCodeGenerating</b></li>
+                <li>Bugfixes in the DXBC generator (Indiana Jones and The Emperor's Tomb, +general code
+                    revising)</li>
+                <li>Somewhat more optimized generated shader code + other minor optimizations</li>
+                <li>Minor DDraw fixes (Siege of Avalon)</li>
+                <li>Minor D3D vertex processing fix (Biko 1)</li>
+                <li>Adding option <b>DirectExtX\MaxVSConstRegisters</b> (Artifical Academy 2)</li>
+                <li>Fixing D3D9 scaling bugs (AvP Classic with DX9 renderer)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.6</em>
+            <ul>
+                <li>Support for Direct3D9</li>
+                <li>Internal shader code (DXBC) generator for DirectX libraries (the external compiler is no
+                    longer needed for them)</li>
+                <li>Various bugfixings, optimization and code refactoring for DirectX libraries</li>
+                <li>Some new config options</li>
+                <li>Fix for grTexCalcMemRequired for more compatibility with real drivers (Glide 1/2)</li>
+                <li>Fixing some polygon clipping issues (Glide 1/2)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.55.4 - Update to 2.55.3</em>
+            <ul>
+                <li>Adding new config element <b>GeneralExt\WindowedAttributes</b> for borderless and always
+                    on top windows</li>
+                <li>D3D6 fixes (The Sims, The Sims Complete Collection)</li>
+                <li>Changing default texture sample value (Silent Hill 2 'white shader')</li>
+                <li>DDraw fix (Lego Rock Raiders hangup)</li>
+                <li>D3D ProcessVertices fix (RIM - Battle Planets)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.55.3 - Update to 2.55.2</em>
+            <ul>
+                <li>Adding support for QEmu (x64 Glide binaries for <b>Kjliew</b>'s Glide patch)</li>
+                <li>Fixing regression bug appearing in 2.55.1, related to adapter handling (causing crashes
+                    and other anomalies)</li>
+                <li>Adding value 'max' to option <b>DirectXExt\ExtraEnumeratedResolutions</b></li>
+                <li>Adding new config element 'GeneralExt\Environment' for QEmu and DosBox</li>
+                <li>DDraw Blit colorfill fixed on 8bpp surfaces with forced resolution or MSAA (Colin McRae
+                    Rally)</li>
+                <li>DXGI swapchain fullscreen switch fix (Full Throttle, Sam & Max)</li>
+                <li>Simulating GF4 driver more precisely with the 'GF4 Ti 4800' video card type (Splinter
+                    Cell: Defense Ministry shadows)</li>
+                <li>Fix for special D3D8 behavior of vertex buffer locks (Lego Soccer Mania)</li>
+                <li>D3D8 pixel shader validator bug fixed (Mage Knight - Apocalypse)</li>
+                <li>Small fix in guTex* Glide function family (Turok demo)</li>
+                <li>Bug in mouse emulation is fixed (absorbing mouse input like in NFS - Porsche 2000)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.55.2 - Minor update to 2.55.1</em>
+            <ul>
+                <li>Bug when rendering with paletted textures, fixed (Final Fantasy 8 demo) </li>
+                <li>DirectDraw palette alpha-channel incompatibility, fixed (FFXI PlayOnline Viewer)</li>
+                <li>Texture upload crash, fixed (Redline demo)</li>
+                <li>Texture upload bug, fixed (Universal Monsters: Monsterville demo) </li>
+                <li>Clipping issues, fixed (Stratosphere) </li>
+                <li>Bug of config item <b>GeneralExt\EnumeratedResolutionBitdepths</b> is fixed</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.55.1 - Minor update to 2.55</em>
+            <ul>
+                <li>Forceable internal bit depth of D3D depth buffers</li>
+                <li>Bugs in D3D light handling, fixed (Soldiers of Anarchy, Cold Zero demo)</li>
+                <li>D3D alphablending fix (Mage Bros)</li>
+                <li>Workaround for D3D8 vertex buffer overwrite (BattleField 1942)</li>
+                <li>Some incomplete interface querying is fixed for aggregated D3D devices</li>
+                <li>New options (enumerated resolution bit depths, limited default enumerated resolution)
+                    for DirectX along with minor fixes in the config validator</li>
+                <li>Corrected tmuRev and fbiRev version number for some 3Dfx card types</li>
+                <li>Minor changes in the debug layer (corrected mistypings, some value types are replaced by
+                    strings, etc.)</li>
+            </ul>
+        </li>
+        <BR>
+        <li>
+            <em>2.55</em>
+            <ul>
+                <li>Special release of dgVoodoo with DebugLayer providing feedback information is now
+                    available</li>
+                <ul>
+                    <li>INFO, WARNING and ERROR type messages with severity levels, including breaking into
+                        debugger</li>
+                    <li>API call tracing with detailed information</li>
+                </ul>
+                <li>Migrating to INI format configuration files - also, adding rarely needed/used
+                    configuration options for advanced users and game hacking like</li>
+                <ul>
+                    <li>Dithering for both Glide and DirectX</li>
+                    <li>Deframer</li>
+                    <li>Pixel multiplied output with arbitrary or automatic scale factor</li>
+                    <li>Arbitrary extra DirectX resolutions</li>
+                </ul>
+                <li>New scaling mode for centered appearance, scaling is done by the wrapper</li>
+                <li>New dynamic resolution modes (2x, 3x, ...) are added</li>
+                <li>Fixes for scaled output done by the wrapper ('Stretched, * AR' and 'Centered, AR' modes
+                    with larger than max of display-supported output images)</li>
+                <li>Fix for 'Best available one' output type when only WARP is available</li>
+                <li>Improved shader handling:</li>
+                <ul>
+                    <li>Resource cache for reuse of D3D8 compiled shaders</li>
+                    <li>
+                        Dynamic shader compiling is moved to a background thread to avoid/minimize lags<br>
+                        Glide: for all compiled shaders<br>
+                        DirectX: for all compiled shaders that can be substituted by precompiled ones; also,
+                        unneeded shader variants could be unnecessary compiled, fixed
+                    </li>
+                </ul>
+                <li>
+                    Control Panel App
+                    <ul>
+                        <li>Folder/location list handling code is rewritten</li>
+                        <li>Appearance is now PerMonitorAwareV2 for DPI scaling</li>
+                        <li>Cosmetics: missing logo bitmap when monitor scale is >150%, fixed</li>
+                    </ul>
+                </li>
+                <li>
+                    DirectX
+                    <ul>
+                        <li>DllMain detection along with warning messages through the debug layer</li>
+                        <li>Surface/texture lock incompatibilites fixed (Zombie Shooter, The Mystery of the
+                            Druids)</li>
+                        <li>DirectDraw surface-create, cooperative level, PageLock error and other
+                            incompatibility fix (Zero Comico, RC de Go, A Bug's Life, Wartorn, Message in a
+                            Haunted Mansion, Micro Machines v3)</li>
+                        <li>24 bit surface creation issue in DirectDraw is fixed (Blade Of Darkness lava)
+                        </li>
+                        <li>Support for partial Z-buffer copy in DirectDraw (The Revenant)</li>
+                        <li>Option for disabling the default and classic resolutions</li>
+                        <li>Possibility of extra resolutions enumerable to applications is added</li>
+                        <li>Bugs causing crash and black screen are fixed (Empires Dawn of The Modern World,
+                            Honour & Freedom)</li>
+                        <li>Some effort for avoiding app deadlocks in DirectDraw and QuartzHookLayer</li>
+                        <li>D3D FVF and other parameter validation incompatibility, fixed (Praetorians,
+                            Earthworm Jim 3D)</li>
+                        <li>D3D state block incompatibility, fixed (Soldiers of Anarchy)</li>
+                        <li>D3D non-W-friendly matrix in ComputeSphereVisibility calcs, fixed (Pac-Man
+                            Adventures in Time)</li>
+                        <li>Old D3D-lighting incompatibility, fixed (when revising code and docs)</li>
+                        <li>D3D lighting issue is fixed (flashing lights in Tomb Raider 4 and hopefully King
+                            Of The Roads)</li>
+                        <li>Fixing range based fog hw calculations (The Chosen: Well of Souls)</li>
+                        <li>ATI and GeForce profiles are modified to force W-pixelfog (compatibility with
+                            old drivers)</li>
+                        <li>Minor D3D DDI bug fixed (Bear Hero)</li>
+                        <li>Minor internal D3D state/lighting bugs fixed (Tonko4)</li>
+                        <li>D3D device type 'Software MMX' is removed from Direct3D7 for better
+                            compatibility (3D Blitz)</li>
+                        <li>Disabling 32 bit z-buffers for Direct3D3/5 (e.g. Shadows of The Empire)</li>
+                        <li>D3D FPU state handling incompatibility fix (for general cases, and it fixed
+                            nVidia demos Creature, Toy Soldiers and Crystal Ball)</li>
+                        <li>D3D colorkey bug fixed (Sponge Bob - Employee of The Month)</li>
+                        <li>Minor D3D/D3D8 bugs, D3D11 leaks fixed (my own tests)</li>
+                        <li>D3D/D3D8 ProcessVertices and general software vertex processing incompatibility,
+                            fixed (RIM - Battle Planets, Mafia with multipass rendering, Micro Commandos)
+                        </li>
+                        <li>Issue of mixed type D3D8 stream sources is fixed (missing player characters in
+                            Final Fantasy XI)</li>
+                        <li>D3D8 shader validator bug resulted in uncreated shaders, fixed (Mace Griffin
+                            Bounty Hunter)</li>
+                        <li>Implementing D3D8 ValidateVertexShader and ValidatePixelShader for Microsoft
+                            Shader Assembler (Shadow of Destiny)</li>
+                        <li>D3D8 cursor handling and viewport depth scaling bugs fixed (WildFire)</li>
+                        <li>D3D8 GetFrontBuffer bug, fixed (Rome Total War) (movies only, ingame still has
+                            the old issues)</li>
+                        <li>D3D8 device reset fix (S.W.I.N.E.)</li>
+                        <li>Some D3D8 thing is fixed (The Gladiators Demo)</li>
+                        <li>D3D8 some object handling incompatibility fix (TOCA Racing Drive)</li>
+                        <li>Improvements for rendering with incompatible rendertarget/depthstencil buffers
+                            (TOCA Racing Drive)</li>
+                        <li>Changed behavior of window activating and entering fullscreen mode to</li>
+                        <ul>
+                            <li>Avoid OS issue appearing with Windows 10 Fall Creators Update (e.g. Splinter
+                                Cell)</li>
+                            <li>Avoid unwanted situations/crashes and improve compatibility (e.g. Hitman
+                                2/3, RavenShield) </li>
+                        </ul>
+                    </ul>
+                </li>
+                <li>
+                    Glide
+                    <ul>
+                        <li>Clipping issues fixed (Gunmetal)</li>
+                        <li>LfbWriteRegion bug, fixed (Blade of Darkness, background images)</li>
+                        <li>Other fixes (broken multiadapter handling, manual screen mode changing)</li>
+                    </ul>
+                </li>
+            </ul>
+            <em>2.54</em>
+            <ul>
+                <li>Windows input issues caused by the wrapper are fixed (Outlaws, GTA1 DDraw mode, etc.)
+                </li>
+                <li>Rendering transition between Glide/DDraw is fixed (Outlaws)</li>
+                <li>Concept of setup application is replaced with concept of Control Panel (CPL)</li>
+                <li>Control Panel App:</li>
+                <ul>
+                    <li>Contrast as a new color adjustment option is added</li>
+                    <li>Preserving predefined monitor color profile(s) for fullscreen mode as an option is
+                        added</li>
+                    <li>A general option for centering the application/game window is added</li>
+                    <li>DirectX texture filtering options are changed, possibility of forcing anisotropic
+                        filtering is introduced</li>
+                    <li>New scaling mode with C64-like output (it's not a feature but more like an
+                        experimenting code)</li>
+                    <li>Visual cosmetics</li>
+                </ul>
+                <li>DirectX:</li>
+                <ul>
+                    <li>
+                        Some of the DDraw code is guarded to avoid the unexpected worst-way DLL
+                        unloading<br>
+                        Now LithTech engine games (Blood2, NOLF, Kiss Psycho Circus, ...) should tolerate
+                        Alt-Tab on Win10
+                    </li>
+                    <li>Some other extra guarding to prevent crashes, Virtua Cop2 now works in D3D mode</li>
+                    <li>Blit bug and clipper incompatibility fixed in DDraw (D3DRM, Tokipazu, tech demo
+                        Final Reality)</li>
+                    <li>Minor issue in DDraw and bad L6V5U5 format descriptor is fixed (Kyro tech demos)
+                    </li>
+                    <li>Adding support for plain surface format A8L8 (DDraw) (Matrox G400 Tech Demo)</li>
+                    <li>D3D3 fog fixed (Shadows of The Empire patched to 1.1)</li>
+                    <li>Execute buffer bug fixed in D3D (D3DRM)</li>
+                    <li>Some D3D5 incompatibilities are fixed (crash and texture handling with Space Bunnies
+                        Must Die)</li>
+                    <li>Fixing D3D6 bugs and calculations of old software-only lighting and other
+                        incompatible things (DX6 SDK sample applications (Immediate/Retained) + Fog
+                        City/Tirtanium demos)</li>
+                    <li>Unexpected way of texture compression is implemented (D3D7, Soulbringer)</li>
+                    <li>Adding support for Q8W8V8U8 texture format (D3D8) (3DMark 2001 SE, Nature, Pixel
+                        shader and Advanced Pixel shader test)</li>
+                    <li>D3D8 device handling bug is fixed (multimonitor environment)</li>
+                    <li>
+                        D3D8 compatibility fixings, now handling managed textures is compatible with
+                        Phantasy Star Online Blue Burst
+                        (corrupt mipmapping)
+                    </li>
+                    <li>Issue with D3D8 device capabilities and SYSTEMMEM vertex buffers are fixed (LKCC
+                        demos)</li>
+                    <li>D3D8 DrawIndexedPrimitive bug fixed (Syberia 2)</li>
+                    <li>Adding support for depth buffer format D24X4S4 (D3D8) (Matrox Parhelia Reef Tech
+                        Demo)</li>
+                    <li>
+                        Adding support for volume textures (D3D8), though with limited number of formats
+                        (Matrox Parhelia Coral Reef Tech Demo + DX8 SDK VolumeTexture sample + general)
+                    </li>
+                    <li>
+                        Lower resource usage is partly included in this version.
+                        For the time being, only the usage of GPU accessible system memory.
+                    </li>
+                    <li>
+                        General bugfixing, like unexpected forced windowed mode (Soulbringer movies), vertex
+                        shader (missing fog in Colin McRae Rally), non-perspective polygon drawing bug,
+                        fixed (Zanzarah The Hidden Portal), and a lot other
+                    </li>
+                    <li>Handling depth buffers had some bugs at FL 10.0, fixed (D3D11)</li>
+                    <li>Potential bad driving of D3D11 at FL10.1 when no resolution and MSAA is forced
+                        (D3D11) (Gorky17)</li>
+                    <li>Some (regression and other) bugs in the D3D11 renderer are fixed</li>
+                    <li>GeForce 4 profile is slightly modified to match a real GF4</li>
+                    <ul>
+                        <li>Now light beams in Splinter Cell 1 should be rendered correctly through the GF4
+                            card type (unblurred lights with occlusion)</li>
+                    </ul>
+                    <li>2 new videocard types are added:</li>
+                    <ul>
+                        <li>GeForce FX 5700 Ultra (keeps the soft shadows for Splinter Cell 1 (because I
+                            like it :D) and will hopefully be feasible to provide place for new features
+                            later)</li>
+                        <li>Matrox Parhelia-512 (for Matrox Coral Reef Demo 1.1 and other Matrox tech demos)
+                        </li>
+                    </ul>
+                </ul>
+                <li>Glide:</li>
+                <ul>
+                    <li>Glide fix (far background in front of the 3D world: Mig29, Uprising)</li>
+                    <li>Texture memory report is modified to match that of a real 3Dfx driver (Slave Zero)
+                    </li>
+                </ul>
+                <li>Tons of code changing for new features that are not ready yet and so not included in
+                    this version</li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            <em>2.53</em>
+            <ul>
+                <li>Support for 'dynamic resolutions' (see section 'Resolution overriding')</li>
+                <li>
+                    Added support for 'd3dcompiler_47.dll', so Win10 users don't have to
+                    download and mess with d3dcompiler dll, 47 is part of the Win10 OS.
+                </li>
+                <li>
+                    Linear filtering was applied for upscaling the output-image even if the
+                    scale ratio was 1.0, fixed
+                </li>
+                <li>
+                    Some modifications on the CRT-like shader were done for correct CRT-like
+                    appearance on high-res displays like a 4K monitor
+                </li>
+                <li>Glide mode 'Compare to bias' is fixed (Esoteria demo)</li>
+                <li>Some other Glide rendering issues are fixed (Hype - The Time Quest)</li>
+                <li>
+                    DDraw system memory surface pitch is fixed to match that of DIBs
+                    (Snow Wave Avalanche)
+                </li>
+                <li>
+                    A DX8 bug is fixed, so Mafia now works, altough I experience z-buffer
+                    glitches here and there (to be fixed)
+                </li>
+                <li>Lot of general D3D/D3D8 bugs are fixed, too</li>
+                <li>
+                    GeForce4-style shadow buffering is reverse engineered and implemented in
+                    the 'Geforce Ti4800' preset
+                </li>
+                <li>
+                    Floating point arithmetic differences (incompatibilities) between vs1.x
+                    and vs4.x are resolved, Splinter Cell 1 now works in shadow buffer mode
+                </li>
+                <li>
+                    New dynamic vertex buffering algorhythm for removing rendering performance
+                    bottleneck, better usage of GPU
+                </li>
+                <li>
+                    The config application is now per-monitor DPI-aware, to have sharp
+                    appearance
+                </li>
+                <li>MSAA option name 'Auto' is changed to 'App driven'</li>
+                <li>New option for DirectX emulation is added (No texture filtering)</li>
+                <li>Changes in the default config:</li>
+                <ul>
+                    <li>Capture mouse is on</li>
+                    <li>MSAA is app driven</li>
+                </ul>
+                <li>Doc format is changed from txt to html and content is revised</li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            <em>2.52</em>
+            <ul>
+                <li>Support for new output APIs are added</li>
+                <ul>
+                    <li>Direct3D11 at feature level 10.0 (there are some restrictions)</li>
+                    <li>Direct3D11 Microsoft WARP renderer</li>
+                </ul>
+                <li>Support for rendering DirectShow movie playback</li>
+                <li>Resolution overriding for DirectX emulation is now available</li>
+                <li>
+                    New scaling mode (forced 4:3 aspect ratio) with/without CRT-like
+                    appearance is added
+                </li>
+                <li>MSAA support for DX8</li>
+                <li>Lot of DX8 bugfixings</li>
+                <li>A few DDraw/D3D bugfixings</li>
+                <li>
+                    Making 'VertexLayout' functionality be compatible with a real 3Dfx
+                    driver (Glide3)
+                </li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            <em>2.51</em>
+            <ul>
+                <li>Point sprite support for DX8 is added</li>
+                <li>New texture formats (A8, L8, A8L8) for DX7/DX8 are added</li>
+                <li>Tons of DX8 bugfixings, more compatibility</li>
+                <li>More DirectDraw compatibility in object handling + bugfixing</li>
+                <li>Regression bugs in Glide fixed</li>
+                <li>
+                    Capabilities of GeForce Ti 4800 and ATI Radeon 8500 are changed to be much
+                    closer to the real ones (see the technical details in the DX readme)
+                </li>
+                <li>
+                    AMD driver bug causing driver crash with Glide rendering is workarounded
+                    now dgVoodoo should work on all AMD cards properly
+                </li>
+                <li>'Fast video memory access' is now compatible with Unreal engines</li>
+                <li>
+                    Emulated method of stretching the display output with keeping aspect ratio
+                    is added
+                </li>
+            </ul>
+            <br>
+        <li>
+            <em>2.5</em>
+            <ul>
+                <li>First version of D3D8 implementation is added</li>
+                <li>
+                    Lot of bugs fixed during general DirectX code refactoring, I don't want
+                    to detail them all here
+                </li>
+                <li>
+                    Dynamic shader compiling for all API components for better performance
+                    (see Usage and DirectX readme for details, you'll need D3DCompiler_43.dll
+                    for this feature)
+                </li>
+            </ul>
+        </li>
+        </br>
+        <li>
+            <em>2.45</em>
+            <ul>
+                <li>Heavily refactored DirectX emulation code for certain planned features</li>
+                <li>Full cooperating between Glide and DirectX</li>
+                <br>
+                <li>
+                    DirectDraw emulation:
+                    <ul>
+                        <li>True multidevice support, more robust DDraw emulation</li>
+                        <li>OLE interface support for DirectDraw</li>
+                        <li>
+                            DXTC (S3TC) block compression encoder is added, full support for
+                            possible alpha-format conversions
+                        </li>
+                        <li>
+                            Two new video card types are added with slightly different properties
+                            (GeForce4 Ti 4800, ATI Radeon 8500)
+                        </li>
+                        <li>DirectDraw emulation-only mode could fail, fixed</li>
+                        <li>Various DirectDraw bugs/incompatibilities are fixed</li>
+                        <li>Blitting bugs fixed + full support for blitting from primary surface</li>
+                    </ul>
+                    <br>
+                <li>Direct3D emulation:</li>
+                <ul>
+                    <li>
+                        New colorkeying method added and existing colorkeying related bugs
+                        are fixed
+                    </li>
+                    <li>Bugs in rendering from execute buffers (points/lines), fixed</li>
+                    <li>Bug in handling state blocks, fixed</li>
+                </ul>
+                <br>
+                <li>Glide rendering</li>
+                <ul>
+                    <li>Resolution extension support (idea and technical concept by VEG and Zeus)</li>
+                </ul>
+            </ul>
+        </li>
+        </br>
+        <li>
+            <em>2.44</em>
+            <ul>
+                <li>DirectX emulation:</li>
+                <ul>
+                    <li>Some surface/D3D device related bugs are fixed</li>
+                    <li>Mirrored blitting was broken, fixed</li>
+                    <li>24bit software surface support is added</li>
+                    <li>
+                        support for DXT1-5 compressed textures is added but an S3TC encoder is
+                        still missing for the cases when a compressed texture is the blitting
+                        target
+                    </li>
+                    <li>
+                        Transforming normal vectors was incompatible with MS D3D, fixed
+                        This fix includes enabling/disabling of normalizing them, default was
+                        wrong for older than DX7 interfaces
+                    </li>
+                    <li>Colorkey blend capability is added</li>
+                    <li>support is added for old mode-X display modes</li>
+                    <li>Various other small bugs fixed that I can't remember of</li>
+                </ul>
+            </ul>
+        </li>
+        </br>
+        <li>
+            <em>2.43</em>
+            <ul>
+                <li>DirectX emulation:</li>
+                <ul>
+                    <li>3D support for 8 bit surfaces is added (Colin McRae Rally)</li>
+                    <li>
+                        Improved surface blitting, more optimal resource consuming for 3D
+                        surfaces
+                    <li>First version of fast surface video memory CPU-access is added
+                    <li>
+                        Introducing 'lost' state into the default DX behavior, with additional
+                        automatic self-restore mechanism for buggy DX applications
+                    <li>3D TL vertex rendering incompatibilites, fixed
+                    <li>Various small 3D/caps related bugs, fixed
+                    <li>Several other bugfixes that I don't want to word here
+                </ul>
+                <li>Other:</li>
+                <ul>
+                    <li>
+                        Some problems related to the window procedures and message handling
+                        are fixed
+                    </li>
+                    <li>
+                        Names of the wrapped running DX applications were displayed incorrectly,
+                        fixed
+                    </li>
+                </ul>
+            </ul>
+        </li>
+        <br>
+        <li>
+            <em>2.42</em>
+            <ul>
+                <li>Direct3D3 renderstate handling bugfixes (some of them were disabled)</li>
+                <li>Various DirectDraw bugfixes like object/structure version handling,</li>
+                surface blitting, basic ROP codes are added, and others
+        </li>
+        <li>Compatibility fixings in DirectDraw surface creation functionality</li>
+        <li>Compatibility fixings in DirectDraw surface locking functionality</li>
+        <li>Compatibility fixings in Direct3D device creating</li>
+        <li>
+            Fixing/refactoring light handling in general; now software vertex
+            processing can handle any number of them, and also, they can be added at
+            any index in Direct3D7
+        </li>
+        <li>32 bit z-buffer support added</li>
+        <li>Minor Direct3D rendering bugs</li>
+        <li>
+            Bad return code in an empty (but necessary) function on IDirect3DTexture,
+            fixed
+        </li>
+        <li>Missing multithreading guarding in some Direct3D3 methods, fixed</li>
+    </ul>
+    </li>
+    <br>
+    </li>
+    <em>2.41</em>
+    <ul>
+        <li>Direct3D 3 support is added;
+            that is all Direct3D interface is supported now</li>
+        <li>Bug in the resolution enumerator in DirectDraw, fixed
+            (classic and all other resolutions are now enumerated with all bit depths.)</li>
+        <li>Resolution combo box was buggy in the setup; couldn't enumerate anything
+            when too much resolutions were available, fixed</li>
+        <li>Logic of selecting the refresh rate when unspecified rate is requested
+            by the application is changed</li>
+        <li>Overridable refresh rates</li>
+        <li>Bugfixings and improvement for blitting to the primary surface in
+            DirectDraw</li>
+        <li>Bugfixings for other general surface locking/blitting functionality</li>
+        <li>Minor DrawPrimitive bug fixed (missing triangles in Diablo II with
+            Direct3D renderer)</li>
+        <li>Bug with monochrome lighting is fixed
+            (discovered with Jedi Knight - Mysteries of the Sith)</li>
+        <li>Bug in surface blitting, fixed (The Settlers IV)</li>
+        <li>Bug/incompatibility fixings in surface handling in:
+            GetAttachedSurface, EnumerateSurfaces, SetSurfaceDesc and loading
+            textures from system memory surfaces to texture surfaces in video memory</li>
+        <li>DX wrapper is now more noshutdown-proof when unexpectedly pulled out from
+            the process memory area; LithTech engine based games now should work
+            (tested with Blood2 and Shogo Mobile Armor Division)</li>
+        <li>Various other small bugs fixed that I came across</li>
+        <li>Introducing 'unspecified' scaling mode. If you want to apply
+            'scaling but keeping aspect ratio' then select it on your graphics driver
+            control panel and select 'unspecified' mode in dgVoodoo Setup.
+            If it does not work then your only chance is forcing it through the
+            graphics control panel (it all seems to be a Windows issue).</li>
+        <li>Disabling 'Bilinear blit stretch' in the default configuration.
+            I've seen a few games where it caused more 'harm' than coolness that is
+            why I decided to disable it by default.</li>
+    </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.4</em>
+        <ul>
+            <li>DirectX rendering:</li>
+            <ul>
+                <li>New, improved version of DirectDraw. It fully supports creating and
+                    blitting to/from textures, Z-buffers and 3D-renderable surfaces with
+                    several pixel formats. Also, general API-behavioring is more accurate
+                    to the original one because of lot of bugfixings and heavy reverse
+                    engineering.</li>
+                <li>Gammacontrol interfaces is added to DirectDraw</li>
+                <li>First version of Direct3D implementation is added and (almost) fully
+                    supports DirectX5, DirectX6 and DirectX7. For more and technical details,
+                    see the DirectX readme. Direct3D interfaces are also as carefully reverse
+                    engineered as DirectDraw ones.</li>
+            </ul>
+
+            <li>Glide rendering:</li>
+            <ul>
+                <li>Bug in handling utility textures, fixed (missing textures in South Park)</li>
+                <li>Bug with PALETTE6666 extension fixed
+                    (unreadable menu text in Need For Speed - Porsche 2000 with a Voodoo2
+                    or higher)</li>
+                <li>Bug with tripebuffering fixed (missing 3D elements in The Tainted)</li>
+                <li>Adapting Glide3 to 3Dfx mini GL driver (3Dfxvgl.dll),
+                    (American McGee's Alice):</li>
+                <li>Lowering gamma bitnum to 8 (3Dfx didn't follow his own rules...)</li>
+                <li>Some init/exit code could get stuck because they can get called from
+                    DLLMain, fixed</li>
+            </ul>
+            <li>Setup</li>
+            <ul>
+    </li>'Apply' button in the setup is added
+    (I got bored to OK'ing and reopening the setup each time I want to
+    modify the config of more folders or running instances)</li>
+    </ul>
+    </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.32</em>
+        <ul>
+            <li>Possibility of overriding the application resfresh rate is added</li>
+            <li>Small Glide3 fix (bug with Turok 2)</li>
+            <li>Minor Glide3 shader modification (SurfDemo)</li>
+            <li>Glide lib is made thread-safe at the needed (minimal) level
+                (means avoiding crashes at certain circumstances where the original
+                3Dfx driver survived beause of its architecture; a Turok 2 issue again,
+                using background threads)</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.31 - It is a slight patch version for 2.3:</em>
+        <ul>
+            <li>Fixing Glide 3DF reader for various line ending types (Crazy Marbles)</li>
+            <li>A bug found in one of Glide state setting functions, fixed (Crazy Marbles)</li>
+            <li>Hidden/shown cursor glitch is (seems to be) fixed in windowed mode</li>
+            <li>Possibility of forcing progressive scanline order on output display is
+                now available in the setup</li>
+            <li>Fixing some DirectDraw bugs thanks to other pending developments
+                (what I don't want to release yet)</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.3 - This won't be easy because I suspended developing for a few months, but:</em>
+        <ul>
+            <li>First I refactored the code in order to any new driver component or
+                renderer could be added easily</li>
+            <li>Fixed some issues with multiple video cards/monitors. Now it works OK
+                in a multi-videocard system (not so frequent usecase but I like if
+                something is done well)</li>
+            <li>Added first version of DirectDraw component to the driver</li>
+            <li>Minor Glide shader modifications</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.2</em>
+        <ul>
+            <li>Napalm build added</li>
+            <li>Glide3 fixings: erroneous clip coord space handling</li>
+            <li>Small bug related to lfb write with active pipeline, fixed</li>
+            <li>Setup got revamped a bit</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.15</em>
+        <ul>
+            <li>Full support for texture buffers via Glide3 extension 'TEXTUREBUFFER'
+                All 16 bit texture formats are supported as rendering format except for
+                paletted ones</li>
+            <li>Bad color order for delta0 color, fixed
+                (seems I'm not in luck with RGBA order in general)</li>
+            <li>Some bugs are fixed I found through my own tests: unwritten alpha values
+                to the aux buffer, bogus Glide3 viewport handling</li>
+            <li>More optimization in LFB lock handling to avoid slowdowns on locking
+                patterns/usage like in King's Quest: Mask of Eternity
+                (Thanks for the feedback & help, Andrew!!)</li>
+            <li>A lot of code changed thanks to other developments, so I hope I have
+                not broken anything</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.14</em>
+        <ul>
+            <li>Unified Memory Architecture (UMA) along with TEXUMA Glide3 extension
+                is supported</li>
+            <li>Some Voodoo hardware properties are changed according to UMA/non-UMA
+                architecture<br>
+                (Now Extreme Assault works with Gulikoza's latest patch, but see Tips
+                for more)</li>
+            <li>Optimizations for lfb read/write region (including 3Dfx watermark)</li>
+            <li>A missing thing from PCI emulation is implemented for perfect lfb
+                access with active pixel pipeline</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.13</em>
+        <ul>
+            <li>Improved PCI emulation for LFB access: heavy lfb-lockers like Carma1
+                and Pyl SHOULD run much smoother now (see Tips for more)</li>
+            <li>Glide3 fixings: bad color order with packed RGBA, uninitialized
+                texchroma state</li>
+            <li>General glide fixings: bug in glide setstate and clip rectangle</li>
+            <li>Missing feature "fog with iterated z" is implemented along with minor
+                shader modifications</li>
+            <li>Support for splash screen and shameless plug: dgVoodoo needs the 3Dfx
+                splash dlls to get it working (3DfxSpl2.dll, 3DfxSpl3.dll, all with
+                version 1.0.0.4), however I did not include them in the core dgVoodoo
+                pack</li>
+            <li>Minor modification for DosBox</li>
+            <li>TMUnum selector combobox is fixed, I fcked it down last time</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.12</em>
+        <ul>
+            <li>More shader optimizations: most critical ones are reduced to 90% in
+                size again (So, by now, their size are 65% of the original. I hope I
+                have not messed up anything with them.)</li>
+            <li>Optional 16 bit depth buffer (see Tips for why is that)</li>
+            <li>Some fixings in Glide3 thanks to some unexpected API-driving
+                (scene demo Virhe)</li>
+            <li>Some bugs related to maintaining/switching/handling windowed/fullscreen
+                state are fixed</li>
+            <li>Voodoo2 with 1 TMU is no longer selectable in the setup; A Voodoo2
+                always have 2 TMUs and it is the default now because shaders are
+                optimal enough now to handle 2 TMUs</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.11</em>
+        <ul>
+            <li>Refactoring GPU querying to get it to work with ATI drivers
+                (ATI does not seem to handle them correctly, my code was always fooled
+                into infinite loop at a certain point)</li>
+            <li>Further shader optimizations: most critical ones are reduced to 90% in
+                size</li>
+            <li>Minor cursor-issue related to losing window focus, fixed</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.1</em>
+        <ul>
+            <li>Potential stalling rendering (even on fast GPUs) when switching screen
+                modes, fixed</li>
+            <li>Shader optimizations: most critical ones are reduced to ~80% in size</li>
+            <li>Ability to configure running Glide wrapped applications dynamically
+                (see section 'Configuring')</li>
+            <li>Different exposed capabilities according to the selected card type</li>
+            <li>More Dosbox compatibility</li>
+            <li>Bug in gammaramp handling, fixed</li>
+            <li>Bug in fogtable generating code, fixed</li>
+            <li>Bug in PCI access emulation, fixed</li>
+            <li>Forced vSync is enabled by default to avoid overkilling the GPU with
+                wild-rendering applications</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.01</em>
+        <ul>
+            <li>Undrawn polygons when updating TMU memory, fixed</li>
+            <li>Potentially bad drawing of strip-primitives in Glide3, fixed</li>
+            <li>Malfunctioning LFB lock with 32bit formats when PCI emulation is
+                enabled, fixed</li>
+            <li>Fullscreen/Windowed state was not always remembered between
+                Glide-initializings, fixed</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <em>2.0 - The original version</em>
+    </li>
+    </ul>
+</body>
+
+</html>
