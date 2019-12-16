@@ -9,14 +9,19 @@
     <meta name="creator" content="Pedro Oliva Rodrigues">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        code { background-color: #e0e0e0; }
+        var { font-family: monospace; }
+        code { /* from w3-codespan */
+            color: crimson;
+            background-color: #f1f1f1;
+            padding-left: 4px;
+            padding-right: 4px;
+            font-size: 110%;
+        }
         .darkmode {
             color: white;
-            background-color: #1e1e1eff;
+            background-color: #1e1e1e;
         }
-        header > .w3-quarter {
-            padding: 16px;
-        }
+        header > .w3-quarter { padding: 16px; }
         #changelog>iframe {
             width: 100%; 
             height: 450px; 
@@ -32,6 +37,18 @@
 
 
 <body>
+
+<script>
+    // https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
+    function toggleDarkMode() {
+        var mode = document.body.classList.toggle('darkmode')
+        for (const header of document.body.querySelectorAll('main section > header')) {
+            header.classList.toggle('w3-deep-orange')
+        }
+        document.getElementById('end').classList.toggle('w3-dark-grey')
+        return mode
+    }
+</script>
 
 <header class="w3-deep-orange w3-row">
     <div class="w3-quarter w3-hide-small">
@@ -189,10 +206,12 @@
                     file be created there. For now,
                     let's just use the global appdata folder because dgVoodoo finds the configuration file there if
                     none was found in your game folder.
-                    <p>So, let's modify dgVoodoo's scaling mode from Unspecified to Stretched, keep Aspect Ratio and
+                    <p>
+                        So, let's modify dgVoodoo's scaling mode from Unspecified to Stretched, keep Aspect Ratio and
                         run your game again.
                         You should see the game running at a preserved 4:3 aspect ratio without problems and it's
-                        done.</p>
+                        done.
+                    </p>
                 </li>
             </ul>
             <a href="imgs/dgVoodooCpl1.png" target="_blank" rel="noopener noreferrer">
@@ -454,8 +473,8 @@
             </p>
 
             <ul>
-                <li><kbd>Windows\System32</kbd> folder for 32 bit operating systems</li>
-                <li><kbd>Windows\SysWOW64</kbd> folder for 64 bit operating systems</li>
+                <li><samp>Windows\System32</samp> folder for 32 bit operating systems</li>
+                <li><samp>Windows\SysWOW64</samp> folder for 64 bit operating systems</li>
             </ul>
 
             <p>
@@ -484,7 +503,7 @@
                 binary or a textual INI-file for manual editing.
             </p>
             <p>When the Glide or DirectX wrapped application starts, dgVoodoo tries to read
-                config data. The search paths and the order for the config file are the following:</p>
+                config data. The search paths for the config file are the following, in order:</p>
             <ul>
                 <li>Folder of the wrapper DLL</li>
                 <li>Folder of the application (EXE)</li>
@@ -493,7 +512,7 @@
             If the config file can be found in none of them then the default config is used.
             <br>
             <p>
-                For modifying config files, you can either use <em>dgVoodoo Control Panel (dgVoodooCpl)</em> or
+                For modifying config files, you can either use dgVoodoo Control Panel (dgVoodooCpl) or
                 edit it manually with a text editor.
                 dgVoodooCPL provides convenient GUI interface for all options but only the most important sections
                 are available by default. You have to enable the advanced
@@ -677,12 +696,12 @@
                 </p>
 
                 <ul>
-                    <li><kbd>"128x128, 60"</kbd> - means static resolution 128x128 at forced rate of 60Hz</li>
-                    <li><kbd>"128x128, 0"</kbd> or just <kbd>"128x128"</kbd> - means static resolution 128x128
+                    <li><code>128x128, 60</code> - means static resolution 128x128 at forced rate of 60Hz</li>
+                    <li><code>128x128, 0</code> or just <code>128x128</code> - means static resolution 128x128
                         without overridden refresh rate</li>
-                    <li><kbd>"0x0, 75"</kbd> or <kbd>"unforced, 75"</kbd> - means unforced (static) resolution with
+                    <li><code>0x0, 75</code> or <code>unforced, 75</code> - means unforced (static) resolution with
                         forced 75Hz</li>
-                    <li><kbd>"max isf, 83"</kbd> - means Max ISF dynamic resolution with forced 83Hz</li>
+                    <li><code>max isf, 83</code> - means Max ISF dynamic resolution with forced 83Hz</li>
                 </ul>
 
                 <p>
@@ -703,8 +722,8 @@
             <p>If you are terribly interested in how the current dynamic resolution is calculated then a little
                 technical part comes here. Otherwise you can skip this section.</p>
 
-            <div style="overflow: auto;">
-                <table id=table1 class="w3-table w3-bordered w3-small" style="min-width: 600px;">
+            <div class="w3-border" style="overflow: auto;">
+                <table class="w3-table w3-bordered w3-small" style="min-width: 600px;">
                     <tr>
                         <th></th>
                         <th>Unspecified</th>
@@ -756,9 +775,11 @@
                     </tr>
                 </table>
             </div>
+            
             <br>
-            <table class="w3-table w3-tiny w3-bordered">
-                <caption class="w3-left-align w3-small"><u>Legend</u>:</caption>
+
+            <table class="w3-table w3-small w3-bordered w3-responsive">
+                <caption class="w3-left-align"><u>Legend</u>:</caption>
                 <tr>
                     <td>D</td>
                     <td>desktop resolution</td>
@@ -787,11 +808,11 @@
 
             <p><em>Remarks:</em></p>
             <ul>
-                <li>Resolution is calculated in the same way for scaling mode 'Unspecified', 'Centered' and 'Stretch
-                    with AR'.</li>
-                <li>Stretched scaling mode with ISF tries to stretch to <var>min([D|F|Q])</var> and the scale factor
+                <li>Resolution is calculated the same way for <var>'Unspecified'</var>, <var>'Centered'</var> and <var>'Stretch
+                    with AR'</var> scaling modes.</li>
+                <li>Stretched scaling mode with ISF tries to stretch to <code>min([D|F|Q])</code> and the scale factor
                     for both direction is the integer part of the minimum of
-                    <var>min([Dx|Fx|Qx])/Ax</var> and <var>min([Dy|Fy|Qy])/Ay</var> (ratios of X/Y directions).</li>
+                    <code>min([Dx|Fx|Qx])/Ax</code> and <code>min([Dy|Fy|Qy])/Ay</code> (ratios of X/Y directions).</li>
             </ul>
 
             <p>
@@ -866,18 +887,16 @@
                 <li>
                     <p>
                         <b>Video card (adapter)</b><br>
-                        In case you have more than one, then
+                        In case you have more than one video card, then
                     </p>
                         <ul>
                             <li>
-                                Glide:
-                                which one to use for rendering. Option 'All of them' is equivalent to selecting the
-                                first video
-                                card in the list.
+                                <strong>Glide:</strong> selects which adapter to use <em>for rendering</em>.
+                                Option <samp>All of them</samp> is equivalent to selecting the
+                                first video card in the list.
                             </li>
                                 
-                            <li>DirectX: it is a multi-device capable API so you can
-                                choose which adapter(s) are to be enabled for the emulation.</li>
+                            <li><strong>DirectX:</strong> selects which adapter(s) are enabled for <em>device enumeration</em>.</li>
                         </ul>
                 </li>
 
@@ -889,7 +908,7 @@
                     </p>
                     <ul>
                         <li>
-                            Glide: which monitor is used for fullscreen output. When 'Default'
+                            <strong>Glide:</strong> which monitor is used for fullscreen output. When <var>'Default'</var>
                             is selected then switching from windowed to fullscreen
                             during playing a game selects the monitor containing
                             the largest part of the game window.<br>
@@ -897,8 +916,8 @@
                             affects dynamic resolution calculating (see resolution overriding).
                         </li>
                         <li>
-                            DirectX: which monitor(s) to enable to appear as DX devices to the application.
-                            'Default' enables all the monitors connected to the selected adapter. When the game
+                            <strong>DirectX:</strong> which monitor(s) to enable to appear as DX devices to the application.
+                            <var>'Default'</var> enables all the monitors connected to the selected adapter. When the game
                             or application goes into fullscreen then it always happens on the monitor (device) that
                             the game/application selected for use. In case of a multidevice environment games and
                             applications often (and silently) selects the first available device which generally corresponds
@@ -916,7 +935,7 @@
                 <li>
                     <p>
                         <b>Full Screen / Windowed</b><br>
-                        See section "Usage".
+                        See section <a href="#1-5">Usage</a>.
                     </p>
                 </li>
 
@@ -1068,14 +1087,14 @@
                         by dgVoodoo itself. Subrectangle can either be
                     </p>
                     <ul>
-                        <li>defined as a proportion in form of <code>%d_%d</code>, like <samp>16_9</samp> or <samp>16_10</samp>, etc.</li>
-                        <li>or defined as a pixel size in form of <code>%d|%d</code>, like <samp>320|200</samp> or <samp>640|400</samp>, etc.</li>
+                        <li>defined as a proportion in form of <code>%d_%d</code>, like <code>16_9</code> or <code>16_10</code>, etc.</li>
+                        <li>or defined as a pixel size in form of <code>%d|%d</code>, like <code>320|200</code> or <code>640|400</code>, etc.</li>
                     </ul>
                     <br>
                     Pos subproperty defines the top-left position of the rectangle. It can be
                     <ul>
-                        <li><samp>centered</samp> (default)</li>
-                        <li>a pixel position in form of <code>%d|%d</code>, like <samp>100|100</samp></li>
+                        <li><code>centered</code> (default)</li>
+                        <li>a pixel position in form of <code>%d|%d</code>, like <code>100|100</code></li>
                     </ul>
                     <br>
                 </li>
@@ -1096,9 +1115,9 @@
                         listed, separated by commas:
                     </p>
                     <ul>
-                        <li><samp>Borderless</samp>: forces borderless window</li>
-                        <li><samp>AlwaysOnTop</samp>: forces the window into the topmost z-order band</li>
-                        <li><samp>FullscreenSize</samp>: the window content is the same as in fullscreen mode
+                        <li><code>Borderless</code>: forces borderless window</li>
+                        <li><code>AlwaysOnTop</code>: forces the window into the topmost z-order band</li>
+                        <li><code>FullscreenSize</code>: the window content is the same as in fullscreen mode
                             including the
                             potential side black bars, depending on the scaling mode</li>
                     </ul>
@@ -1108,15 +1127,15 @@
                 <li><b>Environment</b>
                     <p>Defines the software environment in which dgVoodoo is running. Its value can be</p>
                     <ul>
-                        <li><samp>empty</samp> (default)</li>
-                        <li><samp>DosBox</samp> to force DosBox environment</li>
-                        <li><samp>QEmu</samp></li>
+                        <li><code>empty</code> (default)</li>
+                        <li><code>DosBox</code> to force DosBox environment</li>
+                        <li><code>QEmu</code></li>
                     </ul>
                     <p>
                         Unless you use dgVoodoo in QEmu it's recommended to leave its value empty because dgVoodoo
                         can detect DosBox automatically.<br>
                         In QEmu environment dgVoodoo disables its own handling of the rendering window including
-                        Alt-Enter for manual screen mode switching.
+                        <kbd>Alt-Enter</kbd> for manual screen mode switching.
                     </p>
                 </li>
                 <li><b>EnableGDIHooking</b>
@@ -1195,13 +1214,12 @@
                 <li><b>Simple messages with 3 subtypes which can be disabled or associated with a debugger break</b>
                 </li>
                 <ul>
-                    <li><samp>INFO</samp>: harmless message about various events like creating/releasing an API
+                    <li><b>INFO:</b> harmless message about various events like creating/releasing an API
                         object, reading
                         a config file, loading a module, etc.</li>
-                    <li><samp>WARNING</samp>: a message about a potential error condition</li>
-                    <li><samp>ERROR</samp>: a message about an API driving error or an internal error of dgVoodoo. The
-                        latter is
-                        fatal, while the prior one may be normal.</li>
+                    <li><b>WARNING:</b> a message about a potential error condition</li>
+                    <li><b>ERROR:</b> a message about an API driving error or an internal error of dgVoodoo. The
+                        latter is fatal, while the prior one may be normal.</li>
                 </ul>
                 <br>
                 <li><b>Tracing</b> - means the full logging of API calls made to dgVoodoo and some additional
@@ -1226,13 +1244,11 @@
             </p>
 
             <p>
-                Messages have a <samp>'[dgVoodoo]'</samp> prefix so the best way to check out a game with
-                dgVoodoo's debug layer is enabling filtering to the <samp>'dgVoodoo'</samp> substring (Crtl-L in
-                DebugView and F5 in
-                DebugView++).
+                Messages have a <samp>[dgVoodoo]</samp> prefix so the best way to check out a game with
+                dgVoodoo's debug layer is enabling filtering to the <samp>dgVoodoo</samp> substring (Crtl-L in
+                DebugView and F5 in DebugView++).
                 Every single log output appear in new lines in DebugView/DebugView++ - this is nice, except for some
-                tracing
-                messages written to the output part by part, like D3D8 disassembled shaders.
+                tracing messages written to the output part by part, like D3D8 disassembled shaders.
                 Unfortunately they appear nastily because of that.
             </p>
 
@@ -1448,7 +1464,7 @@
                 <li><b>Enable inactive app state</b>
                     <p>Glide games/demos can have two bad habits:</p>
                         <ul>
-                            <li>Cannot tolerate losing application focus (Alt-Tabbing to another application) and
+                            <li>Cannot tolerate losing application focus (<kbd>Alt-Tabbing</kbd> to another application) and
                                 crash or quit.
                             </li>
                             <li>Do not pump the message queue of their window - it was not a problem on Win95/98 but
@@ -2023,11 +2039,9 @@
             </ul>
 
             Since I cannot enumerate all the capabilities here, check them out with
-            <strong>DXCapsViewer</strong> if
-            interested.<br>
+            <strong>DXCapsViewer</strong> if interested.<br>
             Also, those capabilities might be changed in the future if I get more accurate information about the
-            hardwares in
-            question.
+            hardwares in question.
 
             <hr style="border-top: 2px dotted black;">
 
@@ -2183,7 +2197,7 @@
 
             <p>
                 Lost mode is emulated in default DX emulation mode, namely when switching
-                between windowed/fullscreen mode by Alt-Enter is disabled. This is because some
+                between windowed/fullscreen mode by <kbd>Alt-Enter</kbd> is disabled. This is because some
                 DX applications count on losing their surfaces when their window loses focus and
                 their code paths can be mislead if they remain 'unlost'. (This is a result of bad
                 programming technique as DX SDKs clearly state that an application shouldn't
@@ -2266,7 +2280,7 @@
                 <li><b>Disable Alt-Enter to toggle screen state</b>
                     <p>
                         To prevent conflicting with an application built-in
-                        Alt-Enter handler.
+                        <kbd>Alt-Enter</kbd> handler.
                     </p>
                 </li>
 
@@ -2320,8 +2334,8 @@
                         the application; Some games rely on that information so it can be useful for them.
                         It can be defined only for SVGA and Internal3D card types; the others have their own
                         wired
-                        information. It can be undefined <em>(default)</em>, <b>nVidia</b>, <b>AMD</b> or
-                        <b>Intel</b>.
+                        information. It can be <var>undefined</var> <em>(default)</em>, <var>nVidia</var>, <var>AMD</var> or
+                        <var>Intel</var>.
                     </p>
                 </li>
                 <li><b>VendorID, DeviceID, SubsystemID, RevisionID</b>
@@ -2336,7 +2350,7 @@
                         It's useful for apps that support all or a very special resolution and you want to
                         select that through the app itself rather than force it through the wrapper externally
                         (avoiding rendering glitches).
-                        You can also use keywords <b>max</b>, <b>max_4_3</b> and <b>max_16_9</b> here along with
+                        You can also use keywords <code>max</code>, <code>max_4_3</code> and <code>max_16_9</code> here along with
                         refresh rates to define maximum resolutions calculated from the desktop resolution with
                         the appropiate aspect ratio.
                         'Max' defines no aspect ratio so it is practically equivalent to your current desktop
@@ -2344,14 +2358,14 @@
                     </p>
                 </li>
                 <li><b>DefaultEnumeratedResolutions</b>
-                    <p>What resolutions are to be enumerated to the application by default:
-                        </p><ul>
-                            <li><b>All</b>: All of the resolutions supported by your GPU and the classic
-                                ones.<em>(default)</em></li>
-                            <li><b>Classics</b>: Only the classic resolutions.</li>
-                            <li><b>None</b>: No any resolution are enumerated to the application. You must
-                                define at least one extra custom resolution in this case or the application
-                                won't see any which is a problem.</li>
+                    <p>What resolutions are to be enumerated to the application by default:</p>
+                    <ul>
+                        <li><b>All</b>: All of the resolutions supported by your GPU and the classic
+                            ones. <em>(default)</em></li>
+                        <li><b>Classics</b>: Only the classic resolutions.</li>
+                        <li><b>None</b>: No any resolution are enumerated to the application. You must
+                            define at least one extra custom resolution in this case or the application
+                            won't see any which is a problem.</li>
                     <br>
             </ul>
             </li>
@@ -2385,7 +2399,7 @@
                 <p>
                     </p><ul>
                         <li>1 = normal, 2 = double size, etc.</li>
-                        <li>0 = automatic (the aim is to have some retro feel&amp;look) <em>(default)</em></li>
+                        <li>0 = automatic (the aim is to have some retro feel &amp; look) <em>(default)</em></li>
                     </ul>
                 <p></p>
             </li>
@@ -2451,7 +2465,7 @@
 
             <ul>
                 <li>Always try to run an application with 'application controlled fs/windowed state'
-                    and disabled 'Alt-Enter' for the first time. If 'Alt-Enter' is enabled then
+                    and disabled <kbd>Alt-Enter</kbd> for the first time. If <kbd>Alt-Enter</kbd> is enabled then
                     the wrapper makes some changes to the application window which can cause some
                     applications to miswork or even crash.</li>
                 <li>Also, always try an application without enabling 'Fast video memory access' for
@@ -2510,8 +2524,7 @@
                 tinker the operating system registry by hand. I just write this info here because I think it's
                 useful for
                 advanced users and experts to begin with. A dgVoodoo tool doing it all would be fine but
-                currently doesn't
-                exist one.
+                currently doesn't exist one.
             </p>
             <p>
                 But don't forget to try the special release version and see the output log if experiencing any
@@ -2551,18 +2564,6 @@
     <p><a href="index.htm">Back to main site</a> | <a href="#">Top</a></p>
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
-
-<script>
-    // https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
-    function toggleDarkMode() {
-        var mode = document.body.classList.toggle('darkmode')
-        for (const header of document.body.querySelectorAll('main section > header')) {
-            header.classList.toggle('w3-deep-orange')
-        }
-        document.getElementById('end').classList.toggle('w3-dark-grey')
-        return mode
-    }
-</script>
 
 </body>
 </html>
