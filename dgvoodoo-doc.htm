@@ -22,6 +22,7 @@
             background-color: #1e1e1e;
         }
         header > .w3-quarter { padding: 16px; }
+        header h2 { display: inline; }
         #changelog>iframe {
             width: 100%; 
             height: 450px; 
@@ -53,8 +54,8 @@
 <header class="w3-deep-orange w3-row">
     <div class="w3-quarter w3-hide-small">
         <a href="index.htm" style="text-decoration: none;">
-            <kbd class="w3-xlarge">&larr;</kbd>
-            <div> <u>to main site</u> </div>
+            <span class="w3-xlarge">&larr;</span><br>
+            <u>to main site</u>
         </a>
     </div>
     <div class="w3-half w3-center w3-padding">
@@ -62,8 +63,8 @@
     </div>
     <div class="w3-quarter w3-right-align w3-hide-small">
         <a href="#end" style="text-decoration: none;">
-            <kbd class="w3-xlarge">&darr;</kbd>
-            <div><u>bottom</u></div>
+            <span class="w3-xlarge">&darr;</span><br>
+            <u>bottom</u>
         </a>
     </div>
 </header>
@@ -437,7 +438,7 @@
             <a href="#toc-1-5"><h2>5. Usage</h2></a>
             <p>
                 There is no installer for dgVoodoo beacuse you can copy its dlls anywhere
-                you want (to use). If u like it and want to use as the only global Glide
+                you want (to use). If you like it and want to use as the only global Glide
                 wrapper on your machine then copy Glide dlls to the system folder. Glide dlls
                 are available in both 32bit (x86) and 64bit (x64) versions. x64 version is for 64 bit <em>QEmu</em>
                 (and maybe 64 bit <em>DosBox</em>) builds.
@@ -451,7 +452,7 @@
             <p>
                 A Glide wrapped application can start up either in windowed or full screen
                 mode (it is controlled by the <em>Control Panel</em>, see later). Also, you can switch between
-                them during the gameplay by Alt-Enter. See 'Known issues' for more.
+                them during the gameplay by <kbd>Alt-Enter</kbd>. See 'Known issues' for more.
             </p>
             <p>
                 The same is true for wrapped DirectX applications, but it is a more
@@ -547,7 +548,7 @@
                 changes gets cancelled as well.
             </p>
             <p>
-                You can always use the <em>'Apply' button</em> to save the current config to the
+                You can always use the <var>'Apply'</var> button to save the current config to the
                 selected folder or running application without exiting the CPL application.
             </p>
 
@@ -1684,7 +1685,7 @@
                 <li>
                     <p>
                         SURFACE and GETREGISTRY extension are only used by the 3Dfx OpenGL 1.1 driver
-                        which is an OpenGL -&gt; (Glide3 Napalm and DirectDraw) wrapper. Since Glide3
+                        which is an OpenGL &rarr; (Glide3 Napalm and DirectDraw) wrapper. Since Glide3
                         operates on surfaces created by DirectDraw (3Dfx implementation), SURFACE
                         functionality cannot be implemented. It means that original 3Dfx OpenGL driver
                         won't work with a standalone Glide3 wrapper (it would make no sense but would
@@ -1695,10 +1696,7 @@
                 </li>
             </ul>
 
-            <p>
-                Don't forget to set card type to 'Other (greater)' with 2 TMUs in the CPL to
-                emulate a Voodoo4.
-            </p>
+            <p>To emulate a Voodoo4, set card type to <var>'Other (greater)'</var> with 2 TMUs.</p>
 
         </article>
         <hr>
@@ -1946,8 +1944,7 @@
                 I hardly believe that anything used them.
             </p>
 
-            <p>For D3D8.1 and D3D9, the following features are not implemented but planned to be in the future:
-            </p>
+            <p>For D3D8.1 and D3D9, the following features are not implemented but planned to be in the future:</p>
 
             <ul>
                 <li>Higher-Order Primitives (maybe some day)</li>
@@ -1990,9 +1987,8 @@
             </p>
 
             <p><strong>GeForce4 Ti 4800 capabilities:</strong></p>
-
+            Same as the internal virtual 3D card, except:
             <ul>
-                <li>Same as the internal virtual 3D card, except:</li>
                 <li>No 32 bit z-buffer support</li>
                 <li>Full cut colorkeying</li>
                 <li><strong>No</strong> indexed vertex blending</li>
@@ -2000,12 +1996,9 @@
                 <li>Max <strong>96</strong> vertex shader constants</li>
             </ul>
 
-            <p><strong>
-                    ATI Radeon 8500 capabilities:
-                </strong></p>
-
+            <p><strong>ATI Radeon 8500 capabilities:</strong></p>
+            Same as the internal virtual 3D card, except:
             <ul>
-                <li>Same as the internal virtual 3D card, except:</li>
                 <li>No 32 bit z-buffer support</li>
                 <li>Plain colorkeying</li>
                 <li>Max <strong>57</strong> matrices for indexed vertex blending</li>
@@ -2014,26 +2007,18 @@
                 <li>Max <strong>192</strong> vertex shader constants</li>
             </ul>
 
-            <p>
-                <strong>
-                    Matrox Parhelia-512 capabilities:
-                </strong>
-            </p>
+            <p><strong>Matrox Parhelia-512 capabilities:</strong></p>
+            Same as the internal virtual 3D card, except:
             <ul>
-                <li>Same as the internal virtual 3D card, except:</li>
                 <li>No 32 bit z-buffer support</li>
                 <li>Plain colorkeying</li>
                 <li>No paletted texture support</li>
                 <li>Maximum supported pixel shader version is <strong>ps1.3</strong></li>
             </ul>
 
-            <p>
-                <strong>
-                    GeForce FX 5700 Ultra capabilities:
-                </strong>
-            </p>
+            <p><strong>GeForce FX 5700 Ultra capabilities:</strong></p>
+            Same as the internal virtual 3D card, except:
             <ul>
-                <li>Same as the internal virtual 3D card, except:</li>
                 <li>No 32 bit z-buffer support</li>
                 <li>Full cut colorkeying</li>
             </ul>
@@ -2049,13 +2034,15 @@
                 DirectDraw and Direct3D objects supports all types of rendering devices that are
                 supported in original DirectX.<br>
                 Direct3D8/9 support HAL and software device types.
-                <br><br>
+            </p>
+            <p>
                 In MS pre-Direct3D8 implementations Direct3D7 is the only one that can be used with
                 hardware vertex transformation and lighting, through a Transform &amp; Light (T&amp;L)
                 device (but I guess it casually falls back to software vertex processing if the
                 device driver does not support the complete vertex operation pipeline that is
                 currently set).
-                <br><br>
+            </p>
+            <p>
                 In all other cases software vertex processing is used. In dgVoodoo vertex
                 processing is always routed to the hardware when possible.<br>
                 However, it's not so simple: software vertex processing is unavoidable in Direct3D
@@ -2069,13 +2056,15 @@
                 MS Direct3D for such cases, duplicating the hw functionality. However for
                 transforming, bending, lighting, fogging and texture coordinate transforming
                 calculations dgVoodoo uses fast vectorized SSE2 code instead of scalar FPU.
-                <br><br>
-                (It should be noted that in newer DX version like DX7 MS uses SSE2 too.
+            </p>
+            <p>
+                <i>(It should be noted that in newer DX version like DX7 MS uses SSE2 too.
                 What is more, for software emulation of vertex shader code in DX8/9, MS seems to
                 apply an internal compiler, that compiles from shader code to x86 bytecode.
                 Wow, what a nice feature!! I should do the same, but probably it all is not too
-                relevant on modern CPUs.)
-                <br><br>
+                relevant on modern CPUs.)</i>
+            </p>
+            <p>
                 Phong shading (per-pixel shading) is not supported by MS Direct3D, only
                 Gouraud (per-vertex). However the internal virtual 3D card can externally be
                 forced to Phong shading through the CPL app but keep in mind that it can cause
@@ -2087,18 +2076,20 @@
                 for the rest. It is especially true when a game is written for multiple platforms
                 or multiple 3D APIs like Glide, D3D, OpenGL, etc. Direct3D3 always uses software
                 vertex processing so Phong shading cannot be applied there at all.
-                <br><br>
+            </p>
+            <p>
                 DX8 is a horse of another colour from the beginning of a new era. Applications
                 written for that usually heavily utilize multiple vertex streams through real
                 vertex and index buffers along with built-in hw T&amp;L pipeline and/or shaders
                 without any calculations done in software. I think I shouldn't detail DX9.
                 It's a way too new API compared to the previos ones. 🙂
-                <br><br>
+            </p>
+            <p>
                 Phong shading is only applicable with full fixed function vertex/pixel pipeline
                 usage. If an application is rendering through a vertex and/or pixel shader in DX8/9
                 then Phong cannot be utilized.
-                <br>
             </p>
+
         </article>
         <article id="3-4">
             <a href="#toc-3-4"><h2>4. Application resolutions and refresh rates</h2></a>
