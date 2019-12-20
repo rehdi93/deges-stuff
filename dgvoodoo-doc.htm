@@ -82,7 +82,7 @@
                     <li><a href="#1-4" id="toc-1-4">Test results</a></li>
                     <li><a href="#1-5" id="toc-1-5">Usage</a></li>
                     <li><a href="#1-6" id="toc-1-6">Configuring</a></li>
-                    <li><a href="#1-7" id="toc-1-7">Resolution overriding</a></li>
+                    <li><a href="#1-7" id="toc-1-7">Resolution and refresh rate overriding</a></li>
                     <li><a href="#1-8" id="toc-1-8">General options</a></li>
                     <li><a href="#1-9" id="toc-1-9">General additional options</a></li>
                     <li><a href="#1-10" id="toc-1-10">General tips and known issues</a></li>
@@ -103,7 +103,7 @@
                 <ol>
                     <li><a href="#3-1" id="toc-3-1">Important notes</a></li>
                     <li><a href="#3-2" id="toc-3-2">General overview</a></li>
-                    <li><a href="#3-3" id="toc-3-3">Some technical info</a></li>
+                    <li><a href="#3-3" id="toc-3-3">Technical info</a></li>
                     <li><a href="#3-4" id="toc-3-4">Application resolutions and refresh rates</a></li>
                     <li><a href="#3-5" id="toc-3-5">About fullscreen and windowed mode</a></li>
                     <li><a href="#3-6" id="toc-3-6">DirectX options</a></li>
@@ -112,7 +112,7 @@
                     <li><a href="#3-9" id="toc-3-9">Why doesn't dgVoodoo DX emulation start up?</a></li>
                 </ol>
             </li>
-            <a href="#changelog" id="toc-changelog"><li>Changelog</li></a>
+            <li id="toc-changelog"><a href="#changelog">Changelog</a></li>
         </ol>
     </nav>
     <hr>
@@ -121,8 +121,8 @@
         <hr>
     </div>
 
-    <section id="faq" class="w3-row">
-        <header class="w3-row w3-panel w3-orange">
+    <section id="faq" class="w3-section">
+        <header class="w3-panel w3-orange">
             <div class="w3-quarter w3-hide-small">
             </div>
             <div class="w3-half w3-center">
@@ -130,18 +130,16 @@
                 <p>for new users</p>
             </div>
             <div class="w3-quarter w3-right-align w3-hide-small">
-                <kbd><a href="#general">Next</a></kbd>
+                <a href="#general">Next</a>
             </div>
         </header>
 
         <ul>
             <li><b>Q:</b> What is dgVoodoo? And where is the installer?</li>
             <li><b>A:</b> dgVoodoo consists of components substituting the implementations of various graphics API's
-                like 3Dfx Glide
-                and Microsoft DirectX up to version 9.
+                like 3Dfx Glide and Microsoft DirectX up to version 9.
                 Currently it has no installer and its usage is intended to be drop-in: just copy the graphics API
-                dll's from
-                dgVoodoo package next to your game/application executable and run it. You need a graphics card
+                dll's from dgVoodoo package next to your game/application executable and run it. You need a graphics card
                 supporting DX10.0 as a minimum.</li>
         </ul>
 
@@ -193,11 +191,11 @@
         <div class="w3-row">
             <ul class="w3-twothird">
                 <li><b>Q:</b> How can I configure dgVoodoo?</li>
-                <li><b>A:</b> dgVoodoo reads the configuration from a config file named dgVoodoo.conf. How to create
+                <li><b>A:</b> dgVoodoo reads the configuration from a config file named <samp>dgVoodoo.conf</samp>. How to create
                     one? Well, while dgVoodoo now has a human readable text format
                     config file, you also have the dgVoodoo Control Panel application to render and modify the
                     content of those config files in a convenient GUI way. So,
-                    copy dgVoodooCpl.exe to your desktop or any other folder you prefer and start it. You'll see
+                    copy <samp>dgVoodooCpl.exe</samp> to your desktop or any other folder you prefer and start it. You'll see
                     three different tabs set to the default configuration.
                     If you change something and press OK or Apply button then the CPL writes the current
                     configuration into a config file. Where it saves that??
@@ -242,10 +240,10 @@
                 performance loss or simply erroneous rendering. That's why I said 'try'.
             </li>
 
-            <a href="imgs/dgVoodooCpl2.png" target="_blank" rel="noopener noreferrer">
+            <a href="imgs/dgVoodooCpl2.png" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                 <img src="imgs/dgVoodooCpl2.png" alt="dgVoodoocpl" class="w3-image w3-padding">
             </a>
-            <a href="imgs/dgVoodooCpl3.png" target="_blank" rel="noopener noreferrer">
+            <a href="imgs/dgVoodooCpl3.png" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                 <img src="imgs/dgVoodooCpl3.png" alt="dgVoodoocpl" class="w3-image w3-padding">
             </a>
         </ul>
@@ -273,16 +271,16 @@
         </ul>
     </section>
     <hr>
-    <section id="general" class="w3-row">
-        <header class="w3-row w3-panel w3-orange w3-hide-small">
+    <section id="general" class="w3-section">
+        <header class="w3-panel w3-orange w3-hide-small">
             <div class="w3-quarter">
-                <kbd><a href="#faq">Prev</a></kbd>
+                <a href="#faq">Prev</a>
             </div>
             <div class="w3-half w3-center">
                 <a href="#toc-general"><h2>General</h2></a>
             </div>
             <div class="w3-quarter w3-right-align w3-hide-small">
-                <kbd><a href="#glide">Next</a></kbd>
+                <a href="#glide">Next</a>
             </div>
         </header>
 
@@ -397,8 +395,6 @@
 
         <article id="1-4">
             <a href="#toc-1-4"><h2>4. Test results</h2></a>
-            <p>We can examine this in two aspects:</p>
-
             <ul>
                 <li><b>Used hardware and performance</b><br>
                     I've tested and run different versions of dgVoodoo2 on the following GPU's:
@@ -452,7 +448,7 @@
             <p>
                 A Glide wrapped application can start up either in windowed or full screen
                 mode (it is controlled by the <em>Control Panel</em>, see later). Also, you can switch between
-                them during the gameplay by <kbd>Alt-Enter</kbd>. See 'Known issues' for more.
+                them during the gameplay by <kbd>Alt-Enter</kbd>. See <a href="#2-6">Glide known issues</a> for more.
             </p>
             <p>
                 The same is true for wrapped DirectX applications, but it is a more
@@ -529,11 +525,9 @@
             <p>Note that</p>
             <ul>
                 <li>CPL always writes INI format config file (unlike previous versions) - and you can edit it
-                    manually, passing
-                    over the CPL</li>
+                    manually, passing over the CPL</li>
                 <li>CPL doesn't expose all the sections of the configuration by default only the most important
-                    ones - you have
-                    to enable additional ones through the context menu</li>
+                    ones - you have to enable additional ones through the context menu</li>
             </ul>
             <p>
                 If an application tolerates losing focus without closing/minimizing itself,
@@ -578,7 +572,7 @@
             <a href="#toc-1-7"><h2>7. Resolution and refresh rate overriding</h2></a>
 
             <p>You can override the application resolution and refresh rate both for Glide and DirectX rendering.<br>
-                There are three types of resolution overriding, and, the 'Resolution' comboboxes contain two types
+                There are three types of resolution overriding, and, the <var>'Resolution'</var> comboboxes contain two types
                 of elements in the enumerated list:</p>
 
             <ul>
@@ -587,7 +581,7 @@
                     Those are enumerated by your videocard for the selected display output. Select any of them, and
                     the wrapper will force that one (along with the selected refresh rate),
                     no matter what resolution the application wants to set. <br>
-                    Resolution 'Unforced' means always using the current application resolution, so there is no
+                    Resolution <var>'Unforced'</var> means always using the current application resolution, so there is no
                     overriding at all.
                 </p>
             </ul>
@@ -617,13 +611,13 @@
                     </li>
                 </ul>
 
-                <cite><br>
+                <p><i>
                     (My own problem was the following: I sat down in front of a new computer with
                     a 4K monitor and wanted to try out some stuffs through dgVoodoo. I faced the
                     fact that I didn't know the exact monitor resolution, I also didn't know what
                     res the stuffs to try were using. I just wanted the maximum available
                     resolution to be forced that keeps the aspect ratio.)
-                </cite>
+                </p></i>
 
                 <p>
                     Dynamic resolution is the synonim of "let the wrapper choose the current
@@ -713,10 +707,8 @@
                     dgVoodoo always handles the refresh rates in their exact rational form but it cannot do that
                     with manually typed ones.<br>
                     When displaying a refresh rate in the combo box, dgVoodoo truncates the value. So, for example,
-                    59.95Hz will appear as 59Hz
-                    in the list, while the display manufacturer probably claims that your display supports 60Hz.
-                    Don't let it mislead you. It is all
-                    about truncating or rounding the values.
+                    59.95Hz will appear as 59Hz in the list, while the display manufacturer probably claims that your display supports 60Hz.
+                    Don't let it mislead you. It is all about truncating or rounding the values.
                 </p>
             </ul>
 
@@ -893,7 +885,7 @@
                         <ul>
                             <li>
                                 <strong>Glide:</strong> selects which adapter to use <em>for rendering</em>.
-                                Option <samp>All of them</samp> is equivalent to selecting the
+                                Option <var>'All of them'</var> is equivalent to selecting the
                                 first video card in the list.
                             </li>
                                 
@@ -951,7 +943,7 @@
                         NOTE that if your video card supports overriding the scaling
                         method of applications, and you'd like to apply a scaling
                         with aspect ratio then it is recommended to set dgVoodoo's
-                        scaling method to 'Unspecified' + set the scaling mode <b>on your
+                        scaling method to <var>'Unspecified'</var> + set the scaling mode <b>on your
                         video card control panel</b> because dgVoodoo's internal scaling
                         is unfortunately not a sterling one. It implies that you may
                         experience various problems like wrong mouse cursor or
@@ -1024,8 +1016,7 @@
                 <li>
                     <p><b>Capture mouse</b><br>
                         It's useful mainly (but not only) for multimonitor systems. If this is enabled then the
-                        mouse cursor
-                        is forced into the application window to prevent accidental mis-clicks outside of it.
+                        mouse cursor is forced into the application window to prevent accidental mis-clicks outside of it.
                     </p>
                 </li>
 
@@ -1033,9 +1024,7 @@
                     <p><b>Center app window</b><br>
                         When a game controlling the mouse input is being run in windowed mode then
                         it's a pain to move it's window into the screen, so I thought it's a valuable option (was a
-                        request
-                        too),
-                        but it can conflict with the mouse input or the app itself.
+                        request too), but it can conflict with the mouse input or the app itself.
 
                     </p>
                 </li>
@@ -1226,9 +1215,9 @@
                 <li><b>Tracing</b> - means the full logging of API calls made to dgVoodoo and some additional
                     information of dgVoodoo internals.</li>
                 <ul>
-                    <li><strong>Level 0:</strong> Tracing disabled</li>
-                    <li><strong>Level 1:</strong> Logging of API calls</li>
-                    <li><strong>Level 2:</strong> Logging of API calls + some additional info</li>
+                    <li><b>Level 0:</b> Tracing disabled</li>
+                    <li><b>Level 1:</b> Logging of API calls</li>
+                    <li><b>Level 2:</b> Logging of API calls + some additional info</li>
                 </ul>
             </ul>
 
@@ -1246,8 +1235,8 @@
 
             <p>
                 Messages have a <samp>[dgVoodoo]</samp> prefix so the best way to check out a game with
-                dgVoodoo's debug layer is enabling filtering to the <samp>dgVoodoo</samp> substring (Crtl-L in
-                DebugView and F5 in DebugView++).
+                dgVoodoo's debug layer is enabling filtering to the <samp>dgVoodoo</samp> substring (<kbd>Crtl-L</kbd> in
+                DebugView and <kbd>F5</kbd> in DebugView++).
                 Every single log output appear in new lines in DebugView/DebugView++ - this is nice, except for some
                 tracing messages written to the output part by part, like D3D8 disassembled shaders.
                 Unfortunately they appear nastily because of that.
@@ -1255,30 +1244,22 @@
 
             <p>
                 It's not really a big problem however because I cannot recommend you to enable tracing. It's much
-                more intended
-                for developers but if you want to use it after all then
-                do it with <strong>DebugView++</strong> or a debugger like <strong>Visual Studio 2015
-                </strong> because feedback is so tremendous that only tools
+                more intended for developers but if you want to use it after all then
+                do it with <strong>DebugView++</strong> or a debugger like <strong>Visual Studio 2015</strong>
+                because feedback is so tremendous that only tools
                 with asynchronous debug output window are able to handle it. Tools with synchronous debug output
-                like
-                <strong>DebugView</strong> won't be able to keep up with
-                it and make your game/app crawl at speed near zero.
+                like <strong>DebugView</strong> won't be able to keep up with it and make your game/app crawl at speed near zero.
             </p>
 
             <p>I must emphasize:
                 </p><ul>
                     <li>Do not look for a miracle when using the debug layer! If some game doesn't work for you then
-                        it can give
-                        you some useful feedback
-                        on what's going on, or you can see if dgVoodoo is utilized at all but won't necessarily tell
-                        you why the
-                        game crashes, for example.<br>
+                        it can give you some useful feedback on what's going on, or you can see if dgVoodoo is utilized at all but won't necessarily tell
+                        you why the game crashes, for example.<br>
                         Also, if you see an ERROR entry in the log then it doesn't necessarily mean you did
-                        something wrong or
-                        there is a problem with your game.
+                        something wrong or there is a problem with your game.
                         Many games rely on error codes got back from an API. So, for example if you see such a log
-                        like the
-                        following snippet
+                        like the following snippet
                         <pre class="w3-border" style="overflow: auto;">...
 [15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8)::EnumTextureFormats: Format XRGB8888 is enumerated to the application.
 [15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8)::EnumTextureFormats: Format ARGB8888 is enumerated to the application.
@@ -1288,14 +1269,11 @@
 [15500] [dgVoodoo] INFO: Direct3D (0ABC87B0)::EnumDevices: Device enumerated, Name: "Direct3D HAL", Description: "dgVoodoo Hardware A...
 ...</pre>
                         Then the error entry about failed 'DeleteAttachedSurface' is not really an error. The
-                        application tried
-                        to delete a potential attached z-buffer, just to make sure, and doesn't care about the
+                        application tried to delete a potential attached z-buffer, just to make sure, and doesn't care about the
                         result.
                         dgVoodoo however treat it as an error because it caused an error in an API method. It's
-                        really
-                        impossible to make a decision about classifying some conditions as an error or just a plain
+                        really impossible to make a decision about classifying some conditions as an error or just a plain
                         warning.<br>
-
                         But let's look at another case: one of my game just crashes right at startup. What could be
                         the reason?
                         The debug output is:
@@ -1307,33 +1285,29 @@
 [21964] [dgVoodoo] ERROR: Direct3D8 (077BCEC8)::CreateDevice: Initializing Direct3DDevice8 (0EE99530) failed.
 ...</pre>
                         Ah, OK. Previously I configured the game to run on a display at 72Hz but now I'm trying to
-                        run it on
-                        another that does not support this refresh rate at this resolution,
-                        so D3D8 initialization failed in dgVoodoo and so the game crashed due to lack of error
-                        checking.
+                        run it on another that does not support this refresh rate at this resolution,
+                        so D3D8 initialization failed in dgVoodoo and so the game crashed due to lack of error checking.
                     </li><br>
                     <li>
                         Use the spec release only for trying to solve an extant problem with an applicaiton. Spec
-                        release does
-                        some extra checking and validation compared to normal dgVoodoo releases and it can bite off
-                        from the
-                        speed or cause stuttering.
+                        release does some extra checking and validation compared to normal dgVoodoo releases and it 
+                        can bite off from the speed or cause stuttering.
                     </li>
                 </ul>
         </article>
     </section>
     <hr>
-    <section id="glide" class="w3-row">
-        <header class="w3-row w3-panel w3-orange">
+    <section id="glide" class="w3-section">
+        <header class="w3-panel w3-orange">
             <div class="w3-quarter w3-left-align w3-hide-small">
-                <kbd><a href="#general">Prev</a></kbd>
+                <a href="#general">Prev</a>
             </div>
             <div class="w3-half w3-center">
                 <a href="#toc-glide"><h2>Glide readme</h2></a>
             </div>
 
             <div class="w3-quarter w3-right-align w3-hide-small">
-                <kbd><a href="#directx">Next</a></kbd>
+                <a href="#directx">Next</a>
             </div>
         </header>
 
@@ -1380,13 +1354,15 @@
                     <p>
                         Since forcing them proved to be a good thing in practice,
                         I kept the possibility in this version too. Antialiasing
-                        is new of course.<br><br>
-                        For more, see chapter 'Resolution and refresh rate overriding'
-                        in the general readme.<br><br>
-                        Option 'Application driven' for MSAA has meaning only for
-                        Napalm build. For non-Napalm builds it is equivalent to 'Off'.
+                        is new of course.
                     </p>
-
+                    <p>
+                        For more information, see <a href="#1-7">Resolution and refresh rate overriding</a>.
+                    </p>
+                    <p>
+                        Option <var>'Application driven'</var> for MSAA has meaning only for
+                        Napalm build. For non-Napalm builds it is equivalent to <var>'Off'</var>.
+                    </p>
                 </li>
 
                 <li><b>Number of TMUs</b>
@@ -1521,7 +1497,7 @@
                 For the standard see sRGB on google.
             </p>
             <p>
-                That's why the CPL has the 'Enable Glide gammaramp' option: you can disable
+                That's why the CPL has the <var>'Enable Glide gammaramp'</var> option: you can disable
                 the curve coming from Glide and let your monitor use the default.
             </p>
             <p>
@@ -1542,7 +1518,7 @@
         </article>
         <hr>
         <article id="2-4">
-            <a href="#toc-2-4"><h2>4. Some technical info</h2></a>
+            <a href="#toc-2-4"><h2>4. Technical info</h2></a>
 
             <p>
                 Unfortunately Glide cannot be implemented in practice as a standalone API which
@@ -1567,14 +1543,14 @@
                 performance drop if emulated perfectly. This case is the mentioned simultaneous
                 writing. dgVoodoo can emulate this usecase but you must enable it explicitly so
                 I reluctantly inserted an option into the CPL, named
-                <samp>'Force emulating true PCI access'</samp>. This is the only technical option related to
+                <var>'Force emulating true PCI access'</var>. This is the only technical option related to
                 the quality of the implementation. There are only a few games it should be used
                 for (see <a href="#2-6">Tips</a>) so it would be a pity to have it pointlessly enabled for the
                 rest.
             </p>
             <p>
-                There is another strange option in the CPL, namely 'Pointcast Palette driver
-                build'. Well, early 3Dfx hardware allowed separate texture palettes/ncc tables
+                There is another strange option in the CPL, namely <var>'Pointcast Palette driver
+                build'</var>. Well, early 3Dfx hardware allowed separate texture palettes/ncc tables
                 for each TMU so this possibility was reflected in Glide 2.11 and 2.43. However,
                 latter 3Dfx hardware used a unified memory model meaning that only one global
                 palette/ncc could be set for all the TMUs. Glide3 don't even allow to set them
@@ -1691,7 +1667,7 @@
                         won't work with a standalone Glide3 wrapper (it would make no sense but would
                         be nice).
                         Since OpenGL does not work, GETREGISTRY functionality is also needless. So,
-                        those two extensions are only placeholders, bunch of empty functions.
+                        those two extensions are only empty placeholders.
                     </p>
                 </li>
             </ul>
@@ -1769,16 +1745,16 @@
 
     </section>
     <hr>
-    <section id="directx" class="w3-row">
-        <header class="w3-row w3-panel w3-orange">
+    <section id="directx" class="w3-section">
+        <header class="w3-panel w3-orange">
             <div class="w3-quarter w3-left-align w3-hide-small">
-                <kbd><a href="#glide">Prev</a></kbd>
+                <a href="#glide">Prev</a>
             </div>
             <div class="w3-half w3-center">
                 <a href="#toc-directx"><h2>DirectX readme</h2></a>
             </div>
             <div class="w3-quarter w3-right-align w3-hide-small">
-                <kbd><a href="#changelog">Next</a></kbd>
+                <a href="#changelog">Next</a>
             </div>
         </header>
 
@@ -1871,8 +1847,7 @@
                 exposed to the applications in that case.<br>
                 Direct3D8/9 are standalone components, no need for DirectDraw to use them. In spite of
                 that it is a good idea to copy DDraw.dll along with D3D8.dll (and maybe D3D9.dll) because a lot
-                of movie
-                playback system (e.g. DirectShow) rely on DDraw even in D3D8 games. dgVoodoo DDraw
+                of movie playback system (e.g. DirectShow) rely on DDraw even in D3D8 games. dgVoodoo DDraw
                 and D3D8/9 has the ability and internal support to cooperate if the situation requires.
             </p>
             <p>
@@ -1905,13 +1880,11 @@
 
             <p>For more detailed capabilities, see <a href="#3-3">technical info</a>.</p>
 
-            <br>
-
             <p>
                 Software rendering devices does not use real software rendering in dgVoodoo. I
-                think that a software rasterizer has no reason for existence nowadays and didn't
+                think that a software rasterizer has no reason to exist nowadays and didn't
                 want to write one just for fun so they use hw accelerated rendering in the
-                background. The point is, towards the applications they logically appear as
+                background. The point is, for the applications they logically appear as
                 software devices.
             </p>
             <p>
@@ -1927,7 +1900,7 @@
             </p>
             <p>
                 Important to note that compatibility with MS DirectDraw is not completely
-                guaranteed, especially with very old applications written in the win95/Win98 era.
+                guaranteed, especially with very old applications written in the Win95/Win98 era.
                 Those applications might utilize DirectDraw/GDI interaction which is not fully
                 supported in dgVoodoo. I would like to improve that somehow, in later versions.
             </p>
@@ -2128,14 +2101,16 @@
             <p>
                 If a resolution of that list is not amongst the ones that your modern adapter
                 reports then dgVoodoo forces enumerating it to the application.
-                <br><br>
+            </p>
+            <p>
                 As for the refresh rates, if an application does not specifify one of the
                 enumerated ones but specifies 0 (default) then dgVoodoo finds and applies the
                 natively supported one that is most closest to 60Hz.
-                <br><br>
+            </p>
+            <p>
                 If you want to make sure or would like to use a custom refresh rate then
                 you can override that through the resolution selector combo box (DirectX tab).<br>
-                For details, see chapter 'Resolution and refresh rate overriding' in the general readme.
+                For details, see <a href="#1-7">Resolution and refresh rate overriding</a>.
             </p>
             <p>
                 If the refresh rate is overridden then all resolutions are enumerated with the
@@ -2255,8 +2230,8 @@
                 <li><b>Antialiasing</b>
                     <p>
                         For 3D rendered surfaces you can force MSAA.
-                        Option 'Application controlled' is meaningful only for DX8. For DDraw/DX it is
-                        equivalent to 'Off'.
+                        Option <var>'Application controlled'</var> is meaningful only for DX8.
+                        For DDraw/DX it is equivalent to <var>'Off'</var>.
                     </p>
                 </li>
 
@@ -2344,7 +2319,7 @@
                         You can also use keywords <code>max</code>, <code>max_4_3</code> and <code>max_16_9</code> here along with
                         refresh rates to define maximum resolutions calculated from the desktop resolution with
                         the appropiate aspect ratio.
-                        'Max' defines no aspect ratio so it is practically equivalent to your current desktop
+                        <var>'Max'</var> defines no aspect ratio so it is practically equivalent to your current desktop
                         resolution.
                     </p>
                 </li>
@@ -2362,7 +2337,7 @@
             </li>
             <li><b>EnumeratedResolutionBitdepths</b>
                 <p>You can define what bit depths for display modes are to be enumerated and supported by
-                    dgVoodoo. Any subset of <samp>{8, 16, 32}</samp> or simply <samp>All</samp> <em>(default)</em>.
+                    dgVoodoo. Any subset of <samp>{8, 16, 32}</samp> or simply <var>'All'</var> <em>(default)</em>.
                 </p>
             </li>
             <li><p><b>Dithering</b></p>
@@ -2504,9 +2479,7 @@
                     the system one in that case. The registry entries in question can be changed back to
                     relative paths,
                     but since <b><samp>regedit</samp> requires TrustedInstaller privilege level for that</b>, and you have to
-                    search for
-                    the entries yourself, it is a complicated process, I don't recommend you to experiment with
-                    it.
+                    search for the entries yourself, it is a complicated process, I don't recommend you to experiment with it.
                     Luckily most of the old programs access DirectDraw directly, bypassing OLE.
                 </li>
             </ul>
@@ -2528,7 +2501,7 @@
     <section id="changelog" class="w3-section">
         <header class="w3-row w3-panel w3-orange">
             <div class="w3-quarter w3-left-align w3-hide-small">
-                <kbd><a href="#directx">Prev</a></kbd>
+                <a href="#directx">Prev</a>
             </div>
             <div class="w3-half w3-center">
                 <a href="#toc-changelog"><h2>4. Changelog</h2></a>
