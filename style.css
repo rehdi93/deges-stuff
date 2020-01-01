@@ -17,4 +17,5 @@ footer > iframe {
 
 .placeholder {
     margin: 12px;
+    display: none;
 }
