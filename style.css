@@ -8,6 +8,12 @@ iframe {
     width: 100%;
     border: none;
 }
+nav > iframe {
+    height: 30px;
+}
+footer > iframe {
+    height: 150px;
+}
 
 .placeholder {
     margin: 12px;

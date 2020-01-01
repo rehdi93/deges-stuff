@@ -15,7 +15,7 @@ function main() {
             navHighlight()
         }
     }
-    req.open('GET', 'parts/nav.htm', true);
+    req.open('GET', '/parts/navbar', true);
     req.send();
 }
 
