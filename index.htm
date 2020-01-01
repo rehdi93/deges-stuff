@@ -12,17 +12,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="util.js"></script>
 </head>
 
-<body>
-  <script src="util.js"></script>
-
-  <div id="navbar" class="w3-deep-orange placeholder">
+<body onload="main()">
+  
+  <nav class="placeholder">
     <noscript>
       navbar requires javascript. Sorry Landuke ☹<br>
     </noscript>
-    Todo: Implement fallback nav.
-  </div>
+    {fallbacknav}
+  </nav>
 
   <header class="w3-container w3-center w3-padding-64 w3-deep-orange">
     <h1 class="w3-margin w3-jumbo">Dege's stuffs</h1>
@@ -53,8 +53,8 @@
         </div>
         <p>(Latest stable version: 2.62.3, released: <time datetime="2019-11-20">20.11.2019</time>)</p>
         <a href="downloads.htm#dgvoodoo2">Downloads</a> |
-        <a href="dgvoodoo-doc.htm">Documentation</a> |
-        <a href="dgvoodoo-changelog.htm">Changelog</a>
+        <a href="dgvoodoo/documentation.htm">Documentation</a> |
+        <a href="dgvoodoo/changelog.htm">Changelog</a>
       </div>
       <div class="w3-third w3-center">
         <i class="fa fa-gamepad big w3-text-red" title="video games!"></i>

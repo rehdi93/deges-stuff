@@ -10,14 +10,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/util.js"></script>
 </head>
 
 <body>
-    <div id=navbar class="w3-deep-orange placeholder">
-        <noscript>navbar requires javascript. Sorry Landuke ☹<br></noscript>
-        Todo: Implement fallback nav.
-    </div>
+    <nav class="placeholder">
+        <noscript>
+            navbar requires javascript. Sorry Landuke ☹<br>
+        </noscript>
+        {fallbacknav}
+    </nav>
   
     <!-- main header -->
     <header class="w3-container w3-center w3-padding-64 w3-deep-orange">
@@ -38,13 +41,10 @@
     </section>
 
     <footer class="w3-light-grey w3-opacity">
-        <iframe src="footer.htm">
+        <iframe src="/footer.htm">
           ~Footer~ <br>
           Your browser does not support iframes
         </iframe>
     </footer>
-    
-    <script src="util.js"></script>
-
 </body>
 </html>

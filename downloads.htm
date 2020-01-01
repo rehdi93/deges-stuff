@@ -15,16 +15,17 @@
   <style>
     main { margin-top: 64px; margin-bottom: 64px; }
   </style>
+  <script src="util.js"></script>
 </head>
 
-<body>
+<body onload="main()">
   <!-- Navbar -->
-  <div id=navbar class="w3-deep-orange placeholder">
+  <nav class="placeholder">
     <noscript>
       navbar requires javascript. Sorry Landuke ☹<br>
     </noscript>
-    Todo: Implement fallback nav.
-  </div>
+    {fallbacknav}
+  </nav>
 
   <main class="w3-auto w3-container">
     <section id="dgvoodoo2">
@@ -138,7 +139,6 @@
     </iframe>
   </footer>
 
-  <script src="util.js"></script>
 
 </body>
 </html>

@@ -8,3 +8,7 @@ iframe {
     width: 100%;
     border: none;
 }
+
+.placeholder {
+    margin: 12px;
+}

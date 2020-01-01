@@ -10,7 +10,7 @@ function main() {
     var req = new HttpRequest();
     req.onreadystatechange = function() {
         if (this.readyState == this.DONE && this.status == 200) {
-            var target = document.querySelector('#navbar');
+            var target = document.querySelector('nav.placeholder');
             target.outerHTML = this.responseText;
             navHighlight()
         }
@@ -26,9 +26,9 @@ function fname(path) {
 
 function navHighlight() {
     var last = fname(window.document.location.pathname);
+    if (last === "") {
+        last = "index.htm";
+    }
     var a = document.querySelector('nav a[href="'+last+'"]');
     a.classList.toggle('w3-white');
 }
-
-// exec
-document.body.onload = main
