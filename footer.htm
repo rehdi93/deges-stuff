@@ -12,6 +12,13 @@
             overflow: hidden; 
             min-height: 160px;
         }
+        form { display: inline; }
+        form button {
+            border: none;
+            background-color: inherit;
+            padding: 0;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="w3-center">
@@ -19,7 +26,15 @@
 <div class="w3-xlarge w3-padding-32">
     <a target="_parent" href="#"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
     <a target="_parent" href="#"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
-    <a target="_parent" href="#"><i class="fa fa-cc-paypal w3-hover-opacity"></i></a>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="hosted_button_id" value="FAF9QZTY59CV2">
+        <input type="hidden" name="lc" value="en_US">
+        <button type="submit" name="submit" title="Donate!">
+            <i class="fa fa-cc-paypal w3-hover-opacity"></i>
+        </button>
+    </form>
 </div>
 <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 
