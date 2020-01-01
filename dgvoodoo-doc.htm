@@ -22,7 +22,6 @@
             background-color: #1e1e1e;
         }
         header > .w3-quarter { padding: 16px; }
-        header h2 { display: inline; }
         #changelog>iframe {
             width: 100%; 
             height: 450px; 
@@ -115,7 +114,9 @@
             <li id="toc-changelog"><a href="#changelog">Changelog</a></li>
         </ol>
     </nav>
+
     <hr>
+
     <div class="w3-center w3-quater" id=viewoptions>
         <input type="checkbox" id="ckbMode" onchange="toggleDarkMode()"> Dark mode
         <hr>
@@ -167,25 +168,21 @@
             <li><b>A:</b> Yes, you can run your game. dgVoodoo should get in action with its default configuration
                 and render your game as a D3D11 one.
                 Altough dgVoodoo is configurable (see below), its default configuration is recommended for first try
-                because this configuration is
-                the one that provides the circumstances the games were designed for.</li>
+                because this configuration is the one that provides the circumstances the games were designed for.</li>
         </ul>
 
         <ul>
             <li><b>Q:</b> OK, my game is running but the image is stretched on my screen...</li>
             <li><b>A:</b> Most of the old games is designed for display output aspect ratio of 4:3 and if you have a
-                widescreen monitor then their image will
-                likely be distortedly stretched along the screen, which is not good. The recommended way to fix it
-                is forcing 'keeping aspect ratio'
-                in the control panel of your graphics driver (like nVidia Control panel for nVidia graphics cards).
+                widescreen monitor then their image will likely be distortedly stretched along the screen, which is not good. 
+                The recommended way to fix it is forcing 'keeping aspect ratio' in the control panel of your graphics driver 
+                (like nVidia Control panel for nVidia graphics cards).
             </li>
         </ul>
 
         <ul>
-            <li><b>Q:</b> My graphics driver doesn't support overriding aspect ratios... Is there any other fix to
-                this?</li>
-            <li><b>A:</b> Yes, there is. dgVoodoo is configurable and has various scaling modes. You should try
-                that.</li>
+            <li><b>Q:</b> My graphics driver doesn't support overriding aspect ratios... Is there any other fix to this?</li>
+            <li><b>A:</b> Yes, there is. dgVoodoo is configurable and has various scaling modes. You should try that.</li>
         </ul>
 
         <div class="w3-row">
@@ -1037,14 +1034,11 @@
             <ul>
                 <li><b>DesktopResolution</b>
                     <p>dgVoodoo takes the current desktop resolution as a base to do its calculations for self-done
-                        output
-                        scaling and other things like automatic pixel multiplying factor value.
+                        output scaling and other things like automatic pixel multiplying factor value.
                         There some games however that pre-set the desktop resolution (typically to some low
-                        resolution) before
-                        dgVoodoo gets in action, spoiling the rendering.
+                        resolution) before dgVoodoo gets in action, spoiling the rendering.
                         You can define your native desktop resolution here for such cases. If defined then this
-                        resolution is
-                        used for all outputs of the desktop.
+                        resolution is used for all outputs of the desktop.
                     </p>
                 </li>
                 <li><b>DesktopBitDepth</b>
@@ -1055,18 +1049,15 @@
                 </li>
                 <li><b>DeframerSize</b>
                     <p>When resolution is forced to other than the app default then a black frame is drawn around
-                        the output
-                        image coming from a wrapped API to remove scaling artifacts -
+                        the output image coming from a wrapped API to remove scaling artifacts -
                         frame thickness can be defined in pixels (max 16, 0 = disable) (default is 1).
                     </p>
                 </li>
                 <li><b>ImageScaleFactor</b>
                     <p>Integer factor for scaling the output image coming from a wrapped API (pixel multiplying).
-                        This is
-                        independent on scaling mode.
+                        This is independent on scaling mode.
                         0 = maximum available factor. Default is 1 (no multiplying). Separate factors can be defined
-                        for
-                        horizontal and vertical directions.
+                        for horizontal and vertical directions.
                     </p>
                 </li>
                 <li><b>DisplayROI</b>
@@ -1130,9 +1121,7 @@
                 </li>
                 <li><b>EnableGDIHooking</b>
                     <p>Very experimental option - when enabled dgVoodoo hooks some GDI functions to achieve
-                        displaying game
-                        cutscene movies rendered
-                        through GDI (relying typically on the old AVI player lib)
+                        displaying game cutscene movies rendered through GDI (relying typically on the old AVI player lib)
                     </p>
                 </li>
             </ul>
@@ -1175,11 +1164,8 @@
                     causes application focus loss because its window is not under the mouse cursor.</li>
 
                 <li>I don't know why but overriding refresh rates by arbitrary values (in the resolution selector
-                    combo box)
-                    does not
-                    seem to work for DirectX emulation. It is still subject to investigation because the code
-                    handling this is common for both Glide and DirectX. 🙁
-                </li>
+                    combo box) does not seem to work for DirectX emulation. It is still subject to investigation 
+                    because the code handling this is common for both Glide and DirectX. 🙁</li>
             </ul>
 
         </article>
@@ -1191,11 +1177,9 @@
 
             <ol>
                 <li>Giving feedback to the user about potential error conditions, what currently is happening, and,
-                    how dgVoodoo
-                    is driven by the application at all</li>
+                    how dgVoodoo is driven by the application at all</li>
                 <li>Helping debugging a given application/game by the (extensive) feedback and opening the
-                    possibility to break
-                    into the debugger</li>
+                    possibility to break into the debugger</li>
             </ol>
 
             dgVoodoo currently has 2 main types for debug feedback:
@@ -1251,16 +1235,16 @@
                 like <strong>DebugView</strong> won't be able to keep up with it and make your game/app crawl at speed near zero.
             </p>
 
-            <p>I must emphasize:
-                </p><ul>
-                    <li>Do not look for a miracle when using the debug layer! If some game doesn't work for you then
-                        it can give you some useful feedback on what's going on, or you can see if dgVoodoo is utilized at all but won't necessarily tell
-                        you why the game crashes, for example.<br>
-                        Also, if you see an ERROR entry in the log then it doesn't necessarily mean you did
-                        something wrong or there is a problem with your game.
-                        Many games rely on error codes got back from an API. So, for example if you see such a log
-                        like the following snippet
-                        <pre class="w3-border" style="overflow: auto;">...
+            <p>I must emphasize:</p>
+            <ul>
+                <li>Do not look for a miracle when using the debug layer! If some game doesn't work for you then
+                    it can give you some useful feedback on what's going on, or you can see if dgVoodoo is utilized at all but won't necessarily tell
+                    you why the game crashes, for example.<br>
+                    Also, if you see an ERROR entry in the log then it doesn't necessarily mean you did
+                    something wrong or there is a problem with your game.
+                    Many games rely on error codes got back from an API. So, for example if you see such a log
+                    like the following snippet
+                    <pre class="w3-border" style="overflow: auto;">...
 [15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8)::EnumTextureFormats: Format XRGB8888 is enumerated to the application.
 [15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8)::EnumTextureFormats: Format ARGB8888 is enumerated to the application.
 [15500] [dgVoodoo] INFO: Direct3DDevice (0D3967D8) is released.
@@ -1268,32 +1252,32 @@
 [15500] [dgVoodoo] INFO: DirectDrawSurface (0D2380C8) Plain offscreen rendertarget is released.
 [15500] [dgVoodoo] INFO: Direct3D (0ABC87B0)::EnumDevices: Device enumerated, Name: "Direct3D HAL", Description: "dgVoodoo Hardware A...
 ...</pre>
-                        Then the error entry about failed 'DeleteAttachedSurface' is not really an error. The
-                        application tried to delete a potential attached z-buffer, just to make sure, and doesn't care about the
-                        result.
-                        dgVoodoo however treat it as an error because it caused an error in an API method. It's
-                        really impossible to make a decision about classifying some conditions as an error or just a plain
-                        warning.<br>
-                        But let's look at another case: one of my game just crashes right at startup. What could be
-                        the reason?
-                        The debug output is:
-                        <pre class="w3-border" style="overflow: auto;">...
+                    Then the error entry about failed 'DeleteAttachedSurface' is not really an error. The
+                    application tried to delete a potential attached z-buffer, just to make sure, and doesn't care about the
+                    result.
+                    dgVoodoo however treat it as an error because it caused an error in an API method. It's
+                    really impossible to make a decision about classifying some conditions as an error or just a plain
+                    warning.<br>
+                    But let's look at another case: one of my game just crashes right at startup. What could be
+                    the reason?
+                    The debug output is:
+                    <pre class="w3-border" style="overflow: auto;">...
 [21964] [dgVoodoo] INFO: Direct3D8 (077BCEC8) Virtual video card is 'dgVoodoo Virtual 3D Accelerated' with 64MB onboard memory.
 [21964] [dgVoodoo] ERROR: Direct3D8 (077BCEC8): Validation of D3D8 swapchain presentation parameters failed.
                         Reason: display mode "800x600, 72Hz" is required but not supported by output device: 0, DeviceType: D3DDEVT...
 [21964] [dgVoodoo] ERROR: Direct3DDevice8 (0EE99530)::Init: Cannot create device implicit swapchain.
 [21964] [dgVoodoo] ERROR: Direct3D8 (077BCEC8)::CreateDevice: Initializing Direct3DDevice8 (0EE99530) failed.
 ...</pre>
-                        Ah, OK. Previously I configured the game to run on a display at 72Hz but now I'm trying to
-                        run it on another that does not support this refresh rate at this resolution,
-                        so D3D8 initialization failed in dgVoodoo and so the game crashed due to lack of error checking.
-                    </li><br>
-                    <li>
-                        Use the spec release only for trying to solve an extant problem with an applicaiton. Spec
-                        release does some extra checking and validation compared to normal dgVoodoo releases and it 
-                        can bite off from the speed or cause stuttering.
-                    </li>
-                </ul>
+                    Ah, OK. Previously I configured the game to run on a display at 72Hz but now I'm trying to
+                    run it on another that does not support this refresh rate at this resolution,
+                    so D3D8 initialization failed in dgVoodoo and so the game crashed due to lack of error checking.
+                </li><br>
+                <li>
+                    Use the spec release only for trying to solve an extant problem with an applicaiton. Spec
+                    release does some extra checking and validation compared to normal dgVoodoo releases and it 
+                    can bite off from the speed or cause stuttering.
+                </li>
+            </ul>
         </article>
     </section>
     <hr>
@@ -2207,8 +2191,7 @@
                         Various texture filtering modes can be forced here, starting from simple point sampled
                         to high level anisotropic.
                         Keep in mind however that forcing other than the application default can result in
-                        rendering glitches, or it can
-                        completely break some visual effects!
+                        rendering glitches, or it can completely break some visual effects!
                     </p>
                 </li>
 
@@ -2222,8 +2205,8 @@
                 <li><b>Resolution</b>
                     <p>
                         Here you can override the application resolution and
-                        refresh rate. See detailed explanation of static/dynamic
-                        resolutions in the general Readme.
+                        refresh rate. See section <a href="#1-7">Resolution and refresh rate overriding</a>
+                        for a detailed explanation of static/dynamic resolutions.
                     </p>
                 </li>
 
@@ -2267,7 +2250,7 @@
 
                 <li><b>Apply Phong shading when possible</b>
                     <p>
-                        See technical info.
+                        See <a href="#3-3">technical info</a>.
                     </p>
                 </li>
                 <li><b>Force vSync</b>
